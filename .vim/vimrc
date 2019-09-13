@@ -48,7 +48,7 @@ Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', { 'for': ['python', 'json', 'yaml', 'vim', 'markdown', 'r'], 'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', { 'for': ['python', 'json', 'yaml', 'vim', 'markdown', 'r'], 'branch': 'release', 'do': { -> coc#util#install() }}
 Plug 'honza/vim-snippets', { 'for': ['python', 'r'] }
 Plug 'jpalardy/vim-slime', { 'for': ['python', 'r'] }
 Plug 'goerz/jupytext.vim'

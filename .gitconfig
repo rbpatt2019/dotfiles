@@ -1,0 +1,9 @@
+[user]
+	name = rbpatt2019
+	email = ryan.patterson.2015@gmail.com
+[core]
+	editor = vim
+[credential]
+	helper = cache --timeout=3600
+[hub]
+	protocol = https

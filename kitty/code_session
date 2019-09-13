@@ -1,0 +1,4 @@
+# Layout set by kitty.conf
+# Set directory
+cd ~/PyProjects
+launch fish

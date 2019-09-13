@@ -1,0 +1,5 @@
+# Layout set by kitty.conf
+# Set directory
+cd ~
+# Launch
+launch vmail

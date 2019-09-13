@@ -1,0 +1,178 @@
+" Automate vim-plug install
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" General Vim settings
+set nocompatible
+let mapleader = ' '
+filetype on
+filetype plugin on
+set splitright
+set splitbelow
+set encoding=utf8
+set number
+set scrolloff=2
+set incsearch
+set nohlsearch
+set ignorecase
+set smartcase
+set noshowmatch
+set noshowmode
+set noruler
+set smarttab
+set expandtab
+set fileformat=unix
+set twk=<C-w>
+set tws="15*0"
+set timeoutlen=333
+set updatetime=100
+set signcolumn=yes
+set laststatus=2
+set termguicolors
+
+" vim-plug configurations
+call plug#begin('~/.vim/plugged')
+
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'tpope/vim-surround'
+Plug 'cohama/lexima.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'neoclide/coc.nvim', { 'for': ['python', 'json', 'yaml', 'vim', 'markdown', 'r'], 'do': { -> coc#util#install() }}
+Plug 'honza/vim-snippets', { 'for': ['python', 'r'] }
+Plug 'jpalardy/vim-slime', { 'for': ['python', 'r'] }
+Plug 'goerz/jupytext.vim'
+Plug 'godlygeek/tabular', { 'for': 'markdown' }
+Plug 'mzlogin/vim-markdown-toc', { 'on': 'GenTocGFM', 'for': 'markdown' }
+
+call plug#end()
+
+" PaperColor Theme
+let g:PaperColor_Theme_Options = {
+	\	'language': {
+	\		'python': {
+	\			'highlight_builtins': 1
+	\		}
+	\	},
+  	\   	'theme': {
+  	\     		'default': {
+  	\       		'allow_bold': 1,
+	\			'allow_italic': 1,
+	\			'transparent_background': 1
+  	\     		}
+  	\   	}
+	\ }	
+set t_Co=256
+set background=dark
+colorscheme PaperColor
+
+" Easymotion - removes number requirement from motions
+map , <Plug>(easymotion-prefix)
+
+" commentary.vim
+" Comment things out. relevant motion is gc
+
+" repeat.vim
+" Add repeat mapping for plugin commands
+" silent! call repeat#set("\<Plug>genericMap", v:count) at end of mappings
+
+" vim surround - provides surrounds command
+" relevant motion is s
+
+" Goyo - zen mode
+nnoremap <leader>z :Goyo<CR>
+let g:goyo_width = 100
+let g:goyo_height = '90%'
+
+" vim-which-key - provides mapping guides on timeout
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" vim-fugitive - git integration for Vim
+" relative mappings are <leader>g
+" Also used in statusline
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit %<CR>
+nnoremap <leader>gf :Gpull<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gm :Gmove
+nnoremap <leader>gx :Gdelete<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gv :Gread<CR>
+
+" git-gutter - sign indication for git changes
+let g:gitgutter_map_keys = 0
+let g:gitgutter_sign_added = '@'
+hi GitGutterAdd ctermfg=9 ctermbg=0
+let g:gitgutter_sign_modified = '@'
+hi GitGutterChange ctermfg=3 ctermbg=0
+let g:gitgutter_sign_removed = '@'
+hi GitGutterDelete ctermfg=13 ctermbg=0
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '@'
+hi GitGutterChangeDelete ctermfg=6 ctermbg=0
+
+"Jupytext - handling of Jupyter notebooks
+au BufNewFile,BufRead *.ipynb set ft=python
+let g:jupytext_enable = 1
+let g:jupytext_command = 'jupytext'
+let g:jupytext_fmt = 'py'
+
+" fzf - because fuzzy finding is awesome
+" relevant mapping is <leader>f*
+nnoremap <leader>fb :w<CR>:Buffers<CR>
+nnoremap <leader>ff :w<CR>:Files<CR>
+nnoremap <leader>fg :w<CR>:GFiles<CR>
+nnoremap <leader>ft :w<CR>:BTags<CR>
+nnoremap <leader>fT :w<CR>:Tags<CR>
+nnoremap <leader>fc :w<CR>:BCommits<CR>
+nnoremap <leader>fC :w<CR>:Commits<CR>
+nnoremap <leader>fh :w<CR>:Helptags<CR>
+nnoremap <leader>fl :w<CR>:BLines<CR>
+nnoremap <leader>fL :w<CR>:Lines<CR>
+
+" Key Bindings
+" Split Navigation
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+" Terminal Navigation
+tnoremap <C-n> <C-\><C-n>
+tnoremap <C-k> <C-w><C-k>
+tnoremap <C-j> <C-w><C-j>
+tnoremap <C-h> <C-w><C-h>
+tnoremap <C-l> <C-w><C-l>
+tnoremap <C-q> <C-\><C-n>:q!<CR>
+" Write file
+nnoremap <leader>w :w<CR>
+" Write and close buffer
+nnoremap <leader>x :w<CR>:bd<CR>
+" Force quit
+nnoremap <leader>q :q!<CR>
+nnoremap <leader>Q :qa!<CR>
+" cd to directory of current buffer
+nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
+" Edit new file
+nnoremap <leader>n :n 
+
+" Browse files
+nnoremap <leader>F :term ++rows=15 ranger<CR>
+
+set statusline=%!MyStatusLine()
+
+" Generate help tags
+packloadall
+silent! helptag ALL

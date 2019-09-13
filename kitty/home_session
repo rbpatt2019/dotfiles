@@ -1,0 +1,7 @@
+# Layout set by kitty.conf
+# Set directory
+cd ~
+# Launch
+launch fish
+launch htop
+launch ranger

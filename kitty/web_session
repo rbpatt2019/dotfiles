@@ -2,4 +2,4 @@
 # Set directory
 cd ~
 # Launch
-launch w3m google.com
+launch w3m

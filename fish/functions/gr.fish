@@ -1,3 +1,3 @@
 function gr
-	git reset $argv
+	git restore $argv
 end

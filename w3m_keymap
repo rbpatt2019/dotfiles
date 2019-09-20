@@ -1,11 +1,11 @@
 keymap r RELOAD
-keymap b GOTO
+keymap g GOTO
 keymap C-f NEXT_PAGE
 keymap C-b PREV_PAGE
-keymap l MOVE_RIGHT
-keymap h MOVE_LEFT
-keymap j MOVE_DOWN
-keymap k MOVE_UP
+keymap l RIGHT
+keymap h LEFT
+keymap j DOWN
+keymap k UP
 keymap K PREV_LINK
 keymap J NEXT_LINK
 keymap L MOVE_LIST_MENU
@@ -17,8 +17,8 @@ keymap C-l SELECT_MENU
 keymap T NEW_TAB
 keymap t TAB_LINK
 keymap ESC-h CLOSE_TAB
-keymap ESC-k PREV_TAB
-keymap ESC-j NEXT_TAB
+keymap ESC-k TAB_RIGHT
+keymap ESC-j TAB_LEFT
 keymap ESC-l TAB_MENU
 keymap m BOOKMARK
 keymap + ADD_BOOKMARK

@@ -171,6 +171,10 @@ nnoremap <leader>n :n
 " Browse files
 nnoremap <leader>F :term ++rows=15 ranger<CR>
 
+" Manage to dos - requires ToDonePy to be installed in current venv
+nnoremap <leader>do :w ! to do 
+nnoremap <leader>dg :w ! to doing<CR> 
+nnoremap <leader>dn :w ! to done  
 set statusline=%!MyStatusLine()
 
 " Generate help tags

@@ -202,8 +202,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id udiskie -ant
 exec --no-startup-id hsetroot -solid "#000000"
 exec --no-startup-id "sleep 2s && kalu"
-exec --no-startup-id i3-msg 'workspace 1:Home; exec kitty --session ~/.config/kitty/home_session'
 exec --no-startup-id i3-msg 'workspace 2:Code; exec kitty --session ~/.config/kitty/code_session'
-exec --no-startup-id i3-msg 'workspace 3:Web; exec kitty --session ~/.config/kitty/web_session'
+exec --no-startup-id i3-msg 'workspace 3:Web; exec kitty w3m google.com'
 exec --no-startup-id i3-msg 'workspace 4:Mail; exec kitty --session ~/.config/kitty/mail_session'
+exec --no-startup-id i3-msg 'workspace 1:Home; exec kitty --session ~/.config/kitty/home_session'
 

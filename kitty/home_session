@@ -2,6 +2,7 @@
 # Set directory
 cd ~
 # Launch
+focus
 launch fish
 launch htop
 launch ranger

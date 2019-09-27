@@ -55,3 +55,5 @@ nmap <buffer> <leader>lv :CocCommand python.setInterpreter<CR>
 " Find other commands
 nmap <buffer> <leader>lc :CocCommand<CR>
 
+"Run tests using makefile in root directory
+nnoremap <buffer> <leader>lt :w ! make test<CR>

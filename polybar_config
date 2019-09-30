@@ -121,6 +121,7 @@ format-full-underline = #ff5faf
 type = internal/backlight
 card = intel_backlight
 format = <label>
+interval = 5
 format-underline = #5fafd7
 label = %percentage%%
 

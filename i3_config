@@ -106,16 +106,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # change workspace name
 bindsym $mod+Shift+r exec --no-startup-id i3-input -F 'Rename workspace to %s' -P 'New name: ' -f 'pango:Inconsolata-dz for Powerline 20'
 
-# Wifi bindings
-set $mode_wifi Wifi [t] Toggle [m] Menu
-mode "$mode_wifi" {
-    bindsym t exec "wifi toggle"
-    bindsym m exec kitty wifi-menu
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+w mode "$mode_wifi"
-#
 # System bindings
 set $mode_system System [r] Restart i3wm, [x] Lock, [s] Suspend, [b] ReBoot, [d] ShutDown
 mode "$mode_system" {
@@ -128,6 +118,18 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+s mode "$mode_system"
+
+# Brightness Bindings
+set $mode_brightness Brightness [k] +5%, [j] -5%, [h] Minimum, [l] Maximum
+mode "$mode_brightness" {
+    bindsym k exec --no-startup-id fish -c "bright up 0.05"
+    bindsym j exec --no-startup-id fish -c "bright down 0.05"
+    bindsym h exec --no-startup-id fish -c "bright down 1"
+    bindsym l exec --no-startup-id fish -c "bright up 1"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+b mode "$mode_brightness"
 
 # Volume Bindings
 set $mode_volume Volume [k] +5%, [j] -5%, [h] Mute, [l] Unmute

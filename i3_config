@@ -194,6 +194,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie -ant
+exec --no-startup-id hsetroot -solid "#000000"
 exec --no-startup-id "sleep 2s && kalu"
 exec --no-startup-id i3-msg 'workspace 1:Home; exec termite'
 exec --no-startup-id i3-msg 'workspace 2:Code; exec termite -d ~/PyProjects/'

@@ -176,8 +176,8 @@ bar {
     font pango:Inconsolata-dz for Powerline 20
 
 	colors {
-        background $bg-color
-        statusline $text-color
+        background #000000
+        statusline #000000
         binding_mode #808080 #808080 #1c1c1c
     }
 }

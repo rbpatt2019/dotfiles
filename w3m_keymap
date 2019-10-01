@@ -4,8 +4,8 @@ keymap C-f NEXT_PAGE
 keymap C-b PREV_PAGE
 keymap l RIGHT
 keymap h LEFT
-keymap j DOWN
-keymap k UP
+keymap j UP
+keymap k DOWN
 keymap K PREV_LINK
 keymap J NEXT_LINK
 keymap L MOVE_LIST_MENU

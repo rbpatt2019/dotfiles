@@ -42,8 +42,6 @@ set SPACEFISH_CHAR_COLOR_FAILURE red
 set man_bold -o blue
 set man_underline -u brred
 
-kitty + complete setup fish | source
-
 set -gx PYENV_ROOT "$HOME/.pyenv"
 status is-interactive; and pyenv init - | source
 status is-interactive; and pyenv virtualenv-init - | source

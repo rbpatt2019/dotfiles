@@ -122,10 +122,10 @@ bindsym $mod+s mode "$mode_system"
 # Brightness Bindings
 set $mode_brightness Brightness [k] +5%, [j] -5%, [h] Minimum, [l] Maximum
 mode "$mode_brightness" {
-    bindsym k exec --no-startup-id fish -c "bright up 0.05"
-    bindsym j exec --no-startup-id fish -c "bright down 0.05"
-    bindsym h exec --no-startup-id fish -c "bright down 1"
-    bindsym l exec --no-startup-id fish -c "bright up 1"
+    bindsym k exec --no-startup-id xbacklight + 5
+    bindsym j exec --no-startup-id xbacklight - 5
+    bindsym l exec --no-startup-id xbacklight = 100
+    bindsym h exec --no-startup-id xbacklight = 5
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

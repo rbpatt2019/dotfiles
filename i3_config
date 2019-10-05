@@ -59,19 +59,25 @@ bindsym $mod+Shift+b split h
 # split in vertical orientation
 bindsym $mod+Shift+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+Shift+f fullscreen toggle
-
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+t layout tabbed
 bindsym $mod+Shift+s layout toggle split
 
-# toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
+# Scatchpad commands
+# Move a window to the scratchpad
+bindsym $mod+Shift+space move scratchpad
+# Toggle scratchpad
+bindsym $mod+space scratchpad show
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+g focus mode_toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
 # focus the parent container
 # bindsym $mod+a focus parent

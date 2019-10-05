@@ -18,6 +18,8 @@ font pango:Inconsolata-dz for Powerline 20
 # thin borders
 default_border pixel 2
 hide_edge_borders both
+workspace_layout tabbed
+focus_follows_mouse no
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -31,6 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+Shift+Return exec --no-startup-id termite --name="__scratchpad", scratchpad show
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -66,6 +69,10 @@ bindsym $mod+Shift+t layout tabbed
 bindsym $mod+Shift+s layout toggle split
 
 # Scatchpad commands
+for_window [instance="__scratchpad"] move scratchpad
+for_window [instance="__scratchpad"] move absolute position 1920 px 540 px
+for_window [instance="__scratchpad"] sticky enable
+for_window [instance="__scratchpad"] resize set 1915 1080
 # Move a window to the scratchpad
 bindsym $mod+Shift+space move scratchpad
 # Toggle scratchpad
@@ -164,9 +171,9 @@ bindsym $mod+r mode "mode_resize"
 
 # set window colors
 #                       border  backgro text    indicat child_border
-client.focused          #808080 #000000 #808080 #000000 #808080
-client.focused_inactive #000000 #000000 #808080 #000000 #000000
-client.unfocused        #000000 #000000 #808080 #000000 #000000
+client.focused          #808080 #000000 #808080 #000000 #5fafd7
+client.focused_inactive #000000 #000000 #808080 #000000 #808080
+client.unfocused        #000000 #000000 #808080 #000000 #808080
 client.urgent           #000000 #000000 #808080 #000000 #000000
 
 
@@ -203,8 +210,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id udiskie -ant
 exec --no-startup-id hsetroot -solid "#000000"
 exec --no-startup-id "sleep 2s && kalu"
-exec --no-startup-id i3-msg 'workspace 1:Home; exec termite -d ~; exec termite -e htop; exec termite -e ranger; layout tabbed'
+exec --no-startup-id termite --name="__scratchpad"
+exec --no-startup-id i3-msg 'workspace 1:Home; exec termite -e htop; exec termite -e ranger'
 exec --no-startup-id i3-msg 'workspace 2:Code; exec termite -d ~/PyProjects/'
 exec --no-startup-id i3-msg 'workspace 3:Web; exec termite'
-exec --no-startup-id i3-msg 'workspace 4:Mail; exec termite -e vmail'
+exec --no-startup-id i3-msg 'workspace 4:Mail; exec termite -e vmail; workspace 1'
 

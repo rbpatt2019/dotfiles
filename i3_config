@@ -16,7 +16,8 @@ set $mod Mod4
 font pango:Inconsolata-dz for Powerline 20
 
 # thin borders
-default_border pixel 1
+default_border pixel 2
+hide_edge_borders both
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -163,7 +164,7 @@ bindsym $mod+r mode "mode_resize"
 
 # set window colors
 #                       border  backgro text    indicat child_border
-client.focused          #808080 #000000 #808080 #000000 #000000
+client.focused          #808080 #000000 #808080 #000000 #808080
 client.focused_inactive #000000 #000000 #808080 #000000 #000000
 client.unfocused        #000000 #000000 #808080 #000000 #000000
 client.urgent           #000000 #000000 #808080 #000000 #000000

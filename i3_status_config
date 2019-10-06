@@ -51,8 +51,8 @@ cpu_temperature 0 {
 
 cpu_usage {
     format = "[ %usage]"
-    max_threshold = 75
-    degraded_threshold = 25
+    max_threshold = 90
+    degraded_threshold = 75
 }
 
 memory {

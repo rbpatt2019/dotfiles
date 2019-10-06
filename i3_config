@@ -148,10 +148,10 @@ bindsym $mod+b mode "$mode_brightness"
 # Volume Bindings
 set $mode_volume Volume [k] +5%, [j] -5%, [h] Mute, [l] Unmute
 mode "$mode_volume" {
-    bindsym k exec --no-startup-id amixer set Master 5%+
-    bindsym j exec --no-startup-id amixer set Master 5%-
-    bindsym h exec --no-startup-id amixer set Master mute
-    bindsym l exec --no-startup-id amixer set Master unmute
+    bindsym k exec --no-startup-id amixer set Master 5%+, exec killall -USR1 i3status
+    bindsym j exec --no-startup-id amixer set Master 5%-, exec killall -USR1 i3status
+    bindsym h exec --no-startup-id amixer set Master mute, exec killall -USR1 i3status
+    bindsym l exec --no-startup-id amixer set Master unmute, exec killall -USR1 i3status
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -200,10 +200,6 @@ bar {
     }
 }
 
-# floating windows
-for_window [class="Pavucontrol"] floating enable
-for_window [class="Kalu"] floating enable
-
 # Swap caps and escape
 exec --no-startup-id setxkbmap -option caps:swapescape
 
@@ -212,8 +208,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie -ant
+exec --no-startup-id pulseaudio --start
 exec --no-startup-id hsetroot -solid "#000000"
-exec --no-startup-id "sleep 2s && kalu"
 exec --no-startup-id termite --name="__scratchpad"
 exec --no-startup-id i3-msg 'workspace 2:Code; exec termite -d ~/PyProjects/'
 exec --no-startup-id i3-msg 'workspace 3:Web; exec termite -e "w3m google.com"'

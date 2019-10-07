@@ -148,10 +148,10 @@ bindsym $mod+b mode "$mode_brightness"
 # Volume Bindings
 set $mode_volume Volume [k] +5%, [j] -5%, [h] Mute, [l] Unmute
 mode "$mode_volume" {
-    bindsym k exec --no-startup-id amixer set Master 5%+, exec killall -USR1 i3status
-    bindsym j exec --no-startup-id amixer set Master 5%-, exec killall -USR1 i3status
-    bindsym h exec --no-startup-id amixer set Master mute, exec killall -USR1 i3status
-    bindsym l exec --no-startup-id amixer set Master unmute, exec killall -USR1 i3status
+    bindsym k exec  amixer set Master 5%+, exec killall -USR1 i3status
+    bindsym j exec  amixer set Master 5%-, exec killall -USR1 i3status
+    bindsym h exec  amixer set Master mute, exec killall -USR1 i3status
+    bindsym l exec  amixer set Master unmute, exec killall -USR1 i3status
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

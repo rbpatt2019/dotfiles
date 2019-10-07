@@ -57,6 +57,7 @@ cpu_usage {
 
 memory {
     format = "[ %used/%total]"
+    memory_used_method = memavailable
     threshold_degraded = 20%
     threshold_critical = 5%
 }

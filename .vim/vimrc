@@ -106,7 +106,7 @@ nnoremap <leader>gf :Gpull<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap <leader>gm :Gmove
 nnoremap <leader>gx :Gdelete<CR>
 nnoremap <leader>gb :Gblame<CR>

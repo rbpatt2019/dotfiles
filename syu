@@ -1,0 +1,9 @@
+#!/bin/fish
+
+# A script for updating my utilities
+# To come - optional pyenv pip update
+
+pyenv update
+fisher
+vim +PlugUpdate +qall
+yay -Syu

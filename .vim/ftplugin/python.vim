@@ -52,6 +52,9 @@ nmap <buffer> <leader>lh :call CocActionAsync('showSignatureHelp')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Set venv
 nmap <buffer> <leader>lv :CocCommand python.setInterpreter<CR>
+" Yank list
+nnoremap <silent> <buffer> <leader>y :<C-u>CocList -A --normal yank<CR>
+
 " Find other commands
 nmap <buffer> <leader>lc :CocCommand<CR>
 

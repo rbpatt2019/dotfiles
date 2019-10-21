@@ -13,3 +13,5 @@ inoremap <expr> <buffer> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 " Find other commands
 nmap <buffer> <leader>lc :CocCommand<CR>
+
+nnoremap <silent> <buffer> <leader>y :<C-u>CocList -A --normal yank<CR>

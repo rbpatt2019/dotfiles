@@ -49,3 +49,4 @@ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Find other commands
 nmap <buffer> <leader>lc :CocCommand<CR>
 
+nnoremap <silent> <buffer> <leader>y :<C-u>CocList -A --normal yank<CR>

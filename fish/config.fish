@@ -52,4 +52,4 @@ set -gx GOPATH "$HOME/go"
 
 set -gx R_USER "$HOME/R"
 set -gx R_PROFILE "$HOME/R/.Rprofile"
-set -gx R_LIBS_USER "$HOME/R/library"
+set -gx R_LIBS "$HOME/R/library"

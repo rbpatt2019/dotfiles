@@ -17,8 +17,8 @@ keymap C-l SELECT_MENU
 keymap T NEW_TAB
 keymap t TAB_LINK
 keymap ESC-h CLOSE_TAB
-keymap ESC-k TAB_RIGHT
-keymap ESC-j TAB_LEFT
+keymap ESC-k PREV_TAB
+keymap ESC-j NEXT_TAB
 keymap ESC-l TAB_MENU
 keymap m BOOKMARK
 keymap + ADD_BOOKMARK

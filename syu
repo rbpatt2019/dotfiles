@@ -8,3 +8,4 @@ fisher
 vim +PlugUpdate +qall
 Rscript update_languageserver.R
 yay -Syu
+poetry self:update

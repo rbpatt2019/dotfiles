@@ -4,7 +4,7 @@ scan_timeout = 10
 
 [username]
 show_always = true
-style_user = "blue"
+style_user = "bright-cyan"
 
 [directory]
 truncation_length = 3
@@ -14,10 +14,10 @@ style = "bright-yellow"
 
 [time]
 disabled = false
-style = "bright-cyan"
+style = "bright-purple"
 
 [cmd_duration]
-style = "bright-purple"
+style = "blue"
 min_time = 0.5
 
 [python]

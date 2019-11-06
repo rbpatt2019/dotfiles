@@ -9,6 +9,7 @@ jupytext
 memory-profiler
 mypy
 mypy-extensions
+pre-commit
 pyflakes
 pytest
 pytest-cov

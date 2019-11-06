@@ -5,7 +5,7 @@ if not functions -q fisher
 end
 
 set -gx EDITOR (type -p vim)
-set -gx BROWSER (type -p w3m)
+set -gx BROWSER (type -p midori)
 
 set man_bold -o blue
 set man_underline -u brred

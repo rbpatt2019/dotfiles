@@ -1,5 +1,5 @@
 add_newline = true
-prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "line_break", "python",  "git_branch", "package", "git_state", "git_status", "character"]
+prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "line_break", "python", "conda", "git_branch", "package", "git_state", "git_status", "character"]
 scan_timeout = 10
 
 [username]
@@ -26,9 +26,13 @@ style = "blue"
 min_time = 0.5
 
 [python]
-symbol = "Py "
+symbol = ""
 pyenv_version_name = true
-pyenv_prefix = ""
+pyenv_prefix = "Py "
+style = "bright-green"
+
+[conda]
+symbol = "C "
 style = "bright-green"
 
 [git_branch]

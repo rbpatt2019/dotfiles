@@ -23,9 +23,3 @@ set -gx R_PROFILE "$HOME/R/.Rprofile"
 set -gx R_LIBS "$HOME/R/library"
 
 starship init fish | source
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /home/rbpatt2019/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-

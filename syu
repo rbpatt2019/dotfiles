@@ -7,5 +7,9 @@ pyenv update
 fisher
 vim +PlugUpdate +qall
 Rscript ~/dotfiles/update_languageserver.R
-poetry self update
+poetry self:update
 yay -Syu
+cd ~/dotfiles
+git add .
+git commit -m "System update"
+git push

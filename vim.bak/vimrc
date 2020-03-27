@@ -160,6 +160,6 @@ nnoremap <leader>ss :so $MYVIMRC<CR>
 nnoremap <leader>x :w<CR>:bd<CR>
 
 " Browse
-nnoremap <leader>F :term ++rows=15 /Users/pattersonrb/miniconda3/bin/ranger<CR>
+nnoremap <leader>F :CocCommand explorer<CR>
 
 silent! helptag ALL

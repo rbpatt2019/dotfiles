@@ -162,4 +162,6 @@ nnoremap <leader>x :w<CR>:bd<CR>
 " Browse
 nnoremap <leader>F :CocCommand explorer<CR>
 
+nnoremap <leader>tl :CocList todolist<CR>
+nnoremap <leader>tn :CocCommand todolist.create<CR>
 silent! helptag ALL

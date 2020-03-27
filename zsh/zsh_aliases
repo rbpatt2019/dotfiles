@@ -8,7 +8,7 @@ alias chrome="open -a 'Google Chrome'"
 alias data="cd /Volumes/RBPatterson"
 alias c="conda"
 alias work="cd /Users/pattersonrb/levine_lab_work"
-alias dot = "cd /Users/pattersonrb/projects/dotfiles"
+alias dot="cd /Users/pattersonrb/projects/dotfiles"
 
 alias ga="git add"
 alias gc="git commit"

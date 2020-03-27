@@ -1,0 +1,59 @@
+alias s="source ~/.zshrc"
+alias r="radian"
+alias v="vim"
+alias ll="ls -GTlha"
+alias i="ipython --TerminalInteractiveShell.editing_mode=vi"
+alias bw="ssh -X biowulf.nih.gov"
+alias chrome="open -a 'Google Chrome'"
+alias data="cd /Volumes/RBPatterson"
+alias c="conda"
+alias work="cd /Users/pattersonrb/levine_lab_work"
+
+alias ga="git add"
+alias gc="git commit"
+alias gd="git diff"
+alias gf="git pull"
+alias gg="git merge --no-ff -e"
+alias gl="git log --reverse -10"
+alias gm="git mv"
+alias gb="git branch"
+alias gp="git push"
+alias gr="git restore"
+alias gs="git status -sb"
+alias gt="git tag"
+alias gv="git checkout"
+alias gx="git rm"
+
+alias -g G="| grep"
+alias -g g="https://google.com"
+
+gw()
+{
+        local files=${1:-\.}
+        local msg=${2:-"Files altered"}
+        git add "$files" &&
+        git commit "$files" -m "$msg"
+}
+
+l.()
+{
+	ls -Ga $1 | grep '^\.';
+}
+
+mkcd()
+{
+	mkdir -p -- "$1" &&
+	cd -P -- "$1"
+}
+
+cdls()
+{
+        cd -P -- "$1" &&
+        ls
+}
+
+bwcp()
+{
+        local dir=${2:-\.}
+        scp helix.nih.gov:/data/pattersonrb/"$1" "$dir"
+}

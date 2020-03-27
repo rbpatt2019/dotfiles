@@ -1,13 +1,7 @@
-" Automate vim-plug install
-if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+set rtp+=~/.fzf
 
-" General Vim settings
-set nocompatible
 let mapleader = ' '
+let maplocalleader = ','
 filetype on
 filetype plugin on
 set splitright
@@ -20,7 +14,6 @@ set nohlsearch
 set ignorecase
 set smartcase
 set noshowmatch
-set noshowmode
 set noruler
 set smarttab
 set expandtab
@@ -32,32 +25,12 @@ set updatetime=100
 set signcolumn=yes
 set laststatus=2
 set termguicolors
+set pyxversion=2
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+syntax on
 
-" vim-plug configurations
-call plug#begin('~/.vim/plugged')
-
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-surround'
-Plug 'cohama/lexima.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', { 'for': ['python', 'json', 'yaml', 'vim', 'markdown', 'r'], 'branch': 'release', 'do': { -> coc#util#install() }}
-Plug 'honza/vim-snippets', { 'for': ['python', 'r'] }
-Plug 'jpalardy/vim-slime', { 'for': ['python', 'r'] }
-Plug 'goerz/jupytext.vim'
-Plug 'godlygeek/tabular', { 'for': 'markdown' }
-Plug 'mzlogin/vim-markdown-toc', { 'on': 'GenTocGFM', 'for': 'markdown' }
-
-call plug#end()
-
-" PaperColor Theme
+" Colors - NLKNguyen/papercolor-theme'
 let g:PaperColor_Theme_Options = {
 	\	'language': {
 	\		'python': {
@@ -66,40 +39,39 @@ let g:PaperColor_Theme_Options = {
 	\	},
   	\   	'theme': {
   	\     		'default': {
-  	\       		'allow_bold': 1,
-	\			'allow_italic': 1,
-	\			'transparent_background': 1
+  	\       		'allow_bold': 0,
+	\			'allow_italic': 0,
+	\			'transparent_background': 0
   	\     		}
   	\   	}
-	\ }	
+	\ }
 set t_Co=256
 set background=dark
 colorscheme PaperColor
+map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" Easymotion - removes number requirement from motions
-map , <Plug>(easymotion-prefix)
+" Easy motion
+map <Leader><Leader> <Plug>(easymotion-prefix)
 
-" commentary.vim
-" Comment things out. relevant motion is gc
-
-" repeat.vim
-" Add repeat mapping for plugin commands
-" silent! call repeat#set("\<Plug>genericMap", v:count) at end of mappings
-
-" vim surround - provides surrounds command
-" relevant motion is s
-
-" Goyo - zen mode
-nnoremap <leader>z :Goyo<CR>
-let g:goyo_width = 100
-let g:goyo_height = '90%'
-
-" vim-which-key - provides mapping guides on timeout
+" Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :WhichKey ','<CR>
 
-" vim-fugitive - git integration for Vim
-" relative mappings are <leader>g
-" Also used in statusline
+" fzf - because fuzzy finding is awesome
+" relevant mapping is <leader>f*
+nnoremap <leader>fb :w<CR>:Buffers<CR>
+nnoremap <leader>ff :w<CR>:Files<CR>
+nnoremap <leader>fg :w<CR>:GFiles<CR>
+nnoremap <leader>ft :w<CR>:BTags<CR>
+nnoremap <leader>fT :w<CR>:Tags<CR>
+nnoremap <leader>fc :w<CR>:BCommits<CR>
+nnoremap <leader>fC :w<CR>:Commits<CR>
+nnoremap <leader>fh :w<CR>:Helptags<CR>
+nnoremap <leader>fl :w<CR>:BLines<CR>
+nnoremap <leader>fL :w<CR>:Lines<CR>
+
+" vim-fugitive
+" relative mappings are <leader>g*
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit %<CR>
 nnoremap <leader>gf :Gpull<CR>
@@ -124,59 +96,70 @@ let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '@'
 hi GitGutterChangeDelete ctermfg=6 ctermbg=0
 
-"Jupytext - handling of Jupyter notebooks
-au BufNewFile,BufRead *.ipynb set ft=python
-let g:jupytext_enable = 1
-let g:jupytext_command = 'jupytext'
-let g:jupytext_fmt = 'py'
+" ALE Global settings
+let g:ale_fixers = {
+\       '*': ['remove_trailing_lines', 'trim_whitespace'],
+\       'r': ['styler']
+\}
+let g:ale_linters = {
+\       'r': ['lintr']
+\}
+let g:ale_fix_on_save = 0
+let g:ale_completion_enabled = 0
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nnoremap <localeader>F :ALEFix<CR>
 
-" fzf - because fuzzy finding is awesome
-" relevant mapping is <leader>f*
-nnoremap <leader>fb :w<CR>:Buffers<CR>
-nnoremap <leader>ff :w<CR>:Files<CR>
-nnoremap <leader>fg :w<CR>:GFiles<CR>
-nnoremap <leader>ft :w<CR>:BTags<CR>
-nnoremap <leader>fT :w<CR>:Tags<CR>
-nnoremap <leader>fc :w<CR>:BCommits<CR>
-nnoremap <leader>fC :w<CR>:Commits<CR>
-nnoremap <leader>fh :w<CR>:Helptags<CR>
-nnoremap <leader>fl :w<CR>:BLines<CR>
-nnoremap <leader>fL :w<CR>:Lines<CR>
+" Airline
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_theme = 'bubblegum'
+let g:airline_section_y = ''
+let g:airline_section_z = "[%l:%c]"
 
-" Key Bindings
-" Split Navigation
+" NCM-R settings
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Navigate splits
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
-" Terminal Navigation
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-J> <C-w><C-J>
+nnoremap <C-K> <C-w><C-K>
+nnoremap <C-H> <C-w><C-H>
+nnoremap <C-L> <C-w><C-L>
+
+" Terminal interactions
 tnoremap <C-n> <C-\><C-n>
 tnoremap <C-k> <C-w><C-k>
 tnoremap <C-j> <C-w><C-j>
 tnoremap <C-h> <C-w><C-h>
 tnoremap <C-l> <C-w><C-l>
 tnoremap <C-q> <C-\><C-n>:q!<CR>
-" Write file
+
+" File interactions
 nnoremap <leader>w :w<CR>
-" Write and close buffer
-nnoremap <leader>x :w<CR>:bd<CR>
-" Force quit
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>Q :qa!<CR>
-" cd to directory of current buffer
-nnoremap <leader>c :cd %:p:h<CR>:pwd<CR>
-" Edit new file
 nnoremap <leader>n :n 
+nnoremap <leader>e :e 
 
-" Browse files
-nnoremap <leader>F :term ++rows=15 ranger<CR>
+" Edit settings
+nnoremap <leader>sv :vs /Users/pattersonrb/.vim/vimrc<CR>
+nnoremap <leader>sr :vs /Users/pattersonrb/.vim/ftplugin/R.vim<CR>
+nnoremap <leader>ss :so $MYVIMRC<CR>
 
-" Manage to dos - requires ToDonePy to be installed in current venv
-nnoremap <leader>do :w ! to do 
-nnoremap <leader>dg :w ! to doing --graphic<CR>
-nnoremap <leader>dn :w ! to done 
-set statusline=%!MyStatusLine()
+" Buffer interactions
+nnoremap <leader>x :w<CR>:bd<CR>
 
-" Generate help tags
-packloadall
+" Browse
+nnoremap <leader>F :term ++rows=15 /Users/pattersonrb/miniconda3/bin/ranger<CR>
+
 silent! helptag ALL

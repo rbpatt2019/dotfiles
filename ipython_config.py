@@ -33,7 +33,7 @@
 
 ## A list of dotted module names of IPython extensions to load.
 ## Line profile does not install from pip currently
-c.InteractiveShellApp.extensions = ['memory_profiler']
+c.InteractiveShellApp.extensions = []
 
 ## dotted module name of an IPython extension to load.
 #c.InteractiveShellApp.extra_extension = ''

@@ -1,4 +1,3 @@
-let b:lint = 2
 setlocal ts=4 sts=4 sw=4 
 
 " vim-slime - sending to terminal
@@ -15,8 +14,6 @@ nnoremap <buffer> <leader>lo "ayiw:exe 'call term_sendkeys(bufnr("iPython"), "?'
 nnoremap <buffer> <leader>lO :call term_sendkeys(bufnr("iPython"), "whos\<lt>CR>")<CR>
 " Considering adding options for timeit, memit whos
 " The issue is parsing quotes, which escape the exe call structure
-" nnoremap <buffer> <leader><CR> :exe 'call term_sendkeys(2, "%%timeit\n' . @a . '\<lt>CR>\<lt>CR>")'<CR>
-" nnoremap <buffer> <leader><CR> :exe 'call term_sendkeys(2, "%%memit\n' . @a . '\<lt>CR>\<lt>CR>")'<CR>
 xmap <buffer> <leader><leader> <Plug>SlimeRegionSend
 nmap <buffer> <leader><leader> <Plug>SlimeParagraphSend
 nmap <buffer> tt <Plug>SlimeConfig

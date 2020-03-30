@@ -15,8 +15,8 @@ imap <C-e> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<C-f>'
 let g:coc_snippet_prev = '<C-d>'
 " File and selection execution
-nmap <buffer> <localleader><cr> :CocCommand python.execInTerminal
-vmap <buffer> <localleader><cr> :CocCommand python.execSelectionInTerminal
+nmap <buffer> <localleader><cr> :CocCommand python.execInTerminal<CR>
+vmap <buffer> <localleader><cr> :CocCommand python.execSelectionInTerminal<CR>
 " Errors and their navigation
 nmap <buffer> <localleader>l :CocList diagnostics<CR>
 nmap <buffer> <localleader>j :CocNext<CR>

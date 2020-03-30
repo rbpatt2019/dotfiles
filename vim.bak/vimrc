@@ -164,6 +164,7 @@ nnoremap <leader>F :CocCommand explorer<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>td :CocCommand todolist.create<CR>
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
-nmap <buffer> <leader>lc :CocCommand<CR>
+nmap <buffer> <leader>c :CocCommand<CR>
+vmap <buffer> <leader>c :CocCommand<CR>
 
 silent! helptag ALL

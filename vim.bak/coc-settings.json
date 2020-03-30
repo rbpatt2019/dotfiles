@@ -8,7 +8,7 @@
     "suggest.detailMaxLength": 88,
     "snippets.loadFromExtensions": true,
     "snippets.ultisnips.enable": true,
-    "snippets.ultisnips.directories": ["plugged/vim-snippets/UltiSnips"], 
+    "snippets.ultisnips.directories": ["pack/rbpatt2019/start/vim-snippets/UltiSnips"], 
     "snippets.snipmate.enable": false,
     "diagnostic.refreshOnInsertMode": true,
     "diagnostic.enableSign": true,

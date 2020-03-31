@@ -142,8 +142,11 @@ tnoremap <C-k> <C-w><C-k>
 tnoremap <C-j> <C-w><C-j>
 tnoremap <C-h> <C-w><C-h>
 tnoremap <C-l> <C-w><C-l>
-tnoremap <C-q> <C-\><C-n>:q!<CR>
-
+tnoremap <C-q> <C-w>:q!<CR>
+augroup term_splits
+  autocmd!
+  autocmd BufEnter * if &buftype == 'terminal' | wincmd L | endif
+augroup END
 " File interactions
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q!<CR>

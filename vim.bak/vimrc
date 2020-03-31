@@ -173,5 +173,6 @@ vmap <leader>c :CocCommand<CR>
 nmap <leader>l :CocList diagnostics<CR>
 nmap <leader>j :CocNext<CR>
 nmap <leader>k :CocPrev<CR>
+nmap <leader>a <Plug>(coc-codeaction)
 
 silent! helptag ALL

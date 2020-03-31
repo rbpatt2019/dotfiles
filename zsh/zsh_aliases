@@ -9,6 +9,7 @@ alias data="cd /Volumes/RBPatterson"
 alias c="conda"
 alias work="cd /Users/pattersonrb/levine_lab_work"
 alias dot="cd /Users/pattersonrb/projects/dotfiles"
+alias dot="cd /Users/pattersonrb/projects"
 alias pv="pyenv"
 alias pt="poetry"
 

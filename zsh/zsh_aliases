@@ -10,6 +10,7 @@ alias c="conda"
 alias work="cd /Users/pattersonrb/levine_lab_work"
 alias dot="cd /Users/pattersonrb/projects/dotfiles"
 alias pv="pyenv"
+alias pt="poetry"
 
 alias ga="git add"
 alias gc="git commit"

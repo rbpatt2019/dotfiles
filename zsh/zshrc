@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/pattersonrb/miniconda3/condabin:/opt/X11/bin:/Users/pattersonrb/.fzf/bin:/Users/pattersonrb/.pyenv/bin:/Users/pattersonrb/.nodejs/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/pattersonrb/.fzf/bin:/Users/pattersonrb/.pyenv/bin:/Users/pattersonrb/.nodejs/bin:/Users/pattersonrb/.poetry/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/pattersonrb/.oh-my-zsh"
@@ -160,3 +160,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
+
+export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"

@@ -1,4 +1,3 @@
-let b:lint = 2
 setlocal ts=2 sts=2 sw=2 
 
 " coc.nvim - language server integration
@@ -10,9 +9,6 @@ inoremap <expr> <buffer> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <buffer> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <buffer> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
-" Find other commands
-nmap <buffer> <leader>lc :CocCommand<CR>
-nnoremap <silent> <buffer> <leader>y :<C-u>CocList -A --normal yank<CR>
 
 " Tabular - for lining up text, particularly in markdown
 AddTabularPattern! GitTable /|/c0
@@ -25,7 +21,7 @@ let g:vmt_list_item_char = '-'
 nnoremap <buffer> <leader>mc :GenTocGFM<CR>
 
 " Preview markdown files
-nnoremap <buffer> <leader>mv :w<CR>:exe '!markdown_previewer ' . @%<CR>
+" nnoremap <buffer> <leader>mv :w<CR>:exe '!markdown_previewer ' . @%<CR>
 
 " Lexima.vim - provides brackets autocompletion
 " Add strikethrough pairing for markdown

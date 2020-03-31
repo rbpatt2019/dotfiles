@@ -1,4 +1,3 @@
-let b:lint = 2
 syntax match Comment +\/\/.\+$+
 setlocal ts=2 sts=2 sw=2 
 

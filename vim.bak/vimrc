@@ -167,7 +167,11 @@ nnoremap <leader>F :CocCommand explorer<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>td :CocCommand todolist.create<CR>
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
-nmap <buffer> <leader>c :CocCommand<CR>
-vmap <buffer> <leader>c :CocCommand<CR>
+nmap <leader>c :CocCommand<CR>
+vmap <leader>c :CocCommand<CR>
+" Errors and their navigation
+nmap <leader>l :CocList diagnostics<CR>
+nmap <leader>j :CocNext<CR>
+nmap <leader>k :CocPrev<CR>
 
 silent! helptag ALL

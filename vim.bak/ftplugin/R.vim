@@ -31,10 +31,6 @@ autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 imap <C-e> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<C-f>'
 let g:coc_snippet_prev = '<C-d>'
-" Errors and their navigation
-nmap <buffer> <localleader>l :CocList diagnostics<CR>
-nmap <buffer> <localleader>j :CocNext<CR>
-nmap <buffer> <localleader>k :CocPrev<CR>
 " go to defintion
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black

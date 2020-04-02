@@ -1,7 +1,7 @@
 setlocal ts=2 sts=2 sw=2 
 
 " <- shortcut
-inoremap <buffer> --  <- 
+inoremap <buffer> -- <space><-<space>
 " vim-slime - sending to terminal
 " as R-lsp does not yet support sending to terminal
 let g:slime_no_mappings = 1
@@ -9,6 +9,7 @@ let g:slime_target = 'vimterminal'
 let g:slime_vimterminal_cmd = 'radian'
 let g:slime_vimterminal_config = {'term_name': 'R', 'vertical': 1, 'term_finish': 'close'}
 vmap <buffer> <localleader><leader> <Plug>SlimeRegionSend
+nmap <buffer> <localleader><leader> <Plug>SlimeParagraphSend
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
 
 " Object browsing

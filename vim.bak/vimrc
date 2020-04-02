@@ -1,5 +1,6 @@
 set rtp+=~/.fzf
 
+let loaded_netrwPlugin = 1
 let mapleader = ' '
 let maplocalleader = ','
 filetype on

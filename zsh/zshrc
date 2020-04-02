@@ -1,5 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/pattersonrb/.fzf/bin:/Users/pattersonrb/.pyenv/bin:/Users/pattersonrb/.nodejs/bin:/Users/pattersonrb/.poetry/bin:/Users/pattersonrb/heroku/bin:/Users/pattersonrb/hub-darwin-amd64-2.14.2/bin
+path+=('/Users/pattersonrb/.fzf/bin')
+path+=('/Users/pattersonrb/.pyenv/bin')
+path+=('/Users/pattersonrb/.nodejs/bin')
+path+=('/Users/pattersonrb/.poetry/bin')
+path+=('/Users/pattersonrb/.heroku/bin')
+path+=('/Users/pattersonrb/.hub-darwin-amd64-2.14.2/bin')
+path+=('/Users/pattersonrb/Applications/Postgres.app/Contents/Versions/latest/bin')
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/pattersonrb/.oh-my-zsh"
@@ -164,3 +170,5 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"
+
+eval "$(hub alias -s)"

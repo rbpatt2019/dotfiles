@@ -9,8 +9,8 @@ let g:slime_no_mappings = 1
 let g:slime_target = 'vimterminal'
 let g:slime_vimterminal_cmd = 'radian'
 let g:slime_vimterminal_config = {'term_name': 'R', 'vertical': 1, 'term_finish': 'close'}
-vmap <buffer> <localleader><leader> <Plug>SlimeRegionSend
-nmap <buffer> <localleader><leader> <Plug>SlimeParagraphSend
+vmap <buffer> <localleader><leader> <Plug>SlimeRegionSendj
+nmap <buffer> <localleader><leader> <Plug>SlimeParagraphSend}j
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
 
 " Object browsing

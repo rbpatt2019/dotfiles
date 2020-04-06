@@ -2,6 +2,7 @@ setlocal ts=2 sts=2 sw=2
 
 " <- shortcut
 inoremap <buffer> -- <space><-<space>
+inoremap <buffer> ;; <space>%>%<space>
 " vim-slime - sending to terminal
 " as R-lsp does not yet support sending to terminal
 let g:slime_no_mappings = 1
@@ -15,9 +16,11 @@ nmap <buffer> <localleader>tt <Plug>SlimeConfig
 " Object browsing
 nnoremap <buffer> <localleader>O :call term_sendkeys(bufnr("R"), "objects()\<lt>CR>")<CR>
 nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("R"), "print(' . @a . ')\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("R"), "head(' . @a . ')\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>H "ayiw:exe 'call term_sendkeys(bufnr("R"), "head(' . @a . ')\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>T "ayiw:exe 'call term_sendkeys(bufnr("R"), "table(' . @a . ')\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>I "ayiw:exe 'call term_sendkeys(bufnr("R"), "levels(Idents(' . @a . '))\<lt>CR>")'<CR>
 " Run file in R
-nnoremap <buffer> <localleader><CR> :w<CR>:exe 'call term_sendkeys(bufnr("R"), "source(\"' . @% . '\")\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("R"), "source(\"' . @% . '\")\<lt>CR>")'<CR>
 
 " coc.nvim - language server integration
 " This is basically VSCode integration for vim. 

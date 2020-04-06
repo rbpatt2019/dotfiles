@@ -1,17 +1,21 @@
 alias s="source ~/.zshrc"
-alias r="radian"
 alias v="vim"
 alias ll="ls -GTlha"
-alias i="ipython"
 alias bw="ssh -X biowulf.nih.gov"
 alias chrome="open -a 'Google Chrome'"
+alias m='make'
+
 alias data="cd /Volumes/RBPatterson"
-alias c="conda"
 alias work="cd /Users/pattersonrb/levine_lab_work"
 alias dot="cd /Users/pattersonrb/projects/dotfiles"
 alias proj="cd /Users/pattersonrb/projects"
+
+alias i="ipython"
+alias c="conda"
 alias pv="pyenv"
 alias pt="poetry"
+
+alias r="radian"
 
 alias ga="git add"
 alias gc="git commit"
@@ -29,7 +33,6 @@ alias gv="git checkout"
 alias gx="git rm"
 
 alias -g G="| grep"
-alias -g g="https://google.com"
 
 gw()
 {

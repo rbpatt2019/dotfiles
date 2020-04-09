@@ -4,6 +4,7 @@ alias ll="ls -GTlha"
 alias bw="ssh -X biowulf.nih.gov"
 alias chrome="open -a 'Google Chrome'"
 alias m='make'
+alias o='open .'
 
 alias data="cd /Volumes/RBPatterson"
 alias work="cd /Users/pattersonrb/levine_lab_work"

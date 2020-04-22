@@ -46,9 +46,14 @@ let g:PaperColor_Theme_Options = {
   	\     		}
   	\   	}
 	\ }
+
+" Seoul256 - Junegunn's theme
+let g:seoul256_background = 233
+let g:seoul256_light_background = 256
+
 set t_Co=256
 set background=dark
-colorscheme PaperColor
+colorscheme seoul256
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Easy motion

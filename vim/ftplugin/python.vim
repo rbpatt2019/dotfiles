@@ -5,11 +5,6 @@ setlocal ts=4 sts=4 sw=4
 " Intellisense completion and all that
 " a lot of the settings for this plugin in are in the coc-settings.json
 let b:coc_root_patterson = ['.gitignore', '.python-version']
-" completion
-inoremap <expr> <buffer> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <buffer> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <buffer> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 " snippets
 imap <C-e> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<C-f>'

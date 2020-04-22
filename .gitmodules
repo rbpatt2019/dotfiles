@@ -1,0 +1,42 @@
+[submodule "vim/pack/rbpatt2019/start/vim-airline"]
+	path = vim/pack/rbpatt2019/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/pack/rbpatt2019/start/vim-airline-themes"]
+	path = vim/pack/rbpatt2019/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/pack/rbpatt2019/start/vim-which-key"]
+	path = vim/pack/rbpatt2019/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
+[submodule "vim/pack/rbpatt2019/start/vim-snippets"]
+	path = vim/pack/rbpatt2019/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/pack/rbpatt2019/start/vim-slime"]
+	path = vim/pack/rbpatt2019/start/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+[submodule "vim/pack/rbpatt2019/start/vim-cutlass"]
+	path = vim/pack/rbpatt2019/start/vim-cutlass
+	url = https://github.com/svermeulen/vim-cutlass.git
+[submodule "vim/pack/rbpatt2019/start/vim-yoink"]
+	path = vim/pack/rbpatt2019/start/vim-yoink
+	url = https://github.com/svermeulen/vim-yoink.git
+[submodule "vim/pack/rbpatt2019/start/vim-gitgutter"]
+	path = vim/pack/rbpatt2019/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/pack/rbpatt2019/start/vim-fugitive"]
+	path = vim/pack/rbpatt2019/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/pack/rbpatt2019/start/vim-easymotion"]
+	path = vim/pack/rbpatt2019/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "vim/pack/rbpatt2019/start/vim-commentary"]
+	path = vim/pack/rbpatt2019/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/pack/rbpatt2019/start/vim-surround"]
+	path = vim/pack/rbpatt2019/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/rbpatt2019/start/lexima.vim"]
+	path = vim/pack/rbpatt2019/start/lexima.vim
+	url = https://github.com/cohama/lexima.vim.git
+[submodule "vim/pack/rbpatt2019/start/fzf.vim"]
+	path = vim/pack/rbpatt2019/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

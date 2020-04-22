@@ -46,13 +46,35 @@ let g:PaperColor_Theme_Options = {
   	\     		}
   	\   	}
 	\ }
+
+" Seoul256 - Junegunn's theme
+let g:seoul256_background = 233
+let g:seoul256_light_background = 256
+
 set t_Co=256
 set background=dark
-colorscheme PaperColor
+colorscheme seoul256
 map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Easy motion
 map <Leader><Leader> <Plug>(easymotion-prefix)
+
+" Vim-cutlass: deleting no longer goes to register
+" Use m (think move) to keep contents of register
+nnoremap m d
+xnoremap m d
+nnoremap mm dd
+nnoremap M D
+
+" vim-yoink - yank history
+" first line is to integrate with cutlass
+let g:yoinkIncludeDeleteOperations=1
+let g:yoinkMoveCursorToEndOfPaste=1
+let g:yoinkMoveCursorToEndOfPaste=1
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -97,35 +119,12 @@ let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '@'
 hi GitGutterChangeDelete ctermfg=6 ctermbg=0
 
-" ALE Global settings
-" let g:ale_fixers = {
-" \       '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \       'r': ['styler']
-" \}
-" let g:ale_linters = {
-" \       'r': ['lintr']
-" \}
-" let g:ale_fix_on_save = 0
-" let g:ale_completion_enabled = 0
-" let g:ale_sign_column_always = 1
-" let g:ale_set_highlights = 1
-" let g:ale_echo_msg_error_str = 'E'
-" let g:ale_echo_msg_warning_str = 'W'
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" nnoremap <localeader>F :ALEFix<CR>
-
 " Airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'deus'
 let g:airline_section_y = ''
 let g:airline_section_z = "[%l:%c]"
-
-" " NCM-R settings
-" " autocmd BufEnter * call ncm2#enable_for_buffer()
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Navigate splits
 nnoremap <C-j> <C-w><C-j>

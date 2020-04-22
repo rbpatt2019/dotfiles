@@ -16,4 +16,3 @@ pytest-cov
 pytest-instafail
 pytest-mypy
 pytest-runner
-vim-vint

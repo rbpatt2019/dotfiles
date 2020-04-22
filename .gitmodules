@@ -1,0 +1,6 @@
+[submodule "vim/pack/rbpatt2019/vim-airline"]
+	path = vim/pack/rbpatt2019/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/pack/rbpatt2019/start/vim-airline"]
+	path = vim/pack/rbpatt2019/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

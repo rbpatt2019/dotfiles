@@ -54,7 +54,8 @@ let g:seoul256_light_background = 256
 set t_Co=256
 set background=dark
 colorscheme seoul256
-map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap <leader>bd :colorscheme seoul256<CR>
+nnoremap <leader>bl :colorscheme seoul256-light<CR>
 
 " Easy motion
 map <Leader><Leader> <Plug>(easymotion-prefix)

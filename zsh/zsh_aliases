@@ -1,6 +1,7 @@
 alias s="source ~/.zshrc"
 alias v="vim"
 alias ll="ls -GTlha"
+alias lt="ls -lrt"
 alias bw="ssh -X biowulf.nih.gov"
 alias chrome="open -a 'Google Chrome'"
 alias m='make'

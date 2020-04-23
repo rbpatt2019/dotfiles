@@ -1,4 +1,4 @@
-options(radian.color_scheme = "murphy")
+options(radian.color_scheme = "monokai")
 options(radian.editing_mode = "vi")
 options(radian.auto_match = FALSE)
 options(radian.highlight_matching_bracket = TRUE)

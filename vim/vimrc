@@ -15,6 +15,7 @@ set nohlsearch
 set ignorecase
 set smartcase
 set noshowmatch
+set noshowmode
 set noruler
 set smarttab
 set expandtab
@@ -28,7 +29,8 @@ set laststatus=2
 set termguicolors
 set pyxversion=2
 set completeopt=noinsert,menuone,noselect
-set shortmess+=c
+set shortmess+=F
+set cmdheight=1
 syntax on
 
 " Colors - NLKNguyen/papercolor-theme'
@@ -121,10 +123,11 @@ let g:gitgutter_sign_modified_removed = '@'
 hi GitGutterChangeDelete ctermfg=6 ctermbg=0
 
 " Airline
-let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#enabled = 0
 let g:airline#extensions#tabline#enabled = 0
-let g:airline_theme = 'deus'
+let g:airline_theme = 'bubblegum'
 let g:airline_section_y = ''
+let g:airline_statusline_ontop = 0
 let g:airline_section_z = "[%l:%c]"
 
 " Navigate splits

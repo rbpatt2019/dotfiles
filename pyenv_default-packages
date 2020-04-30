@@ -10,7 +10,7 @@ memory-profiler
 mypy
 mypy-extensions
 pre-commit
-pyflakes
+pylint
 pytest
 pytest-cov
 pytest-instafail

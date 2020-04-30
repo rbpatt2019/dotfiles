@@ -112,15 +112,15 @@ nnoremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes
 let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_added = '@'
-hi GitGutterAdd ctermfg=9 ctermbg=0
-let g:gitgutter_sign_modified = '@'
-hi GitGutterChange ctermfg=3 ctermbg=0
-let g:gitgutter_sign_removed = '@'
-hi GitGutterDelete ctermfg=13 ctermbg=0
+let g:gitgutter_sign_added = '+'
+hi GitGutterAdd ctermfg=10 ctermbg=0
+let g:gitgutter_sign_modified = '='
+hi GitGutterChange ctermfg=11 ctermbg=0
+let g:gitgutter_sign_removed = '-'
+hi GitGutterDelete ctermfg=9 ctermbg=0
 let g:gitgutter_sign_removed_first_line = '^'
-let g:gitgutter_sign_modified_removed = '@'
-hi GitGutterChangeDelete ctermfg=6 ctermbg=0
+let g:gitgutter_sign_modified_removed = '>'
+hi GitGutterChangeDelete ctermfg=9 ctermbg=0
 
 " Airline
 let g:airline#extensions#ale#enabled = 0

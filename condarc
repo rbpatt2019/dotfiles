@@ -1,6 +1,6 @@
 changeps1: false
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
   - bioconda
 auto_activate_base: false

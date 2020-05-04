@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+# Necessitated by having a computer without dsudo permission
 path+=('/Users/pattersonrb/.local/bin')
 path+=('/Users/pattersonrb/.fzf/bin')
 path+=('/Users/pattersonrb/.pyenv/bin')
@@ -7,6 +8,7 @@ path+=('/Users/pattersonrb/.poetry/bin')
 path+=('/Users/pattersonrb/.heroku/bin')
 path+=('/Users/pattersonrb/.hub-darwin-amd64-2.14.2/bin')
 path+=('/Users/pattersonrb/.gem/ruby/2.6.0/bin')
+path+=('/Users/pattersonrb/.pandoc-2.9.2.1/bin')
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/pattersonrb/.oh-my-zsh"
@@ -175,3 +177,6 @@ export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"
 eval "$(hub alias -s)"
 
 eval "$(direnv hook zsh)"
+
+# added by travis gem
+[ ! -s /Users/pattersonrb/.travis/travis.sh ] || source /Users/pattersonrb/.travis/travis.sh

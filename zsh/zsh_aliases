@@ -16,7 +16,6 @@ alias i="ipython"
 alias c="conda"
 alias pv="pyenv"
 alias pt="poetry"
-
 alias r="radian"
 
 alias ga="git add"
@@ -36,6 +35,7 @@ alias gx="git rm"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
 
 alias -g G="| grep"
+alias -g L="&& ls"
 
 gw()
 {
@@ -54,12 +54,6 @@ mkcd()
 {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
-}
-
-cdls()
-{
-        cd -P -- "$1" &&
-        ls
 }
 
 bwcp()

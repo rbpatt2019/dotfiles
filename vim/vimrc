@@ -82,6 +82,11 @@ nmap ]y <plug>(YoinkRotateForward)
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :WhichKey ','<CR>
+autocmd FileType which_key highlight WhichKey ctermbg=0 ctermfg=13
+autocmd FileType which_key highlight WhichKeySeperator ctermbg=0 ctermfg=13
+autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=0 ctermfg=13
+autocmd FileType which_key highlight WhichKeyDesc ctermbg=0 ctermfg=13
+autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 
 " fzf - because fuzzy finding is awesome
 " relevant mapping is <leader>f*

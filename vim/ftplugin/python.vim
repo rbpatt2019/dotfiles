@@ -1,5 +1,23 @@
 setlocal ts=4 sts=4 sw=4 
 
+" vim-slime - sending to terminal
+let g:slime_no_mappings = 1
+let g:slime_target = 'vimterminal'
+let g:slime_vimterminal_cmd = 'ipython'
+let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_finish': 'close'}
+vmap <buffer> <localleader><leader> <Plug>SlimeRegionSendj
+nmap <buffer> <localleader><leader> <Plug>SlimeParagraphSend}j
+nmap <buffer> <localleader>tt <Plug>SlimeConfig
+
+" Object browsing
+nnoremap <buffer> <localleader>O :call term_sendkeys(bufnr("Python"), "%whos\<lt>CR>")<CR>
+nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("Python"), "print(' . @a . ')\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>D "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%debug\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>R "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%rerun\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>T "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%timeit ' . @a . '\<lt>CR>")'<CR>
+" Pythonun file in R
+nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("Python"), "%run ' . @% . '\<lt>CR>")'<CR>
+
 " coc.nvim - language server integration
 " This is basically VSCode integration for vim. 
 " Intellisense completion and all that
@@ -9,9 +27,6 @@ let b:coc_root_patterson = ['.gitignore', '.python-version']
 imap <C-e> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<C-f>'
 let g:coc_snippet_prev = '<C-d>'
-" File and selection execution
-nmap <buffer> <localleader><cr> :CocCommand python.execInTerminal<CR>
-vmap <buffer> <localleader><cr> :CocCommand python.execSelectionInTerminal<CR>
 " go to defintion
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black

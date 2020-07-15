@@ -1,3 +1,5 @@
+# Because why isn't escape on the home row already
+setxkbmap -option "caps:swapescape"
 # If you come from bash you might have to change your $PATH.
 # Necessitated by having a computer without dsudo permission
 # path+=('/Users/pattersonrb/.fzf/bin')

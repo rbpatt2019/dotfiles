@@ -3,11 +3,7 @@ setxkbmap -option "caps:swapescape"
 # If you come from bash you might have to change your $PATH.
 # Necessitated by having a computer without dsudo permission
 # path+=('/Users/pattersonrb/.fzf/bin')
-# path+=('/Users/pattersonrb/.pyenv/bin')
-# path+=('/Users/pattersonrb/.nodejs/bin')
-# path+=('/Users/pattersonrb/.poetry/bin')
 # path+=('/Users/pattersonrb/.heroku/bin')
-# path+=('/Users/pattersonrb/.hub-darwin-amd64-2.14.2/bin')
 # path+=('/Users/pattersonrb/.gem/ruby/2.6.0/bin')
 # path+=('/Users/pattersonrb/.pandoc-2.9.2.1/bin')
 
@@ -122,31 +118,33 @@ source $ZSH/oh-my-zsh.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # For aliases
 . ~/.zsh_aliases
 
+# pipx bits
+path+=("/home/rbpatt2019/.local/bin")
+
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='head -25 {}'"
-# 
-# export PYENV_ROOT="$HOME/.pyenv"
-# if command -v pyenv 1>/dev/null 2>&1; then
-  # eval "$(pyenv init -)"
-# fi
-# eval "$(pyenv virtualenv-init -)"
-# 
-# export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"
 
+# Pyenv bits 
+export PYENV_ROOT="$HOME/.pyenv"
+path+=("$PYENV_ROOT/bin")
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+eval "$(pyenv virtualenv-init -)"
+
+# Poetry bits
+export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"
+path+=("$HOME/.poetry/bin")
+
+# renv-installer bits
+export RENV_ROOT="$HOME/.renv"
+path+=("$RENV_ROOT/bin")
+if command -v renv 1>/dev/null 2>&1; then
+  eval "$(renv init -)"
+fi
+
+# hub bits
 eval "$(hub alias -s)"

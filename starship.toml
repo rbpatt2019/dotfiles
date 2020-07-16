@@ -1,59 +1,53 @@
 add_newline = true
-prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "line_break", "python", "conda", "git_branch", "package", "git_state", "git_status", "character"]
+prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "line_break", "python", "conda", "git_branch", "git_status", "package", "character"]
 scan_timeout = 10
 
 [username]
 show_always = true
-style_user = "bright-cyan"
+style_user = "blue"
 
 [hostname]
+prefix = "@ "
 ssh_only = true
 trim_at = "."
-style = "bright-cyan"
+style = "blue"
 
 [directory]
 truncation_length = 3
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
-style = "bright-yellow"
+style = "bright-cyan"
 
 [time]
 disabled = false
 style = "bright-purple"
 
 [cmd_duration]
-style = "blue"
+style = "cyan"
 min_time = 0.5
 
 [python]
 symbol = ""
 pyenv_version_name = true
 pyenv_prefix = "Py "
-style = "bright-green"
-
-[conda]
-symbol = "C "
-style = "bright-green"
+style = "bold bright-green"
 
 [git_branch]
 truncation_length = 6
 truncation_symbol = ""
-style = "bright-blue"
-
-[package]
-symbol = ""
-style = "bright-white"
-
-[git_state]
-style = "purple"
+style = "yellow"
 
 [git_status]
 style = "red"
+
+[package]
+symbol = ""
+style = "purple"
 
 [character]
 use_symbol_for_status = false
 symbol = ">>>>"
 vicmd_symbol = "<<<<"
-style_success = "purple"
-style_failure = "bold red"
+style_success = "white"
+style_failure = "bright-red"
 

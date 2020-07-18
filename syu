@@ -1,14 +1,17 @@
 #!/bin/zsh
 
-apt update
-apt full-upgrade
+sudo apt update
+sudo apt full-upgrade
 
 cd /home/rbpatt2019/Projects/dotfiles
 git submodule update --remote --merge 
 git add .
 git commit -m 'Update Submodules'
 
-/home/rbpatt2019/.pyenv/bin/pyenv update
-/home/rbpatt2019/.poetry/bin/poetry self update
+pyenv update
+poetry self update
+
+pipx upgrade radian
+pipx upgrade ranger-fm
 
 cd -

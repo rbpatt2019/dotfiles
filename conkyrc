@@ -72,7 +72,8 @@ File System: $alignr${fs_type}
 Processes: $alignr ${execi 1000 ps aux | wc -l}
 
 ${font}BATTERY ${hr 2}
-${font UbuntuMono:size=10}${battery_percent}% ${battery_bar}
+${font UbuntuMono:size=10}${alignc}${battery} 
+${battery_bar}
 
 ${font}CPU ${hr 2}
 ${font UbuntuMono:size=10}${execi 1000 grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//'}

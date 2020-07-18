@@ -3,16 +3,12 @@
 apt update
 apt full-upgrade
 
-pyenv update
-poetry self update
-
-pipx upgrade ranger-fm
-pipx upgrade radian
-
-cd ~/Projects/dotfiles
-git submodule update --remote --merge && git commit -m 'Update Submodules'
-
+cd /home/rbpatt2019/Projects/dotfiles
+git submodule update --remote --merge 
 git add .
-git commit -m "System update"
-git push
+git commit -m 'Update Submodules'
+
+/home/rbpatt2019/.pyenv/bin/pyenv update
+/home/rbpatt2019/.poetry/bin/poetry self update
+
 cd -

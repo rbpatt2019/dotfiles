@@ -69,15 +69,8 @@ xnoremap m d
 nnoremap mm dd
 nnoremap M D
 
-" vim-yoink - yank history
-" first line is to integrate with cutlass
-let g:yoinkIncludeDeleteOperations = 1 
-let g:yoinkMoveCursorToEndOfPaste = 1
-let g:yoinkMoveCursorToEndOfPaste = 1
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
+" coc-yank
+nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

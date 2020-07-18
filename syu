@@ -1,15 +1,17 @@
-#!/bin/fish
+#!/bin/zsh
 
-# A script for updating my utilities
-# To come - optional pyenv pip update
+apt update
+apt full-upgrade
 
 pyenv update
-fisher
-vim +PlugUpdate +qall
-Rscript ~/dotfiles/update_languageserver.R
-poetry self:update
-yay -Syu
-cd ~/dotfiles
+poetry self update
+
+pipx upgrade ranger-fm
+pipx upgrade radian
+
+cd ~/Projects/dotfiles
+git submodule update --remote --merge && git commit -m 'Update Submodules'
+
 git add .
 git commit -m "System update"
 git push

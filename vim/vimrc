@@ -33,26 +33,9 @@ set shortmess+=F
 set cmdheight=1
 syntax on
 
-" Colors - NLKNguyen/papercolor-theme'
-let g:PaperColor_Theme_Options = {
-	\	'language': {
-	\		'python': {
-	\			'highlight_builtins': 1
-	\		}
-	\	},
-  	\   	'theme': {
-  	\     		'default': {
-  	\       		'allow_bold': 0,
-	\			'allow_italic': 0,
-	\			'transparent_background': 0
-  	\     		}
-  	\   	}
-	\ }
-
 " Seoul256 - Junegunn's theme
 let g:seoul256_background = 235
 let g:seoul256_light_background = 256
-
 set t_Co=256
 set background=dark
 colorscheme seoul256
@@ -71,6 +54,7 @@ nnoremap M D
 
 " coc-yank
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

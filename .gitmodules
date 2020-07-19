@@ -16,9 +16,6 @@
 [submodule "vim/pack/rbpatt2019/start/vim-cutlass"]
 	path = vim/pack/rbpatt2019/start/vim-cutlass
 	url = https://github.com/svermeulen/vim-cutlass.git
-[submodule "vim/pack/rbpatt2019/start/vim-yoink"]
-	path = vim/pack/rbpatt2019/start/vim-yoink
-	url = https://github.com/svermeulen/vim-yoink.git
 [submodule "vim/pack/rbpatt2019/start/vim-gitgutter"]
 	path = vim/pack/rbpatt2019/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git

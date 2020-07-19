@@ -52,9 +52,6 @@ xnoremap m d
 nnoremap mm dd
 nnoremap M D
 
-" coc-yank
-nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
-hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -65,18 +62,17 @@ autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=0 ctermfg=
 autocmd FileType which_key highlight WhichKeyDesc ctermbg=0 ctermfg=13
 autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 
-" fzf - because fuzzy finding is awesome
+" Finding things
 " relevant mapping is <leader>f*
-nnoremap <leader>fb :w<CR>:Buffers<CR>
-nnoremap <leader>ff :w<CR>:Files<CR>
-nnoremap <leader>fg :w<CR>:GFiles<CR>
-nnoremap <leader>ft :w<CR>:BTags<CR>
-nnoremap <leader>fT :w<CR>:Tags<CR>
-nnoremap <leader>fc :w<CR>:BCommits<CR>
-nnoremap <leader>fC :w<CR>:Commits<CR>
-nnoremap <leader>fh :w<CR>:Helptags<CR>
-nnoremap <leader>fl :w<CR>:BLines<CR>
-nnoremap <leader>fL :w<CR>:Lines<CR>
+nnoremap <leader>fb :w<CR>:CocList buffers<CR>
+nnoremap <leader>fh :w<CR>:CocList cmdhistory<CR>
+nnoremap <leader>ff :w<CR>:CocList files<CR>
+nnoremap <leader>fH :w<CR>:CocList helptags<CR>
+nnoremap <leader>fl :w<CR>:CocList lines<CR>
+
+" coc-yank
+nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " vim-fugitive
 " relative mappings are <leader>g*

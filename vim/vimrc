@@ -1,4 +1,4 @@
-set rtp+=~/.fzf
+set rtp+=/home/rbpatt2019/.fzf
 
 let loaded_netrwPlugin = 1
 let mapleader = ' '
@@ -64,11 +64,11 @@ autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 
 " Finding things
 " relevant mapping is <leader>f*
-nnoremap <leader>fb :w<CR>:CocList buffers<CR>
+nnoremap <leader>fb :w<CR>:CocCommand fzf-preview.Buffers<CR>
 nnoremap <leader>fh :w<CR>:CocList cmdhistory<CR>
-nnoremap <leader>ff :w<CR>:CocList files<CR>
+nnoremap <leader>ff :w<CR>:CocList fzf-preview.ProjectFiles<CR>
 nnoremap <leader>fH :w<CR>:CocList helptags<CR>
-nnoremap <leader>fl :w<CR>:CocList lines<CR>
+nnoremap <leader>fl :w<CR>:CocCommand fzf-preview.BufferLines<CR>
 
 " coc-yank
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
@@ -76,7 +76,7 @@ hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " vim-fugitive
 " relative mappings are <leader>g*
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 nnoremap <leader>gc :Gcommit %<CR>
 nnoremap <leader>gf :Gpull<CR>
 nnoremap <leader>gp :Gpush<CR>
@@ -153,7 +153,7 @@ nnoremap <leader>td :CocCommand todolist.create<CR>
 nmap <leader>c :CocCommand<CR>
 vmap <leader>c :CocCommand<CR>
 " Errors and their navigation
-nmap <leader>l :CocList diagnostics<CR>
+nmap <leader>l :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 nmap <leader>j :CocNext<CR>
 nmap <leader>k :CocPrev<CR>
 nmap <leader>a <Plug>(coc-codeaction)

@@ -3,6 +3,7 @@ alias v="vim"
 alias ll="ls -GTlha"
 alias lt="ls -lrt"
 alias m='make'
+alias fd='fdfind'
 
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
 alias proj="cd /home/rbpatt2019/Projects"

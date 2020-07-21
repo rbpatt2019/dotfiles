@@ -65,10 +65,12 @@ autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 " Finding things
 " relevant mapping is <leader>f*
 nnoremap <leader>fb :w<CR>:CocCommand fzf-preview.Buffers<CR>
-nnoremap <leader>fh :w<CR>:CocList cmdhistory<CR>
-nnoremap <leader>ff :w<CR>:CocList fzf-preview.ProjectFiles<CR>
-nnoremap <leader>fH :w<CR>:CocList helptags<CR>
+nnoremap <leader>fc :w<CR>:CocList cmdhistory<CR>
+nnoremap <leader>ff :w<CR>:CocCommand fzf-preview.ProjectFiles<CR>
+nnoremap <leader>fh :w<CR>:CocList helptags<CR>
 nnoremap <leader>fl :w<CR>:CocCommand fzf-preview.BufferLines<CR>
+nnoremap <leader>ft :w<CR>:CocCommand fzf-preview.BufferTags<CR>
+nnoremap <leader>fg  :w<CR>:CocCommand fzf-preview.Ctags<CR>
 
 " coc-yank
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
@@ -77,15 +79,13 @@ hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 " vim-fugitive
 " relative mappings are <leader>g*
 nnoremap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
-nnoremap <leader>gc :Gcommit %<CR>
-nnoremap <leader>gf :Gpull<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gc :G commit %<CR>
+nnoremap <leader>gl :Gclog<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
-nnoremap <leader>gm :Gmove
-nnoremap <leader>gx :Gdelete<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gm :GMove
+nnoremap <leader>gx :GDelete<CR>
+nnoremap <leader>gb :Git_blame<CR>
 nnoremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes

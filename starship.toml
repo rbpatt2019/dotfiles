@@ -23,14 +23,14 @@ disabled = false
 style = "bright-purple"
 
 [cmd_duration]
-style = "cyan"
+style = "red"
 min_time = 0.5
 
 [python]
 symbol = ""
 pyenv_version_name = true
-pyenv_prefix = "Py "
-style = "bold bright-green"
+pyenv_prefix = ""
+style = "bright-green"
 
 [git_branch]
 truncation_length = 6
@@ -38,16 +38,16 @@ truncation_symbol = ""
 style = "yellow"
 
 [git_status]
-style = "red"
+style = "bright-red"
 
 [package]
 symbol = ""
-style = "purple"
+style = "cyan"
 
 [character]
 use_symbol_for_status = false
 symbol = ">>>>"
 vicmd_symbol = "<<<<"
-style_success = "white"
-style_failure = "bright-red"
+style_success = "bright-white"
+style_failure = "red"
 

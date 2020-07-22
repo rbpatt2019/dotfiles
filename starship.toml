@@ -28,12 +28,12 @@ min_time = 0.5
 
 [python]
 symbol = ""
-pyenv_version_name = true
+pyenv_version_name = false
 pyenv_prefix = ""
 style = "bright-green"
 
 [git_branch]
-truncation_length = 6
+truncation_length = 7
 truncation_symbol = ""
 style = "yellow"
 

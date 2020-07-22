@@ -103,7 +103,7 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 # Poetry bits
-export POETRY_VIRTUALENVS_PATH="/Users/pattersonrb/.pyenv/versions"
+export POETRY_VIRTUALENVS_PATH="/home/rbpatt2019/.pyenv/versions"
 path+=("$HOME/.poetry/bin")
 
 # renv-installer bits

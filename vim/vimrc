@@ -136,11 +136,12 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>Q :qa!<CR>
 nnoremap <leader>n :n 
-nnoremap <leader>e :e 
+nnoremap <leader>v :vs 
 
 " Edit settings
 nnoremap <leader>sv :vs /Users/pattersonrb/projects/dotfiles/vim/vimrc<CR>
 nnoremap <leader>sr :vs /Users/pattersonrb/.vim/ftplugin/R.vim<CR>
+nnoremap <leader>sp :vs /Users/pattersonrb/.vim/ftplugin/python.vim<CR>
 nnoremap <leader>ss :so $MYVIMRC<CR>
 
 " Buffer interactions

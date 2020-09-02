@@ -1,12 +1,3 @@
-# Because why isn't escape on the home row already
-setxkbmap -option "caps:swapescape"
-# If you come from bash you might have to change your $PATH.
-# Necessitated by having a computer without dsudo permission
-# path+=('/Users/pattersonrb/.fzf/bin')
-# path+=('/Users/pattersonrb/.heroku/bin')
-# path+=('/Users/pattersonrb/.gem/ruby/2.6.0/bin')
-# path+=('/Users/pattersonrb/.pandoc-2.9.2.1/bin')
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/rbpatt2019/.oh-my-zsh"
 

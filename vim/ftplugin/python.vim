@@ -7,7 +7,8 @@ let g:slime_vimterminal_cmd = 'ipython'
 let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_finish': 'close'}
 let g:slime_python_ipython = 1
 let g:slime_cell_delimiter = "#%%"
-nmap <leader>s <Plug>SlimeSendCell}j
+nnoremap <buffer> <localleader>% :%g/#%%/d<CR>
+nmap <buffer> <localleader><leader> <Plug>SlimeSendCell}j
 vmap <buffer> <localleader><leader> <Plug>SlimeRegionSendj
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
 nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("Python"), "%run ' . @% . '\<lt>CR>")'<CR>
@@ -15,9 +16,9 @@ nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufn
 " Object browsing
 nnoremap <buffer> <localleader>O :call term_sendkeys(bufnr("Python"), "%whos\<lt>CR>")<CR>
 nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("Python"), "print(' . @a . ')\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>D "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%debug\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>R "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%rerun\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>T "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%timeit ' . @a . '\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>D ":exe 'call term_sendkeys(bufnr("Python"), "%debug\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>R ":exe 'call term_sendkeys(bufnr("Python"), "%rerun\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>T "ayy:exe 'call term_sendkeys(bufnr("Python"), "%timeit ' . @a . '\<lt>CR>")'<CR>
 
 " coc.nvim - language server integration
 " This is basically VSCode integration for vim. 

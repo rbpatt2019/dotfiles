@@ -8,8 +8,8 @@ let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_fi
 let g:slime_python_ipython = 1
 let g:slime_cell_delimiter = "#%%"
 nnoremap <buffer> <localleader>% :%g/#%%/d<CR>
-nmap <buffer> <localleader><leader> <Plug>SlimeSendCell}j
-vmap <buffer> <localleader><leader> <Plug>SlimeRegionSendj
+nmap <buffer> <localleader><leader> <Plug>SlimeSendCell}
+vmap <buffer> <localleader><leader> <Plug>SlimeRegionSend
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
 nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("Python"), "%run ' . @% . '\<lt>CR>")'<CR>
 

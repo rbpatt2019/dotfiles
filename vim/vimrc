@@ -43,7 +43,15 @@ nnoremap <leader>bd :colorscheme seoul256<CR>
 nnoremap <leader>bl :colorscheme seoul256-light<CR>
 
 " Easy motion
-map <Leader><Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s)
+nmap n <Plug>(easymotion-bd-n)
+nmap t <Plug>(easymotion-bd-tl)
+nmap f <Plug>(easymotion-bd-fl)
+nmap w <Plug>(easymotion-bd-wl)
+nmap j <Plug>(easymotion-j)
+nmap k <Plug>(easymotion-k)
 
 " Vim-cutlass: deleting no longer goes to register
 " Use m (think move) to keep contents of register
@@ -158,6 +166,7 @@ nmap <leader>l :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 nmap <leader>j :CocNext<CR>
 nmap <leader>k :CocPrev<CR>
 nmap <leader>a <Plug>(coc-codeaction)
+
 " completion
 inoremap <expr> <buffer> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <buffer> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

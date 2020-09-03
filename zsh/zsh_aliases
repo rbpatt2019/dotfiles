@@ -1,6 +1,5 @@
 alias s="source ~/.zshrc"
 alias v="vim"
-alias ll="ls -GTlha"
 alias lt="ls -lrt"
 alias m='make'
 alias fd='fdfind'
@@ -13,6 +12,7 @@ alias pv="pyenv"
 alias pt="poetry"
 alias r="radian"
 alias rv="renv"
+alias t="tmux"
 
 alias ga="git add"
 alias gc="git commit"

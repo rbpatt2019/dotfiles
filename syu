@@ -2,6 +2,7 @@
 
 sudo apt update
 sudo apt full-upgrade
+sudo apt autoremove
 
 cd /home/rbpatt2019/Projects/dotfiles
 git submodule update --remote --merge 

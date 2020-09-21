@@ -109,3 +109,6 @@ eval "$(hub alias -s)"
 
 # starship bits
  eval "$(starship init zsh)"
+
+# added by travis gem
+[ ! -s /home/rbpatt2019/.travis/travis.sh ] || source /home/rbpatt2019/.travis/travis.sh

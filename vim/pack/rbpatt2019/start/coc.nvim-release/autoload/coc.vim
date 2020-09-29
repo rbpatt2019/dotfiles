@@ -77,13 +77,17 @@ function! coc#_do_complete(start, items, preselect)
   endif
 endfunction
 
-function! coc#_select_confirm()
-  if !exists('##TextChangedP')
-    return "\<C-y>"
+function! coc#_select_confirm() abort
+  if !exists('*complete_info')
+    throw 'coc#_select_confirm requires complete_info function to work'
   endif
-  let hasSelected = coc#rpc#request('hasSelected', [])
-  if hasSelected | return "\<C-y>" | endif
-  return "\<down>\<C-y>"
+  let selected = complete_info()['selected']
+  if selected != -1
+     return "\<C-y>"
+  elseif pumvisible()
+    return "\<down>\<C-y>"
+  endif
+  return ''
 endfunction
 
 function! coc#_selected()
@@ -97,7 +101,6 @@ function! coc#_hide() abort
 endfunction
 
 function! coc#_cancel()
-  call coc#util#close_popup()
   " hack for close pum
   if pumvisible() && &paste != 1
     let g:coc#_context = {'start': 0, 'preselect': -1,'candidates': []}

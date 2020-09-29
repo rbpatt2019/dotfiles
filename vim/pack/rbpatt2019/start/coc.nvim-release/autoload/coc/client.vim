@@ -36,6 +36,9 @@ endfunction
 
 function! s:start() dict
   if self.running | return | endif
+  let timeout = string(get(g:, 'coc_channel_timeout', 30))
+  let disable_warning = string(get(g:, 'coc_disable_startup_warning', 0))
+  let tmpdir = fnamemodify(tempname(), ':p:h')
   if s:is_vim
     let options = {
           \ 'in_mode': 'json',
@@ -43,20 +46,17 @@ function! s:start() dict
           \ 'err_mode': 'nl',
           \ 'err_cb': {channel, message -> s:on_stderr(self.name, split(message, "\n"))},
           \ 'exit_cb': {channel, code -> s:on_exit(self.name, code)},
+          \ 'env': {
+            \ 'NODE_NO_WARNINGS': '1',
+            \ 'VIM_NODE_RPC': '1',
+            \ 'COC_NVIM': '1',
+            \ 'COC_CHANNEL_TIMEOUT': timeout,
+            \ 'COC_NO_WARNINGS': disable_warning,
+            \ 'TMPDIR': tmpdir,
+          \ }
           \}
     if has("patch-8.1.350")
       let options['noblock'] = 1
-    endif
-    if has("patch-8.0.0902")
-      let options['env'] = {
-        \ 'VIM_NODE_RPC': '1',
-        \ 'COC_NVIM': '1',
-        \ 'COC_CHANNEL_TIMEOUT': get(g:, 'coc_channel_timeout', 30),
-        \ }
-    else
-      let $VIM_NODE_RPC = 1
-      let $COC_NVIM = 1
-      let $COC_CHANNEL_TIMEOUT = get(g:, 'coc_channel_timeout', 30)
     endif
     let job = job_start(self.command, options)
     let status = job_status(job)
@@ -68,14 +68,25 @@ function! s:start() dict
     let self['running'] = 1
     let self['channel'] = job_getchannel(job)
   else
+    let original = {
+      \ 'NODE_NO_WARNINGS': getenv('NODE_NO_WARNINGS'),
+      \ 'COC_CHANNEL_TIMEOUT': getenv('COC_CHANNEL_TIMEOUT'),
+      \ 'COC_NO_WARNINGS': getenv('COC_NO_WARNINGS'),
+      \ 'TMPDIR': getenv('TMPDIR'),
+      \ }
+    " env option not work on neovim
+    call setenv('NODE_NO_WARNINGS', '1')
+    call setenv('COC_CHANNEL_TIMEOUT', timeout)
+    call setenv('COC_NO_WARNINGS', disable_warning)
+    call setenv('TMPDIR', tmpdir)
     let chan_id = jobstart(self.command, {
           \ 'rpc': 1,
           \ 'on_stderr': {channel, msgs -> s:on_stderr(self.name, msgs)},
           \ 'on_exit': {channel, code -> s:on_exit(self.name, code)},
-          \ 'env': {
-          \   'COC_CHANNEL_TIMEOUT': get(g:, 'coc_channel_timeout', 30)
-          \  }
           \})
+    for key in keys(original)
+      call setenv(key, original[key])
+    endfor
     if chan_id <= 0
       echohl Error | echom 'Failed to start '.self.name.' service' | echohl None
       return
@@ -87,10 +98,11 @@ endfunction
 
 function! s:on_stderr(name, msgs)
   if get(g:, 'coc_vim_leaving', 0) | return | endif
+  if get(g:, 'coc_disable_uncaught_error', 0) | return | endif
   let data = filter(copy(a:msgs), '!empty(v:val)')
   if empty(data) | return | endif
-  let client = a:name ==# 'coc' ? '' : ' client '.a:name
-  let data[0] = '[coc.nvim]'.client.' error: ' . data[0]
+  let client = a:name ==# 'coc' ? '[coc.nvim]' : '['.a:name.']'
+  let data[0] = client.': '.data[0]
   call coc#util#echo_messages('Error', data)
 endfunction
 

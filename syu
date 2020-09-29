@@ -8,11 +8,11 @@ cd /home/rbpatt2019/Projects/dotfiles
 git submodule update --remote --merge 
 git add .
 git commit -m 'Update Submodules'
+vim -c ":CocUpdate"
 
 pyenv update
 poetry self update
 
-pipx upgrade radian
 pipx upgrade ranger-fm
 
 cd -

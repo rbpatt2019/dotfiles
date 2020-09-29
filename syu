@@ -1,26 +1,35 @@
 #!/bin/zsh
 
-COC_VERSION=#(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json | \
-        jq '.version' | \
-        tr -d '"'
-)
+LOCAL_V=$(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json |
+jq '.version' |
+tr -d '"v')
 
-sudo apt update
-sudo apt full-upgrade
-sudo apt autoremove
+REMOTE_V=$(curl --silent "https://api.github.com/repos/neoclide/coc.nvim/releases/latest" |
+jq '.tag_name' |
+tr -d '"v')
+
+# sudo apt update
+# sudo apt full-upgrade
+# sudo apt autoremove
 
 cd /home/rbpatt2019/Projects/dotfiles
-git submodule update --remote --merge 
-git add .
-git commit -m 'Update Submodules'
+# git submodule update --remote --merge 
+# git add .
+# git commit -m 'Update Submodules'
 
-echo ${COC_VERSION}
+if [[ ${REMOTE_V} != ${LOCAL_V} ]]
+then
+        rm -rf vim/pack/rbpatt2019/start/coc.nvim-release
+        curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz |
+        tar xzfv - vim/pack/rbpatt2019/start/
+else
+        echo "coc.nvim is up-to-date"
+fi
+# vim -c "CocUpdateSync|q"
 
-vim -c "CocUpdateSync|q"
+# pyenv update
+# poetry self update
 
-pyenv update
-poetry self update
-
-pipx upgrade ranger-fm
+# pipx upgrade ranger-fm
 
 cd -

@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+COC_VERSION=#(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json | \
+        jq '.version' | \
+        tr -d '"'
+)
+
 sudo apt update
 sudo apt full-upgrade
 sudo apt autoremove
@@ -8,6 +13,8 @@ cd /home/rbpatt2019/Projects/dotfiles
 git submodule update --remote --merge 
 git add .
 git commit -m 'Update Submodules'
+
+echo ${COC_VERSION}
 
 vim -c "CocUpdateSync|q"
 

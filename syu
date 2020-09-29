@@ -9,7 +9,7 @@ git submodule update --remote --merge
 git add .
 git commit -m 'Update Submodules'
 
-vim -c ":CocUpdate" -c ":!q"
+vim -c "CocUpdateSync|q"
 
 pyenv update
 poetry self update

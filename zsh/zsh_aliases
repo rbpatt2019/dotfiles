@@ -1,3 +1,4 @@
+alias q="qalc"
 alias s="source ~/.zshrc"
 alias v="vim"
 alias lt="ls -lrt"

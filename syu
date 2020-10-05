@@ -34,3 +34,8 @@ poetry self update
 pipx upgrade ranger-fm
 
 cd -
+
+cd ~/.renv
+git fetch
+
+cd -

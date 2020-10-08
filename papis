@@ -7,4 +7,4 @@ file-browser = ranger
 add-confirm = True
 add-edit = True
 add-open = True
-
+editor = vim

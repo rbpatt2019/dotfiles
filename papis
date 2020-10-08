@@ -1,0 +1,10 @@
+[papers]
+dir = ~/Papers
+
+[settings]
+opentool = rifle
+file-browser = ranger
+add-confirm = True
+add-edit = True
+add-open = True
+

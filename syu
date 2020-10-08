@@ -32,6 +32,7 @@ pyenv update
 poetry self update
 
 pipx upgrade ranger-fm
+pipx upgrade papis
 
 cd -
 

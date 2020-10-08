@@ -57,6 +57,17 @@ l.()
 	ls -Ga $1 | grep '^\.';
 }
 
+pa()
+{
+        local files=${1}
+        local pmid=${2}
+        local title=${3:-"Title"}
+        papis add \
+        "$files" \
+        --git \
+        --folder-name "$title" \
+        --from pmid "$pmid"
+}
 mkcd()
 {
 	mkdir -p -- "$1" &&

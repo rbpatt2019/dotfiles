@@ -49,9 +49,16 @@ nmap s <Plug>(easymotion-s)
 nmap n <Plug>(easymotion-bd-n)
 nmap t <Plug>(easymotion-bd-tl)
 nmap f <Plug>(easymotion-bd-fl)
+nmap e <Plug>(easymotion-bd-el)
 nmap w <Plug>(easymotion-bd-wl)
 nmap j <Plug>(easymotion-j)
 nmap k <Plug>(easymotion-k)
+vmap t <Plug>(easymotion-bd-tl)
+vmap f <Plug>(easymotion-bd-fl)
+vmap w <Plug>(easymotion-bd-wl)
+vmap e <Plug>(easymotion-bd-el)
+vmap j <Plug>(easymotion-j)
+vmap k <Plug>(easymotion-k)
 
 " Vim-cutlass: deleting no longer goes to register
 " Use m (think move) to keep contents of register

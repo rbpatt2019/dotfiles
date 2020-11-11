@@ -10,4 +10,4 @@ setHook(
 )
 
 # Set CRAN mirror
-options(repos=structure(c(CRAN"=https://cran.ma.imperial.ac.uk/")))
+options(repos=structure(c(CRAN="https://cran.ma.imperial.ac.uk/")))

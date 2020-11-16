@@ -79,7 +79,6 @@ autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 
 " Finding things
 " relevant mapping is <leader>f*
-let g:fzf_preview_default_fzf_options = { '--reverse': v:true, '--preview-window': 'wrap' }
 nnoremap <leader>fb :w<CR>:CocCommand fzf-preview.Buffers<CR>
 nnoremap <leader>fc :w<CR>:CocList cmdhistory<CR>
 nnoremap <leader>ff :w<CR>:CocCommand fzf-preview.ProjectFiles<CR>

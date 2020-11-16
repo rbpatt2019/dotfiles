@@ -7,10 +7,9 @@ nnoremap <buffer> <localleader>t :Tabularize GitTable<CR>
 vnoremap <buffer> <localleader>t :Tabularize GitTable<CR>
 
 " vim-markdown-toc : for creating table of contents
-let g:vmt_auto_update_on_save = 1
-let g:vmt_cycle_list_item_markers = 0
-let g:vmt_list_item_char = '-'
-nnoremap <buffer> <leader>mc :GenTocGFM<CR>
+packadd markdown-toc
+let g:mdtoc_starting_header_level = 1
+nnoremap <buffer> <localleader>c :GenerateMarkdownTOC<CR>
 
 " Preview markdown files
 " nnoremap <buffer> <leader>mv :w<CR>:exe '!markdown_previewer ' . @%<CR>

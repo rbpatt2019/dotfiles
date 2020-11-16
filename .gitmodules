@@ -40,3 +40,6 @@
 [submodule "vim/pack/rbpatt2019/opt/tabular"]
 	path = vim/pack/rbpatt2019/opt/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "vim/pack/rbpatt2019/opt/markdown-toc"]
+	path = vim/pack/rbpatt2019/opt/markdown-toc
+	url = https://github.com/ajorgensen/vim-markdown-toc

@@ -1,8 +1,10 @@
 setlocal ts=2 sts=2 sw=2 
 
 " Tabular - for lining up text, particularly in markdown
+packadd tabular
 AddTabularPattern! GitTable /|/c0
-nnoremap <buffer> <leader>mt :Tabularize GitTable<CR>
+nnoremap <buffer> <localleader>t :Tabularize GitTable<CR>
+vnoremap <buffer> <localleader>t :Tabularize GitTable<CR>
 
 " vim-markdown-toc : for creating table of contents
 let g:vmt_auto_update_on_save = 1

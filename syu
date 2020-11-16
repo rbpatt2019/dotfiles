@@ -33,6 +33,7 @@ poetry self update
 
 pipx upgrade ranger-fm
 pipx upgrade papis
+pipx upgrade grip
 
 cd -
 

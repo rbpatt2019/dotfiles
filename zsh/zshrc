@@ -82,7 +82,7 @@ path+=("/home/rbpatt2019/.local/bin")
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='head -25 {}'"
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='cat {}'"
 export FZF_DEFAULT_COMMAND='fdfind -H --type f --type d'
 
 # Pyenv bits 

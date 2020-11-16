@@ -40,3 +40,7 @@ cd ~/.renv
 git fetch
 
 cd -
+
+cd ~/.fzf && git pull && ./install
+
+cd -

@@ -12,7 +12,7 @@ let g:mdtoc_starting_header_level = 1
 nnoremap <buffer> <localleader>c :GenerateMarkdownTOC<CR>
 
 " Preview markdown files
-" nnoremap <buffer> <leader>mv :w<CR>:exe '!markdown_previewer ' . @%<CR>
+nnoremap <buffer> <localleader>v :w<CR>:exe '!grip -b ' . @% . ' 0'<CR>
 
 " Lexima.vim - provides brackets autocompletion
 " Add strikethrough pairing for markdown

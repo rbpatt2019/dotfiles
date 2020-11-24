@@ -1,5 +1,5 @@
 add_newline = true
-prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "line_break", "python", "conda", "git_branch", "git_status", "package", "character"]
+prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "jobs", "line_break", "python", "conda", "git_branch", "git_status", "package", "character"]
 scan_timeout = 10
 
 [username]
@@ -25,6 +25,9 @@ style = "bright-purple"
 [cmd_duration]
 style = "red"
 min_time = 0.5
+
+[jobs]
+threshold = 0
 
 [python]
 symbol = ""

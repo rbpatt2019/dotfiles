@@ -65,9 +65,11 @@ ${voffset -16}${font UbuntuMono:size=24}${alignc}${time %H:%M}${font}
 ${voffset 4}${alignc}${time %A %d %B %Y}
 ${font}${voffset -4}
 SYSTEM ${hr 2}
-${font UbuntuMono:size=10}$sysname $kernel $alignr $machine
+${font UbuntuMono:size=10}OS: ${alignr}Ubuntu 20.10 Groovy Gorilla
+Kernel:$alignr$kernel
 Host:$alignr$nodename
 Uptime:$alignr$uptime
+Architecture:$alignr$machine
 File System: $alignr${fs_type}
 Processes: $alignr ${execi 1000 ps aux | wc -l}
 

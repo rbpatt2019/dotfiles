@@ -44,19 +44,17 @@ conky.config = {
 	border_inner_margin = 5,
 	border_outer_margin = 0,
 	xinerama_head = 1,
-	gap_x = 3250,
+	gap_x = 3200,
 	gap_y = 10,
 	draw_shades = false,
 	draw_outline = false,
-	draw_borders = true,
-	draw_graph_borders = true,
+	draw_borders = false,
+	draw_graph_borders = false,
 	use_xft = true,
 	font = 'UbuntuMono:size=16',
 	xftalpha = 0.8,
 	uppercase = false,
 	default_color = 'black',
-        default_shade_color  = 'black',
-        default_outline_color = 'black',
 	minimum_width = 200, minimum_height = 0,
         maximum_width = 600,
 	alignment = 'top_right',
@@ -72,19 +70,19 @@ ${font}UPTIME: $uptime
 
 ${font}BATTERY: ${battery}
 
-${font}VOLUME: ${execi 1.5 amixer get Master | grep Mono: | tr -s ' ' | cut -d' ' -f5,7}
+${font}VOLUME: ${execi 5 amixer get Master | grep Mono: | tr -s ' ' | cut -d' ' -f5,7}
 
-${font}BRIGHTNESS: 
+${font}BRIGHTNESS: ${execi 5 printf $((100 * $(cat /sys/class/backlight/intel_backlight/brightness)/$(cat /sys/class/backlight/intel_backlight/max_brightness)))}%
 
 ${font}CPU: ${cpu cpu0}% @ ${acpitemp}°C
 ${font UbuntuMono:size=10}CPU1: ${cpu cpu1}%  CPU2: ${cpu cpu2}%  CPU3: ${cpu cpu3}%  CPU4: ${cpu cpu4}%
 CPU5: ${cpu cpu5}%  CPU6: ${cpu cpu6}%  CPU7: ${cpu cpu7}%  CPU8: ${cpu cpu8}%
 
+${font}GPU: ${execi 1.5 nvidia-smi -q | grep Gpu | tr -s ' ' | cut -d' ' -f4}% @ ${nvidia temp}°C
+
 ${font}RAM: $mem IS $memperc%
 
 ${font}SSD: ${fs_used /} IS ${fs_used_perc /}%
-
-${font}GPU: ${nvidia gpufreq} MHz @ ${nvidia temp}°C
 
 ${font}DOWN: ${downspeed wlo1}${alignr}UP: ${upspeed wlo1} 
 

@@ -84,7 +84,7 @@ ${font}RAM: $mem IS $memperc%
 
 ${font}SSD: ${fs_used /} IS ${fs_used_perc /}%
 
-${font}DOWN: ${downspeed wlo1}${alignr}UP: ${upspeed wlo1} 
+${font}DOWN: ${downspeed wlo1}  UP: ${upspeed wlo1} 
 
 ${font}PROCESES: ${execi 1.5 ps aux | wc -l}
 ${font UbuntuMono:size=10}Name $alignr PID     CPU%    MEM%

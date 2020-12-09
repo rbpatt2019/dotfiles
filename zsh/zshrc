@@ -79,6 +79,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # pipx bits
 path+=("/home/rbpatt2019/.local/bin")
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -105,7 +108,7 @@ if command -v renv 1>/dev/null 2>&1; then
 fi
 
 # hub bits
-#eval "$(hub alias -s)"
+eval "$(hub alias -s)"
 
 # starship bits
 eval "$(starship init zsh)"

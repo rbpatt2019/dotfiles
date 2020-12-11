@@ -4,6 +4,7 @@ alias v="vim"
 alias lt="ls -lrt"
 alias m='make'
 alias fd='fdfind'
+alias rmrf="rm -rf"
 
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
 alias proj="cd /home/rbpatt2019/Projects"
@@ -31,6 +32,9 @@ alias gv="git checkout"
 alias gx="git rm"
 alias gh="git stash"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
+
+alias pipes="pipes.sh -R -t 3 -p 3 -s 12 -r 3000 -c 9 -c 10 -c 11 -c 12 -c 13 -c 14"
+alias advice="fortune -s | cowsay -f tux"
 
 alias -g G="| grep"
 alias -g L="&& ls"

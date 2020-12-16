@@ -75,6 +75,8 @@ source $ZSH/oh-my-zsh.sh
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR="vim"
 
+# For bat
+
 # For aliases
 . ~/.zsh_aliases
 
@@ -86,8 +88,8 @@ eval "$(register-python-argcomplete pipx)"
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='head -25 {}'"
-export FZF_DEFAULT_COMMAND='fdfind -H --type f --type d'
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='bat --plain -r 1:20 -P --color always {}'"
+export FZF_DEFAULT_COMMAND='fdfind --type f --type d'
 
 # Pyenv bits 
 export PYENV_ROOT="$HOME/.pyenv"

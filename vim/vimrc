@@ -33,14 +33,16 @@ set shortmess+=F
 set cmdheight=1
 syntax on
 
-" Seoul256 - Junegunn's theme
-let g:seoul256_background = 235
-let g:seoul256_light_background = 256
-set t_Co=256
+" gruvbox
+let g:gruvbox_contrast_dark = "soft"
+let g:gruvbox_contrast_light = "medium"
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_strings = 1
+let g:gruvbox_improved_warnings = 1
 set background=dark
-colorscheme seoul256
-nnoremap <leader>bd :colorscheme seoul256<CR>
-nnoremap <leader>bl :colorscheme seoul256-light<CR>
+colorscheme gruvbox
+nnoremap <leader>bd :set background=dark<CR>
+nnoremap <leader>bl :set background=light<CR>
 
 " Easy motion
 let g:EasyMotion_do_mapping = 0
@@ -66,7 +68,6 @@ nnoremap m d
 xnoremap m d
 nnoremap mm dd
 nnoremap M D
-
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -104,22 +105,19 @@ nnoremap <leader>gb :Git_blame<CR>
 nnoremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes
+highlight! link SignColumn LineNr
+let g:gitgutter_sign_allow_clobber = 1
 let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_added = '+'
-hi GitGutterAdd ctermfg=10 ctermbg=0
-let g:gitgutter_sign_modified = '='
-hi GitGutterChange ctermfg=11 ctermbg=0
-let g:gitgutter_sign_removed = '-'
-hi GitGutterDelete ctermfg=9 ctermbg=0
-let g:gitgutter_sign_removed_first_line = '^'
-let g:gitgutter_sign_modified_removed = '>'
-hi GitGutterChangeDelete ctermfg=9 ctermbg=0
+hi GitGutterAdd ctermfg=10 ctermbg=236
+hi GitGutterChange ctermfg=11 ctermbg=236
+hi GitGutterDelete ctermfg=9 ctermbg=236
+hi GitGutterChangeDelete ctermfg=208 ctermbg=236
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#poetv#enabled = 0
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'gruvbox'
 let g:airline_statusline_ontop = 0
 let g:airline_section_x = ''
 let g:airline_section_y = ''

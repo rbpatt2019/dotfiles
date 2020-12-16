@@ -76,6 +76,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR="vim"
 
 # For bat
+export BAT_THEME="gruvbox"
 
 # For aliases
 . ~/.zsh_aliases

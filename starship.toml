@@ -16,14 +16,14 @@ style = "blue"
 truncation_length = 3
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
-style = "bright-cyan"
+style = "cyan"
 
 [time]
 disabled = false
-style = "bright-purple"
+style = "purple"
 
 [cmd_duration]
-style = "red"
+style = "204"
 min_time = 0.5
 
 [jobs]
@@ -33,7 +33,7 @@ threshold = 0
 symbol = ""
 pyenv_version_name = false
 pyenv_prefix = ""
-style = "bright-green"
+style = "green"
 
 [git_branch]
 truncation_length = 7
@@ -41,16 +41,16 @@ truncation_symbol = ""
 style = "yellow"
 
 [git_status]
-style = "bright-red"
+style = "red"
 
 [package]
 symbol = ""
-style = "cyan"
+style = "166"
 
 [character]
 use_symbol_for_status = false
 symbol = ">>>>"
 vicmd_symbol = "<<<<"
-style_success = "bright-white"
+style_success = "white"
 style_failure = "red"
 

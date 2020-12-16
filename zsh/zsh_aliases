@@ -36,7 +36,7 @@ alias gu="git submodule update --remote --merge && git commit -m 'Update submodu
 alias pipes="pipes.sh -R -t 3 -p 3 -s 12 -r 3000 -c 9 -c 10 -c 11 -c 12 -c 13 -c 14"
 alias advice="fortune -s | cowsay -f tux"
 
-alias -g G="| grep"
+alias -g G="| rg"
 alias -g L="&& ls"
 
 

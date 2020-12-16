@@ -38,6 +38,7 @@ alias advice="fortune -s | cowsay -f tux"
 
 alias -g G="| rg"
 alias -g L="&& ls"
+alias -g X="| xargs"
 
 
 git_current_release()

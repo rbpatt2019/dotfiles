@@ -1,7 +1,7 @@
 tabstop 8
 indent_incr 4
-pixel_per_char 16
-pixel_per_line 37
+pixel_per_char 18
+pixel_per_line 41
 frame 0
 target_self 0
 open_tab_blank 0
@@ -58,6 +58,8 @@ vi_prec_num 0
 mark_all_pages 0
 wrap_search 0
 ignorecase_search 1
+use_migemo 1
+migemo_command cmigemo -q -d /usr/share/cmigemo/utf-8/migemo-dict
 use_mouse 1
 reverse_mouse 0
 relative_wheel_scroll 0
@@ -112,6 +114,7 @@ max_news 50
 use_proxy 1
 http_proxy 
 https_proxy 
+gopher_proxy 
 ftp_proxy 
 no_proxy 
 noproxy_netaddr 1

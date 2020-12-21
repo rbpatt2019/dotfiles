@@ -5,6 +5,7 @@ alias lt="ls -lrt"
 alias m='make'
 alias fd='fdfind'
 alias rmrf="rm -rf"
+alias w3m="w3m -no-mouse -graph"
 
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
 alias proj="cd /home/rbpatt2019/Projects"

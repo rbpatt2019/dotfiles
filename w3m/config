@@ -16,7 +16,7 @@ use_dictcommand 1
 dictcommand file:///$LIB/w3mdict.cgi
 multicol 0
 alt_entity 0
-graphic_char 0
+graphic_char 1
 display_borders 0
 fold_textarea 0
 display_ins_del 1
@@ -60,7 +60,7 @@ wrap_search 0
 ignorecase_search 1
 use_migemo 1
 migemo_command cmigemo -q -d /usr/share/cmigemo/utf-8/migemo-dict
-use_mouse 1
+use_mouse 0
 reverse_mouse 0
 relative_wheel_scroll 0
 relative_wheel_scroll_ratio 30

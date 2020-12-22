@@ -115,7 +115,7 @@ hi GitGutterChangeDelete ctermfg=208 ctermbg=236
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#poetv#enabled = 0
 let g:airline_theme = 'gruvbox'
 let g:airline_statusline_ontop = 0
@@ -161,21 +161,30 @@ nnoremap <leader>ss :so $MYVIMRC<CR>
 nnoremap <leader>x :w<CR>:bd<CR>
 
 " Browse
-nnoremap <leader>F :CocCommand explorer<CR>
+nnoremap <leader>e :CocCommand explorer<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>td :CocCommand todolist.create<CR>
 nmap <leader>c :CocCommand<CR>
 vmap <leader>c :CocCommand<CR>
 " Errors and their navigation
 nmap <leader>l :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
-nmap <leader>j :CocNext<CR>
-nmap <leader>k :CocPrev<CR>
+nmap <leader>j <Plug>(coc-diagnostic-next)
+nmap <leader>k <Plug>(coc-diagnostic-prev)
 nmap <leader>a <Plug>(coc-codeaction)
 
 " completion
-inoremap <expr> <buffer> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <buffer> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <buffer> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 silent! helptag ALL

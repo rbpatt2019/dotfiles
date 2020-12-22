@@ -33,15 +33,18 @@ let g:coc_snippet_prev = '<C-s>'
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black
 nmap <buffer> <localleader>f <Plug>(coc-format)
-nmap <buffer> <localleader>s :CocCommand python.sortImports<CR>
+nmap <buffer> <localleader>s :CocCommand pyright.organizeimports<CR>
 " rename variables
 nmap <buffer> <localleader>r <Plug>(coc-rename)
 " get information
 nmap <buffer> <localleader>h :call CocActionAsync('doHover')<CR>
-nmap <buffer> <localleader>i :call CocActionAsync('showSignatureHelp')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Set venv
-nmap <buffer> <localleader>v :CocCommand python.setInterpreter<CR>
+if !empty($PYENV_VIRTUAL_ENV)
+  call coc#config('python', {
+  \   'pythonPath': $PYENV_VIRTUAL_ENV . '/bin/python'
+  \ })
+endif
 
 "Run tests using makefile in root directory
 nnoremap <buffer> <localleader>t :w ! make test<CR>

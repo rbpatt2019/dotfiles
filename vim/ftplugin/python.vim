@@ -29,6 +29,8 @@ let b:coc_root_patterson = ['.gitignore', '.python-version']
 imap <C-e> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<C-d>'
 let g:coc_snippet_prev = '<C-s>'
+" Add docstring support
+let b:coc_pairs = [["'''", "'''"], ["\"\"\"", "\"\"\""]]
 " go to defintion
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black

@@ -15,4 +15,4 @@ nnoremap <buffer> <localleader>c :GenerateMarkdownTOC<CR>
 nnoremap <buffer> <localleader>v :w<CR>:exe '!grip -b ' . @% . ' 0'<CR>
 
 " Pair matching handled by coc.nvim
-" ~, _, **
+let b:coc_pairs = [["~", "~"], ["_", "_"], ["**", "**"]]

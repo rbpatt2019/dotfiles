@@ -115,13 +115,17 @@ hi GitGutterChangeDelete ctermfg=208 ctermbg=236
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#poetv#enabled = 0
 let g:airline_theme = 'gruvbox'
 let g:airline_statusline_ontop = 0
 let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_z = "[%l:%c]"
+let g:airline_section_z = "%l:%c"
+if !empty($PYENV_VIRTUAL_ENV)
+  let g:airline_section_y = "%{split($PYENV_VIRTUAL_ENV, '/')[-1]}"
+el
+  let g:airline_section_y = "" 
+endif
 
 " Navigate splits
 nnoremap <C-j> <C-w><C-j>

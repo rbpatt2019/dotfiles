@@ -1,33 +1,63 @@
-add_newline = true
-prompt_order = ["username", "hostname", "directory", "time", "cmd_duration", "jobs", "line_break", "python", "conda", "git_branch", "git_status", "package", "character"]
+add_newline = false
 scan_timeout = 10
+
+format = """\
+        $username\
+        $hostname\
+        $directory\
+        $git_branch\
+        $git_status\
+        $package\
+        $time\
+        $line_break\
+        $python\
+        $conda\
+        $character\
+        $cmd_duration\
+        $jobs\
+        $character """
 
 [username]
 show_always = true
 style_user = "blue"
+style_root = "bold red"
+format = "[$user]($style)"
 
 [hostname]
-prefix = "@ "
 ssh_only = true
 trim_at = "."
 style = "blue"
+format = " @ [$hostname]($style)"
 
 [directory]
 truncation_length = 3
 truncate_to_repo = true
-fish_style_pwd_dir_length = 0
 style = "cyan"
+read_only = "RO"
+read_only_style = "bold cyan"
+format = " in [$path]($style)[$read_only]($read_only_style)"
+fish_style_pwd_dir_length = 0
+
+[git_branch]
+truncation_length = 7
+truncation_symbol = "…"
+symbol = ""
+style = "yellow"
+format = " on [$symbol$branch]($style)"
+
+[git_status]
+style = "red"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[package]
+symbol = ""
+style = "166"
+format = " [$version]($style)"
 
 [time]
 disabled = false
 style = "purple"
-
-[cmd_duration]
-style = "204"
-min_time = 0.5
-
-[jobs]
-threshold = 0
+format = " at [$time]($style)"
 
 [python]
 symbol = ""
@@ -35,22 +65,21 @@ pyenv_version_name = false
 pyenv_prefix = ""
 style = "green"
 
-[git_branch]
-truncation_length = 7
-truncation_symbol = ""
-style = "yellow"
-
-[git_status]
-style = "red"
-
-[package]
-symbol = ""
-style = "166"
-
 [character]
-use_symbol_for_status = false
-symbol = ">>>>"
-vicmd_symbol = "<<<<"
-style_success = "white"
-style_failure = "red"
+success_symbol = "[>>](white)"
+vicmd_symbol = "[<<](white)"
+error_symbol = "[>>](red)"
+format = "$symbol"
 
+[cmd_duration]
+style = "204"
+min_time = 3000
+format = '([\($duration\)]($style))'
+
+[jobs]
+threshold = 0
+symbol = ""
+format = '([\($number\)]($style))'
+
+[custom.spacer]
+format = " "

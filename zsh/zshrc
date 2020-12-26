@@ -122,3 +122,5 @@ eval "$(starship init zsh)"
 
 # w3m setting
 export WWW_HOME="google.com"
+
+export PATH="$HOME/.poetry/bin:$PATH"

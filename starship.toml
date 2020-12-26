@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 scan_timeout = 10
 
 format = """\
@@ -33,7 +33,7 @@ format = " @ [$hostname]($style)"
 truncation_length = 3
 truncate_to_repo = true
 style = "cyan"
-read_only = "RO"
+read_only = "[RO]"
 read_only_style = "bold cyan"
 format = " in [$path]($style)[$read_only]($read_only_style)"
 fish_style_pwd_dir_length = 0

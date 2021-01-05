@@ -3,9 +3,11 @@
 	email = rb.patterson.cross@gmail.com
 [core]
 	editor = vim
+	compression = 0
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [hub]
 	protocol = https
 [http]
-	postBuffer = 1048576000
+	postBuffer = 500M
+	maxRequestBuffer = 100M

@@ -3,7 +3,7 @@ setlocal ts=4 sts=4 sw=4
 " vim-slime - sending to terminal
 let g:slime_no_mappings = 1
 let g:slime_target = 'vimterminal'
-let g:slime_vimterminal_cmd = 'ipython'
+let g:slime_vimterminal_cmd = 'poetry run ipython'
 let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_finish': 'close'}
 let g:slime_python_ipython = 1
 let g:slime_cell_delimiter = "#%%"

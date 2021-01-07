@@ -116,11 +116,10 @@ eval "$(hub alias -s)"
 
 # starship bits
 eval "$(starship init zsh)"
+export MODE_INDICATOR=""
 
 # added by travis gem
 [ ! -s /home/rbpatt2019/.travis/travis.sh ] || source /home/rbpatt2019/.travis/travis.sh
 
 # w3m setting
 export WWW_HOME="google.com"
-
-export PATH="$HOME/.poetry/bin:$PATH"

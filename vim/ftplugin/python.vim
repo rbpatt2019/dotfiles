@@ -1,24 +1,20 @@
 setlocal ts=4 sts=4 sw=4 
 
 " vim-slime - sending to terminal
-let g:slime_no_mappings = 1
-let g:slime_target = 'vimterminal'
-let g:slime_vimterminal_cmd = 'poetry run ipython'
-let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_finish': 'close'}
 let g:slime_python_ipython = 1
 let g:slime_cell_delimiter = "#%%"
 nnoremap <buffer> <localleader>% :%g/#%%/d<CR>
 nmap <buffer> <localleader><leader> <Plug>SlimeSendCell}
 vmap <buffer> <localleader><leader> <Plug>SlimeRegionSend
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
-nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("Python"), "%run ' . @% . '\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader><localleader> :w<CR>:let @+="\%run " . @%<CR>:!tmux send -t 1 '\%paste' Enter<CR><C-L>
 
 " Object browsing
-nnoremap <buffer> <localleader>O :call term_sendkeys(bufnr("Python"), "%whos\<lt>CR>")<CR>
-nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("Python"), "print(' . @a . ')\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>D ":exe 'call term_sendkeys(bufnr("Python"), "%debug\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>R ":exe 'call term_sendkeys(bufnr("Python"), "%rerun\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>T "ayy:exe 'call term_sendkeys(bufnr("Python"), "%timeit ' . @a . '\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>O :!tmux send -t 1 '\%whos' Enter<CR><C-L>
+nnoremap <buffer> <localleader>P "ayiw:exe "!tmux send -t -1 'print(" . @a . ")' Enter"<CR><C-L>
+nnoremap <buffer> <localleader>D :!tmux send -t 1 '\%debug' Enter<CR><C-L>
+nnoremap <buffer> <localleader>R :!tmux send -t 1 '\%rerun' Enter<CR><C-L>
+nnoremap <buffer> <localleader>T I%timeit <ESC>"+yy:!tmux send -t 1 '\%paste' Enter<CR><C-L>u
 
 " coc.nvim - language server integration
 " This is basically VSCode integration for vim. 

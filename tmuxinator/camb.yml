@@ -1,19 +1,19 @@
 # /home/rbpatt2019/.config/tmuxinator/ssh-camb-cpu.yml
 
-name: ssh-camb-cpu
-root: ~/Projects
+name: camb
+root: ~
 
-startup_window: main
+startup_window: camb
 
 startup_pane: 0
 
 windows:
-  - main:
+  - camb:
       layout: even-horizontal
       panes:
-        - clear && ssh camb-cpu
-        - clear && w3m google.com
-  - code:
+        - ssh camb-cpu
+        - w3m
+  - local:
       layout: even-horizontal
       panes: 
-        - clear
+        - 

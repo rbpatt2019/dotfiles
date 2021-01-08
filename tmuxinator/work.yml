@@ -9,11 +9,11 @@ startup_pane: 0
 
 windows:
   - sys:
-      layout: even-vertical
+      layout: 368e,206x52,0,0{118x52,0,0[118x31,0,0,0,118x20,0,32,9],87x52,119,0,8}
       panes:
         - htop
-        - 
-        -
+        - dmesg -wku
+        - bandwhich -i wlo1
   - home:
       layout: e973,206x52,0,0[206x36,0,0{103x36,0,0,3,102x36,104,0,6},206x15,0,37,5]
       panes:

@@ -8,7 +8,8 @@ alias rmrf="rm -rf"
 alias w3m="w3m -no-mouse -graph"
 
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
-alias proj="cd /home/rbpatt2019/Projects"
+alias work="tmuxinator work"
+alias camb="tmuxinator camb"
 
 alias i="ipython"
 alias pv="pyenv"

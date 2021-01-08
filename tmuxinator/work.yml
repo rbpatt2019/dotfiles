@@ -8,6 +8,12 @@ startup_window: code
 startup_pane: 0
 
 windows:
+  - sys:
+      layout: even-vertical
+      panes:
+        - htop
+        - 
+        -
   - home:
       layout: e973,206x52,0,0[206x36,0,0{103x36,0,0,3,102x36,104,0,6},206x15,0,37,5]
       panes:

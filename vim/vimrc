@@ -1,6 +1,5 @@
 set rtp+=/home/rbpatt2019/.fzf
 
-let loaded_netrwPlugin = 1
 let mapleader = ' '
 let maplocalleader = ','
 filetype on
@@ -26,23 +25,13 @@ set timeoutlen=333
 set updatetime=100
 set signcolumn=yes
 set laststatus=2
-set termguicolors
 set pyxversion=2
 set completeopt=noinsert,menuone,noselect
 set shortmess+=F
 set cmdheight=1
 syntax on
 
-" gruvbox
-let g:gruvbox_contrast_dark = "soft"
-let g:gruvbox_contrast_light = "medium"
-let g:gruvbox_italic = 1
-let g:gruvbox_italicize_strings = 1
-let g:gruvbox_improved_warnings = 1
-set background=dark
-colorscheme gruvbox
-nnoremap <leader>bd :set background=dark<CR>
-nnoremap <leader>bl :set background=light<CR>
+colorscheme flattened_dark
 
 " Easy motion
 let g:EasyMotion_do_mapping = 0
@@ -106,18 +95,19 @@ nnoremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes
 highlight! link SignColumn LineNr
-let g:gitgutter_sign_allow_clobber = 1
+let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_map_keys = 0
-hi GitGutterAdd ctermfg=10 ctermbg=236
-hi GitGutterChange ctermfg=11 ctermbg=236
-hi GitGutterDelete ctermfg=9 ctermbg=236
-hi GitGutterChangeDelete ctermfg=208 ctermbg=236
+hi GitGutterAdd ctermfg=2 ctermbg=0
+hi GitGutterChange ctermfg=3 ctermbg=0
+hi GitGutterDelete ctermfg=1 ctermbg=0
+hi GitGutterChangeDelete ctermfg=5 ctermbg=0
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#poetv#enabled = 0
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg='dark'
 let g:airline_statusline_ontop = 0
 let g:airline_section_x = ''
 let g:airline_section_z = "%l:%c"
@@ -142,7 +132,7 @@ let g:slime_no_mappings = 1
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 let g:slime_dont_ask_default = 1
-let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":1.1"}
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
 let g:slime_preserve_curpos = 1
 
 " File interactions

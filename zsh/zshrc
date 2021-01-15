@@ -19,7 +19,7 @@ source $DOT/zsh/tty.sh
 
 # Software specific
 # For bat
-export BAT_THEME="gruvbox"
+export BAT_THEME="Solarized (dark)"
 
 # pipx bits
 path+=("/home/rbpatt2019/.local/bin")

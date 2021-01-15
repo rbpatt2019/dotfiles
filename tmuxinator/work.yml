@@ -26,3 +26,6 @@ windows:
         - ls
         - 
       synchronize: after
+  - mail:
+      panes:
+        - neomutt

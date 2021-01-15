@@ -20,7 +20,7 @@ format = """\
 [username]
 show_always = true
 style_user = "blue"
-style_root = "bold red"
+style_root = "red"
 format = "[$user]($style)"
 
 [hostname]
@@ -34,24 +34,29 @@ truncation_length = 3
 truncate_to_repo = true
 style = "cyan"
 read_only = "[RO]"
-read_only_style = "bold cyan"
+read_only_style = "cyan"
 format = " in [$path]($style)[$read_only]($read_only_style)"
 fish_style_pwd_dir_length = 0
 
 [git_branch]
 truncation_length = 7
 truncation_symbol = "…"
-symbol = ""
+symbol = ""
 style = "yellow"
 format = " on [$symbol$branch]($style)"
 
 [git_status]
 style = "red"
+ahead = "^"
+behind = "&"
+diverged = "~"
+renamed = ">"
+deleted = "X"
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [package]
 symbol = ""
-style = "166"
+style = "yellow"
 format = " [$version]($style)"
 
 [time]
@@ -72,9 +77,8 @@ error_symbol = "[>>](red)"
 format = "$symbol"
 
 [cmd_duration]
-style = "204"
 min_time = 3000
-format = '([\($duration\)]($style))'
+format = '[\($duration\)]($style)'
 
 [jobs]
 threshold = 0

@@ -1,0 +1,7 @@
+# vim: filetype = muttrc
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colours
+source ~/.config/neomutt/bindings
+
+# Accounts
+source ~/.config/neomutt/account_gmail_prof

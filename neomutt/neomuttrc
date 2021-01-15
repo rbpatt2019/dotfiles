@@ -1,4 +1,5 @@
 # vim: filetype = muttrc
+# Shamelessly taken from https://gideonwolfe.com/posts/workflow/neomutt/intro/
 source ~/.config/neomutt/settings
 source ~/.config/neomutt/colours
 source ~/.config/neomutt/bindings

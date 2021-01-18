@@ -56,7 +56,7 @@ format = '([\[$all_status$ahead_behind\]]($style))'
 
 [package]
 symbol = ""
-style = "yellow"
+style = "9"
 format = " [$version]($style)"
 
 [time]
@@ -78,11 +78,13 @@ format = "$symbol"
 
 [cmd_duration]
 min_time = 3000
+style = "13"
 format = '[\($duration\)]($style)'
 
 [jobs]
 threshold = 0
 symbol = ""
+style = "13"
 format = '([\($number\)]($style))'
 
 [custom.spacer]

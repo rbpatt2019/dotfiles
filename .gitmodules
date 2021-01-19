@@ -40,3 +40,6 @@
 [submodule "vim/pack/rbpatt2019/opt/markdown-toc"]
 	path = vim/pack/rbpatt2019/opt/markdown-toc
 	url = https://github.com/ajorgensen/vim-markdown-toc
+[submodule "tmux/tmux-battery"]
+	path = tmux/tmux-battery
+	url = https://github.com/tmux-plugins/tmux-battery

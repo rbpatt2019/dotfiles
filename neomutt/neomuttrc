@@ -5,4 +5,9 @@ source ~/.config/neomutt/colours
 source ~/.config/neomutt/bindings
 
 # Accounts
+source ~/.config/neomutt/account_gmail_pers
+folder-hook $folder 'source ~/.config/neomutt/account_gmail_pers'
+
 source ~/.config/neomutt/account_gmail_prof
+folder-hook $folder 'source ~/.config/neomutt/account_gmail_prof'
+

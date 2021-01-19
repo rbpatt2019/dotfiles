@@ -5,11 +5,11 @@ source "gpg -dq $HOME/.pwds.gpg |"
 
 # Username and password for your Gmail/G Suite account
 unmailboxes *
-set realname = "Ryan B Patterson-Cross"
-set imap_pass = $my_prof
-set folder  =  "imaps://rb.patterson.cross@gmail.com@imap.gmail.com:993"
-set smtp_url = "smtps://rb.patterson.cross@gmail.com@smtp.gmail.com:465"
-set smtp_pass = $my_prof
+set realname = "Ryan B Patterson"
+set imap_pass = $my_pers
+set folder  =  "imaps://ryan.patterson.2015@gmail.com@imap.gmail.com:993"
+set smtp_url = "smtps://ryan.patterson.2015@gmail.com@smtp.gmail.com:465"
+set smtp_pass = $my_pers
 set spoolfile = "+INBOX"
 
 # IMAP settings
@@ -17,7 +17,7 @@ unset imap_passive
 set imap_keepalive = 300
 
 # Mail settings
-set from = "rb.patterson.cross@gmail.com"
+set from = "ryan.patterson.2015@gmail.com"
 set envelope_from
 set use_from = "yes"
 set trash = "+[Gmail]/Trash"
@@ -26,5 +26,4 @@ set record = "+[Gmail]/Sent Mail"
 set mail_check = 6
 mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
 
-# Hook
-account-hook $folder "set imap_pass=$my_prof"
+account-hook $folder "set imap_pass=$my_pers"

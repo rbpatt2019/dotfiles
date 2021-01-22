@@ -36,7 +36,7 @@ pipx upgrade-all
 cd -
 
 cd ~/.renv
-git fetch
+git pull --ff
 
 cd -
 

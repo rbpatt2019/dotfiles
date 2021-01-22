@@ -1,4 +1,6 @@
 alias graphic="sudo service lightdm start"
+alias text="sudo service lightdm stop"
+alias fix="source $HOME/Projects/dotfiles/zsh/tty.sh"
 alias q="qalc"
 alias s="source ~/.zshrc"
 alias v="vim"
@@ -36,7 +38,7 @@ alias gx="git rm"
 alias gh="git stash"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
 
-alias pipes="pipes.sh -R -t 3 -p 3 -s 12 -r 3000 -c 9 -c 10 -c 11 -c 12 -c 13 -c 14"
+alias pipes="pipes.sh -R -t 1 -p 3 -s 12 -r 3000 -c 9 -c 13 -c 1 -c 2 -c 3 -c 4 -c 5 -c 6 && fix"
 alias advice="fortune -s | cowsay -f tux"
 
 alias -g G="| rg"

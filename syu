@@ -33,6 +33,8 @@ poetry self update
 
 pipx upgrade-all
 
+rustup update
+
 cd -
 
 cd ~/.renv

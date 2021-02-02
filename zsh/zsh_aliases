@@ -4,12 +4,14 @@ alias fix="source $HOME/Projects/dotfiles/zsh/tty.sh"
 alias q="qalc"
 alias s="source ~/.zshrc"
 alias v="vim"
-alias lt="ls -lrt"
 alias m='make'
 alias fd='fdfind'
 alias rmrf="rm -rf"
 alias w3m="w3m -no-mouse -graph"
 
+alias la="exa -ahlF"
+alias lt="exa -ahlFr --sort time"
+alias lg="exa -ahlF --git --git-ignore"
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
 alias work="tmuxinator work"
 alias camb="tmuxinator camb"

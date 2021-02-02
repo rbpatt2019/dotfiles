@@ -2,7 +2,10 @@ options(radian.color_scheme = "monokai")
 options(radian.editing_mode = "vi")
 options(radian.auto_match = FALSE)
 options(radian.highlight_matching_bracket = TRUE)
+options(radian.suppress_reticulate_message = FALSE)
+options(radian.enable_reticulate_prompt = TRUE)
 options(radian.escape_key_map = list(
-	list(key = "-", value = " <- "),
-	list(key = "m", value = " %>% ")
+    list(key = "-", value = "<-"),
+    list(key = "=", value = "%>%")
 ))
+

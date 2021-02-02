@@ -1,6 +1,5 @@
-set rtp+=~/.fzf
+set rtp+=/home/rbpatt2019/.fzf
 
-let loaded_netrwPlugin = 1
 let mapleader = ' '
 let maplocalleader = ','
 filetype on
@@ -26,41 +25,31 @@ set timeoutlen=333
 set updatetime=100
 set signcolumn=yes
 set laststatus=2
-set termguicolors
 set pyxversion=2
 set completeopt=noinsert,menuone,noselect
 set shortmess+=F
 set cmdheight=1
 syntax on
 
-" Colors - NLKNguyen/papercolor-theme'
-let g:PaperColor_Theme_Options = {
-	\	'language': {
-	\		'python': {
-	\			'highlight_builtins': 1
-	\		}
-	\	},
-  	\   	'theme': {
-  	\     		'default': {
-  	\       		'allow_bold': 0,
-	\			'allow_italic': 0,
-	\			'transparent_background': 0
-  	\     		}
-  	\   	}
-	\ }
-
-" Seoul256 - Junegunn's theme
-let g:seoul256_background = 235
-let g:seoul256_light_background = 256
-
-set t_Co=256
-set background=dark
-colorscheme seoul256
-nnoremap <leader>bd :colorscheme seoul256<CR>
-nnoremap <leader>bl :colorscheme seoul256-light<CR>
+colorscheme flattened_dark
 
 " Easy motion
-map <Leader><Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s)
+nmap n <Plug>(easymotion-bd-n)
+nmap t <Plug>(easymotion-bd-tl)
+nmap f <Plug>(easymotion-bd-fl)
+nmap e <Plug>(easymotion-bd-el)
+nmap w <Plug>(easymotion-bd-wl)
+nmap j <Plug>(easymotion-j)
+nmap k <Plug>(easymotion-k)
+vmap t <Plug>(easymotion-bd-tl)
+vmap f <Plug>(easymotion-bd-fl)
+vmap w <Plug>(easymotion-bd-wl)
+vmap e <Plug>(easymotion-bd-el)
+vmap j <Plug>(easymotion-j)
+vmap k <Plug>(easymotion-k)
 
 " Vim-cutlass: deleting no longer goes to register
 " Use m (think move) to keep contents of register
@@ -68,16 +57,6 @@ nnoremap m d
 xnoremap m d
 nnoremap mm dd
 nnoremap M D
-
-" vim-yoink - yank history
-" first line is to integrate with cutlass
-let g:yoinkIncludeDeleteOperations = 1 
-let g:yoinkMoveCursorToEndOfPaste = 1
-let g:yoinkMoveCursorToEndOfPaste = 1
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -88,54 +67,55 @@ autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=0 ctermfg=
 autocmd FileType which_key highlight WhichKeyDesc ctermbg=0 ctermfg=13
 autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
 
-" fzf - because fuzzy finding is awesome
+" Finding things
 " relevant mapping is <leader>f*
-nnoremap <leader>fb :w<CR>:Buffers<CR>
-nnoremap <leader>ff :w<CR>:Files<CR>
-nnoremap <leader>fg :w<CR>:GFiles<CR>
-nnoremap <leader>ft :w<CR>:BTags<CR>
-nnoremap <leader>fT :w<CR>:Tags<CR>
-nnoremap <leader>fc :w<CR>:BCommits<CR>
-nnoremap <leader>fC :w<CR>:Commits<CR>
-nnoremap <leader>fh :w<CR>:Helptags<CR>
-nnoremap <leader>fl :w<CR>:BLines<CR>
-nnoremap <leader>fL :w<CR>:Lines<CR>
+nnoremap <leader>fb :w<CR>:CocCommand fzf-preview.Buffers<CR>
+nnoremap <leader>fc :w<CR>:CocList cmdhistory<CR>
+nnoremap <leader>ff :w<CR>:CocCommand fzf-preview.ProjectFiles<CR>
+nnoremap <leader>fh :w<CR>:CocList helptags<CR>
+nnoremap <leader>fl :w<CR>:CocCommand fzf-preview.BufferLines<CR>
+nnoremap <leader>ft :w<CR>:CocCommand fzf-preview.BufferTags<CR>
+nnoremap <leader>fg  :w<CR>:CocCommand fzf-preview.Ctags<CR>
+
+" coc-yank
+nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " vim-fugitive
 " relative mappings are <leader>g*
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit %<CR>
-nnoremap <leader>gf :Gpull<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
+nnoremap <leader>gc :G commit %<CR>
+nnoremap <leader>gl :Gclog<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
-nnoremap <leader>gm :Gmove
-nnoremap <leader>gx :Gdelete<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gm :GMove
+nnoremap <leader>gx :GDelete<CR>
+nnoremap <leader>gb :Git_blame<CR>
 nnoremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes
+highlight! link SignColumn LineNr
+let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_added = '+'
-hi GitGutterAdd ctermfg=10 ctermbg=0
-let g:gitgutter_sign_modified = '='
-hi GitGutterChange ctermfg=11 ctermbg=0
-let g:gitgutter_sign_removed = '-'
-hi GitGutterDelete ctermfg=9 ctermbg=0
-let g:gitgutter_sign_removed_first_line = '^'
-let g:gitgutter_sign_modified_removed = '>'
-hi GitGutterChangeDelete ctermfg=9 ctermbg=0
+hi GitGutterAdd ctermfg=2 ctermbg=0
+hi GitGutterChange ctermfg=3 ctermbg=0
+hi GitGutterDelete ctermfg=1 ctermbg=0
+hi GitGutterChangeDelete ctermfg=5 ctermbg=0
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#poetv#enabled = 0
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg='dark'
 let g:airline_statusline_ontop = 0
 let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_z = "[%l:%c]"
+let g:airline_section_z = "%l:%c"
+if !empty($PYENV_VIRTUAL_ENV)
+  let g:airline_section_y = "%{split($PYENV_VIRTUAL_ENV, '/')[-1]}"
+el
+  let g:airline_section_y = "" 
+endif
 
 " Navigate splits
 nnoremap <C-j> <C-w><C-j>
@@ -147,47 +127,55 @@ nnoremap <C-K> <C-w><C-K>
 nnoremap <C-H> <C-w><C-H>
 nnoremap <C-L> <C-w><C-L>
 
-" Terminal interactions
-tnoremap <C-n> <C-\><C-n>
-tnoremap <C-k> <C-w><C-k>
-tnoremap <C-j> <C-w><C-j>
-tnoremap <C-h> <C-w><C-h>
-tnoremap <C-l> <C-w><C-l>
-tnoremap <C-q> <C-w>:q!<CR>
-augroup term_splits
-  autocmd!
-  autocmd BufEnter * if &buftype == 'terminal' | wincmd L | endif
-augroup END
+" Slime for tmux
+let g:slime_no_mappings = 1
+let g:slime_target = "tmux"
+let g:slime_paste_file = tempname()
+let g:slime_dont_ask_default = 1
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
+let g:slime_preserve_curpos = 1
+
 " File interactions
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>Q :qa!<CR>
 nnoremap <leader>n :n 
-nnoremap <leader>e :e 
+nnoremap <leader>v :vs 
 
 " Edit settings
 nnoremap <leader>sv :vs /Users/pattersonrb/projects/dotfiles/vim/vimrc<CR>
 nnoremap <leader>sr :vs /Users/pattersonrb/.vim/ftplugin/R.vim<CR>
+nnoremap <leader>sp :vs /Users/pattersonrb/.vim/ftplugin/python.vim<CR>
 nnoremap <leader>ss :so $MYVIMRC<CR>
 
 " Buffer interactions
 nnoremap <leader>x :w<CR>:bd<CR>
 
 " Browse
-nnoremap <leader>F :CocCommand explorer<CR>
+nnoremap <leader>e :CocCommand explorer<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>td :CocCommand todolist.create<CR>
 nmap <leader>c :CocCommand<CR>
 vmap <leader>c :CocCommand<CR>
 " Errors and their navigation
-nmap <leader>l :CocList diagnostics<CR>
-nmap <leader>j :CocNext<CR>
-nmap <leader>k :CocPrev<CR>
+nmap <leader>l :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+nmap <leader>j <Plug>(coc-diagnostic-next)
+nmap <leader>k <Plug>(coc-diagnostic-prev)
 nmap <leader>a <Plug>(coc-codeaction)
+
 " completion
-inoremap <expr> <buffer> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <buffer> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <buffer> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 silent! helptag ALL

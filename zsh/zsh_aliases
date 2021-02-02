@@ -1,22 +1,27 @@
+alias graphic="sudo service lightdm start"
+alias text="sudo service lightdm stop"
+alias fix="source $HOME/Projects/dotfiles/zsh/tty.sh"
+alias q="qalc"
 alias s="source ~/.zshrc"
 alias v="vim"
-alias ll="ls -GTlha"
-alias lt="ls -lrt"
-alias bw="ssh -X biowulf.nih.gov"
-alias chrome="open -a 'Google Chrome'"
 alias m='make'
-alias o='open .'
+alias fd='fdfind'
+alias rmrf="rm -rf"
+alias w3m="w3m -no-mouse -graph"
 
-alias data="cd /Volumes/RBPatterson"
-alias work="cd /Users/pattersonrb/levine_lab_work"
-alias dot="cd /Users/pattersonrb/projects/dotfiles"
-alias proj="cd /Users/pattersonrb/projects"
+alias la="exa -ahlF"
+alias lt="exa -ahlFr --sort time"
+alias lg="exa -ahlF --git --git-ignore"
+alias dot="cd /home/rbpatt2019/Projects/dotfiles"
+alias work="tmuxinator work"
+alias camb="tmuxinator camb"
 
 alias i="ipython"
-alias c="conda"
 alias pv="pyenv"
 alias pt="poetry"
 alias r="radian"
+alias rv="renv"
+alias t="tmux"
 
 alias ga="git add"
 alias gc="git commit"
@@ -32,10 +37,24 @@ alias gs="git status -sb"
 alias gt="git tag"
 alias gv="git checkout"
 alias gx="git rm"
+alias gh="git stash"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
 
-alias -g G="| grep"
+alias pipes="pipes.sh -R -t 1 -p 3 -s 12 -r 3000 -c 9 -c 13 -c 1 -c 2 -c 3 -c 4 -c 5 -c 6 && fix"
+alias advice="fortune -s | cowsay -f tux"
+
+alias -g G="| rg"
 alias -g L="&& ls"
+alias -g X="| xargs"
+
+
+git_current_release()
+{
+        # Gets the most current release of a remote repository
+        curl --silent "https://api.github.com/repos/$1/releases/latest" | \
+        jq '.tag_name' | \
+        tr -d '"'
+}
 
 gw()
 {
@@ -50,6 +69,17 @@ l.()
 	ls -Ga $1 | grep '^\.';
 }
 
+pa()
+{
+        local files=${1}
+        local pmid=${2}
+        local title=${3:-"Title"}
+        papis add \
+        "$files" \
+        --git \
+        --folder-name "$title" \
+        --from pmid "$pmid"
+}
 mkcd()
 {
 	mkdir -p -- "$1" &&

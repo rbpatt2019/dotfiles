@@ -9,16 +9,5 @@ setHook(
     }
 )
 
-# radian set up
-options(radian.color_scheme = "monokai")
-options(radian.editing_mode = "vi")
-options(radian.auto_match = TRUE)
-options(radian.suppress_reticulate_message = FALSE)
-options(radian.enable_reticulate_prompt = TRUE)
-options(radian.escape_key_map = list(
-    list(key = "-", value = "<-"),
-    list(key = "=", value = "%>%")
-))
-
 # Set CRAN mirror
-options(repos=structure(c(CRAN="https://cran.cnr.berkeley.edu/")))
+options(repos=structure(c(CRAN="https://cran.ma.imperial.ac.uk/")))

@@ -1,9 +1,13 @@
 [user]
 	name = rbpatt2019
-	email = ryan.patterson.2015@gmail.com
+	email = rb.patterson.cross@gmail.com
 [core]
 	editor = vim
+	compression = 0
 [credential]
-	helper = cache --timeout=3600
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [hub]
 	protocol = https
+[http]
+	postBuffer = 500M
+	maxRequestBuffer = 100M

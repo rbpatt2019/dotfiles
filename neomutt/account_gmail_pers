@@ -1,0 +1,29 @@
+# vim: filetype = muttrc
+# Decrypts passwords quietly
+# see: https://wiki.archlinux.org/index.php/Mutt#Passwords_management
+source "gpg -dq $HOME/.pwds.gpg |"
+
+# Username and password for your Gmail/G Suite account
+unmailboxes *
+set realname = "Ryan B Patterson"
+set imap_pass = $my_pers
+set folder  =  "imaps://ryan.patterson.2015@gmail.com@imap.gmail.com:993"
+set smtp_url = "smtps://ryan.patterson.2015@gmail.com@smtp.gmail.com:465"
+set smtp_pass = $my_pers
+set spoolfile = "+INBOX"
+
+# IMAP settings
+unset imap_passive
+set imap_keepalive = 300
+
+# Mail settings
+set from = "ryan.patterson.2015@gmail.com"
+set envelope_from
+set use_from = "yes"
+set trash = "+[Gmail]/Trash"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set mail_check = 6
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+
+account-hook $folder "set imap_pass=$my_pers"

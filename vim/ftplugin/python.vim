@@ -1,22 +1,20 @@
 setlocal ts=4 sts=4 sw=4 
 
 " vim-slime - sending to terminal
-let g:slime_no_mappings = 1
-let g:slime_target = 'vimterminal'
-let g:slime_vimterminal_cmd = 'ipython'
-let g:slime_vimterminal_config = {'term_name': 'Python', 'vertical': 1, 'term_finish': 'close'}
-vmap <buffer> <localleader><leader> <Plug>SlimeRegionSendj
-nmap <buffer> <localleader><leader> <Plug>SlimeParagraphSend}j
+let g:slime_python_ipython = 1
+let g:slime_cell_delimiter = "#%%"
+nnoremap <buffer> <localleader>% :%g/#%%/d<CR>
+nmap <buffer> <localleader><leader> <Plug>SlimeSendCell}
+vmap <buffer> <localleader><leader> <Plug>SlimeRegionSend
 nmap <buffer> <localleader>tt <Plug>SlimeConfig
+nnoremap <buffer> <localleader><localleader> :w<CR>:let @+="\%run " . @%<CR>:!tmux send -t 1 '\%paste' Enter<CR><C-L>
 
 " Object browsing
-nnoremap <buffer> <localleader>O :call term_sendkeys(bufnr("Python"), "%whos\<lt>CR>")<CR>
-nnoremap <buffer> <localleader>P "ayiw:exe 'call term_sendkeys(bufnr("Python"), "print(' . @a . ')\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>D "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%debug\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>R "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%rerun\<lt>CR>")'<CR>
-nnoremap <buffer> <localleader>T "ayiw:exe 'call term_sendkeys(bufnr("Python"), "%timeit ' . @a . '\<lt>CR>")'<CR>
-" Pythonun file in R
-nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufnr("Python"), "%run ' . @% . '\<lt>CR>")'<CR>
+nnoremap <buffer> <localleader>O :!tmux send -t 1 '\%whos' Enter<CR><C-L>
+nnoremap <buffer> <localleader>P "ayiw:exe "!tmux send -t -1 'print(" . @a . ")' Enter"<CR><C-L>
+nnoremap <buffer> <localleader>D :!tmux send -t 1 '\%debug' Enter<CR><C-L>
+nnoremap <buffer> <localleader>R :!tmux send -t 1 '\%rerun' Enter<CR><C-L>
+nnoremap <buffer> <localleader>T I%timeit <ESC>"+yy:!tmux send -t 1 '\%paste' Enter<CR><C-L>u
 
 " coc.nvim - language server integration
 " This is basically VSCode integration for vim. 
@@ -25,21 +23,26 @@ nnoremap <buffer> <localleader><localleader> :w<CR>:exe 'call term_sendkeys(bufn
 let b:coc_root_patterson = ['.gitignore', '.python-version']
 " snippets
 imap <C-e> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<C-f>'
-let g:coc_snippet_prev = '<C-d>'
+let g:coc_snippet_next = '<C-d>'
+let g:coc_snippet_prev = '<C-s>'
+" Add docstring support
+let b:coc_pairs = [["'''", "'''"], ["\"\"\"", "\"\"\""]]
 " go to defintion
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black
 nmap <buffer> <localleader>f <Plug>(coc-format)
-nmap <buffer> <localleader>s :CocCommand python.sortImports<CR>
+nmap <buffer> <localleader>s :CocCommand pyright.organizeimports<CR>
 " rename variables
 nmap <buffer> <localleader>r <Plug>(coc-rename)
 " get information
 nmap <buffer> <localleader>h :call CocActionAsync('doHover')<CR>
-nmap <buffer> <localleader>i :call CocActionAsync('showSignatureHelp')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " Set venv
-nmap <buffer> <localleader>v :CocCommand python.setInterpreter<CR>
+if !empty($PYENV_VIRTUAL_ENV)
+  call coc#config('python', {
+  \   'pythonPath': $PYENV_VIRTUAL_ENV . '/bin/python'
+  \ })
+endif
 
 "Run tests using makefile in root directory
 nnoremap <buffer> <localleader>t :w ! make test<CR>

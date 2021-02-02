@@ -1,16 +1,48 @@
-#!/bin/fish
+#!/bin/zsh
 
-# A script for updating my utilities
-# To come - optional pyenv pip update
+cd /home/rbpatt2019/Projects/dotfiles
+
+LOCAL_V=$(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json |
+jq '.version' |
+tr -d '"v')
+
+REMOTE_V=$(curl --silent "https://api.github.com/repos/neoclide/coc.nvim/releases/latest" |
+jq '.tag_name' |
+tr -d '"v')
+
+sudo apt update
+sudo apt full-upgrade
+sudo apt autoremove
+
+git submodule update --remote --merge 
+git add .
+git commit -m 'Update Submodules'
+
+if [[ ${REMOTE_V} != ${LOCAL_V} ]]
+then
+        rm -rf vim/pack/rbpatt2019/start/coc.nvim-release
+        curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz |
+        tar xzfv - -C vim/pack/rbpatt2019/start/
+else
+        echo "coc.nvim is up-to-date"
+fi
+vim -c "CocUpdateSync|q"
 
 pyenv update
-fisher
-vim +PlugUpdate +qall
-Rscript ~/dotfiles/update_languageserver.R
-poetry self:update
-yay -Syu
-cd ~/dotfiles
-git add .
-git commit -m "System update"
-git push
+poetry self update
+
+pipx upgrade-all
+
+rustup update
+cargo install-update -a
+
+cd -
+
+cd ~/.renv
+git pull --ff
+
+cd -
+
+cd ~/.fzf && git pull && ./install
+
 cd -

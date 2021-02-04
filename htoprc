@@ -24,6 +24,6 @@ color_scheme=6
 enable_mouse=0
 delay=15
 left_meters=AllCPUs2 Blank Memory Swap
-left_meter_modes=2 2 1 1
+left_meter_modes=1 2 1 1
 right_meters=Battery Uptime LoadAverage Tasks Blank Memory Swap
 right_meter_modes=1 2 2 2 2 2 2

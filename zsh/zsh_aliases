@@ -12,6 +12,8 @@ alias w3m="w3m -no-mouse -graph"
 alias la="exa -ahlF"
 alias lt="exa -ahlFr --sort time"
 alias lg="exa -ahlF --git --git-ignore"
+alias ll="exa -hlF"
+
 alias dot="cd /home/rbpatt2019/Projects/dotfiles"
 alias work="tmuxinator work"
 alias camb="tmuxinator camb"

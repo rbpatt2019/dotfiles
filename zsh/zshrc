@@ -66,3 +66,5 @@ export WWW_HOME="google.com"
 
 # Rust
 path+=("$HOME/.cargo/bin")
+
+source /home/rbpatt2019/.config/broot/launcher/bash/br

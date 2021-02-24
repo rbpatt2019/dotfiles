@@ -49,3 +49,6 @@
 [submodule "tmux/tmux-continuum"]
 	path = tmux/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/tmux-online-status"]
+	path = tmux/tmux-online-status
+	url = https://github.com/tmux-plugins/tmux-online-status

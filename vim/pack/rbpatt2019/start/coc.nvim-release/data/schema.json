@@ -800,6 +800,19 @@
         "type": "string"
       }
     },
+    "workspace.bottomUpFiletypes": {
+      "type": "array",
+      "default": [],
+      "description": "Filetypes that should have workspace folder should resolved from base directory of file.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "workspace.workspaceFolderCheckCwd": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the cwd directory should be checked first when resolving workspace folder."
+    },
     "list.indicator": {
       "type": "string",
       "default": ">",
@@ -909,7 +922,7 @@
     "list.source.symbols.excludes": {
       "type": "array",
       "default": [],
-      "description": "Patterns of mimimatch for filepath to execlude from symbols list.",
+      "description": "Patterns of minimatch for filepath to execlude from symbols list.",
       "items": {
         "type": "string"
       }
@@ -1007,11 +1020,6 @@
         "type": "string"
       }
     },
-    "coc.preferences.formatOnInsertLeave": {
-      "type": "boolean",
-      "description": "Trigger format on type when insert leave by send \n to the server.",
-      "default": false
-    },
     "coc.preferences.enableFloatHighlight": {
       "type": "boolean",
       "description": "Enable highlight for floating window.",
@@ -1033,7 +1041,7 @@
     "coc.preferences.jumpCommand": {
       "type": "string",
       "description": "Command used for location jump, like goto definition, goto references etc.",
-      "enum": ["edit", "split", "vsplit", "tabe", "drop", "tab drop"],
+      "enum": ["edit", "split", "vsplit", "tabe", "drop", "tab drop", "pedit"],
       "default": "edit"
     },
     "coc.preferences.messageLevel": {
@@ -1214,4 +1222,3 @@
     }
   }
 }
-

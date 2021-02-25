@@ -31,36 +31,6 @@ function! coc#util#api_version() abort
   return s:vim_api_version
 endfunction
 
-function! coc#util#has_float()
-  echohl Error | echon 'coc#util#has_float is deprecated, use coc#float#has_float instead'  | echohl None
-  return coc#float#has_float()
-endfunction
-
-function! coc#util#float_hide()
-  echohl Error | echon 'coc#util#float_hide is deprecated, use coc#float#close_all instead' | echohl None
-  call coc#float#close_all()
-endfunction
-
-function! coc#util#float_jump()
-  echohl Error | echon 'coc#util#float_jump is deprecated, use coc#float#jump instead' | echohl None
-endfunction
-
-" close all float/popup window
-function! coc#util#close_floats() abort
-  echohl WarningMsg | echon 'coc#util#close_floats is deprecated, use coc#float#close_all instead'  | echohl None
-  call coc#float#close_all()
-endfunction
-
-function! coc#util#close_win(id)
-  echohl WarningMsg | echon 'coc#util#close_win is deprecated, use coc#float#close instead'  | echohl None
-  call coc#float#close(a:id)
-endfunction
-
-function! coc#util#float_scroll(forward)
-  echohl WarningMsg | echon 'coc#util#close_win is deprecated, use coc#float#scroll instead'  | echohl None
-  call coc#float#scroll(a:forward)
-endfunction
-
 " get cursor position
 function! coc#util#cursor()
   return [line('.') - 1, strchars(strpart(getline('.'), 0, col('.') - 1))]
@@ -128,7 +98,7 @@ function! coc#util#job_command()
     return
   endif
   if !filereadable(s:root.'/build/index.js')
-    echohl Error | echom '[coc.nvim] build/index.js not found, please compile the code by webpack' | echohl None
+    echohl Error | echom '[coc.nvim] build/index.js not found, please compile the code by esbuild.' | echohl None
     return
   endif
   return [node] + get(g:, 'coc_node_args', ['--no-warnings']) + [s:root.'/build/index.js']
@@ -152,13 +122,21 @@ function! coc#util#execute(cmd)
 endfunction
 
 function! coc#util#jump(cmd, filepath, ...) abort
-  silent! normal! m'
+  if a:cmd != 'pedit'
+    silent! normal! m'
+  endif
   let path = a:filepath
   if (has('win32unix'))
     let path = substitute(a:filepath, '\v\\', '/', 'g')
   endif
   let file = fnamemodify(path, ":~:.")
-  exe a:cmd.' '.fnameescape(file)
+  if a:cmd == 'pedit'
+    let extra = empty(get(a:, 1, [])) ? '' : '+'.(a:1[0] + 1)
+    exe 'pedit '.extra.' '.fnameescape(file)
+    return
+  else
+    exe a:cmd.' '.fnameescape(file)
+  endif
   if !empty(get(a:, 1, []))
     let line = getline(a:1[0] + 1)
     " TODO need to use utf16 here

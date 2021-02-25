@@ -550,6 +550,8 @@ function! coc#float#create_prompt_win(title, default, opts) abort
     exe 'nnoremap <silent><buffer> <esc> :call coc#float#close('.winid.')<CR>'
     exe 'inoremap <silent><expr><nowait><buffer> <cr> "\<C-r>=coc#float#prompt_insert(getline(''.''))\<cr>\<esc>"'
     call feedkeys('A', 'in')
+  else
+    call setbufvar(bufnr, '&termwinkey', '<C-\>')
   endif
   return [bufnr, winid]
 endfunction
@@ -842,11 +844,11 @@ function! coc#float#get_config_cursor(lines, config) abort
   if vh <= 0
     return v:null
   endif
-  let maxWidth = coc#helper#min(get(a:config, 'maxWidth', 80), &columns - 1)
+  let maxWidth = coc#helper#min(get(a:config, 'maxWidth', &columns - 1), &columns - 1)
   if maxWidth < 3
     return v:null
   endif
-  let maxHeight = coc#helper#min(get(a:config, 'maxHeight', 80), vh)
+  let maxHeight = coc#helper#min(get(a:config, 'maxHeight', vh), vh)
   let ch = 0
   let width = coc#helper#min(40, strdisplaywidth(title)) + 3
   for line in a:lines

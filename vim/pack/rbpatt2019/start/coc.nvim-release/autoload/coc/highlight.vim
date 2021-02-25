@@ -100,7 +100,8 @@ endfunction
 " }
 function! coc#highlight#highlight_lines(winid, blocks) abort
   let currwin = win_getid()
-  if has('nvim') && currwin != a:winid
+  let switch = has('nvim') && currwin != a:winid
+  if switch
     noa call nvim_set_current_win(a:winid)
   endif
   let defined = []
@@ -113,16 +114,24 @@ function! coc#highlight#highlight_lines(winid, blocks) abort
     if !empty(hlGroup)
       call s:execute(a:winid, 'syntax region '.hlGroup.' start=/\%'.start.'l/ end=/\%'.end.'l/')
     else
-      let filetype = matchstr(filetype, '\v[^.]*')
+      let filetype = matchstr(filetype, '\v^\w+')
+      if empty(filetype) || index(get(g:, 'coc_markdown_disabled_languages', []), filetype) != -1
+        continue
+      endif
       if index(defined, filetype) == -1
         call s:execute(a:winid, 'syntax include @'.toupper(filetype).' syntax/'.filetype.'.vim')
+        if has('nvim')
+          unlet! b:current_syntax
+        elseif exists('*win_execute')
+          call win_execute(a:winid, 'unlet! b:current_syntax')
+        endif
         call add(defined, filetype)
       endif
       call s:execute(a:winid, 'syntax region CodeBlock'.region_id.' start=/\%'.start.'l/ end=/\%'.end.'l/ contains=@'.toupper(filetype))
       let region_id = region_id + 1
     endif
   endfor
-  if has('nvim')
+  if switch
     noa call nvim_set_current_win(currwin)
   endif
 endfunction

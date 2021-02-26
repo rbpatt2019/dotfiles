@@ -67,4 +67,26 @@ export WWW_HOME="google.com"
 # Rust
 path+=("$HOME/.cargo/bin")
 
+# broot bit
 source /home/rbpatt2019/.config/broot/launcher/bash/br
+
+# because you should be in a tmux session, and I'm lazy
+if [[ -z $TMUX ]] && [[ ${UID} -ne 0 ]]
+then
+        tmux list-session
+        if [[ $? -eq 0 ]]
+        then
+                echo ""
+                read "name?Attach to session: "
+                tmux attach-session -t $name > /dev/null 2>&1
+                while [[ $? -ne 0 ]]
+                do
+                        echo ""
+                        echo "Not a valid sessison!"
+                        read "name?Attach to session: "
+                        tmux attach-session -t $name
+                done
+        else
+                tmux new-session
+        fi
+fi

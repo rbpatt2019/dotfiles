@@ -61,9 +61,8 @@ git_current_release()
 gw()
 {
         local files=${1:-\.}
-        local msg=${2:-"Files altered"}
         git add "$files" &&
-        git commit "$files" -m "$msg"
+        git commit "$files"
 }
 
 l.()

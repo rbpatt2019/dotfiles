@@ -10,9 +10,8 @@ REMOTE_V=$(curl --silent "https://api.github.com/repos/neoclide/coc.nvim/release
 jq '.tag_name' |
 tr -d '"v')
 
-sudo apt update
-sudo apt full-upgrade
-sudo apt autoremove
+brew update
+brew upgrade
 
 git submodule update --remote --merge 
 git add .
@@ -40,9 +39,5 @@ cd -
 
 cd ~/.renv
 git pull --ff
-
-cd -
-
-cd ~/.fzf && git pull && ./install
 
 cd -

@@ -1,7 +1,4 @@
-alias graphic="sudo service lightdm start"
-alias text="sudo service lightdm stop"
 alias fix="source $HOME/Projects/dotfiles/zsh/tty.sh"
-alias q="qalc"
 alias s="source ~/.zshrc"
 alias v="vim"
 alias m='make'
@@ -14,7 +11,7 @@ alias lt="exa -ahlFr --sort time"
 alias lg="exa -ahlF --git --git-ignore"
 alias ll="exa -hlF"
 
-alias dot="cd /home/rbpatt2019/Projects/dotfiles"
+alias dot="cd $HOME/Projects/dotfiles"
 alias work="tmuxinator work"
 alias camb="tmuxinator camb"
 
@@ -34,16 +31,13 @@ alias gl="git log --reverse -10"
 alias gm="git mv"
 alias gb="git branch"
 alias gp="git push"
-alias gr="git reset"
+alias gr="git restore"
 alias gs="git status -sb"
 alias gt="git tag"
 alias gv="git checkout"
 alias gx="git rm"
 alias gh="git stash"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
-
-alias pipes="pipes.sh -R -t 1 -p 3 -s 12 -r 3000 -c 9 -c 13 -c 1 -c 2 -c 3 -c 4 -c 5 -c 6 && fix"
-alias advice="fortune -s | cowsay -f tux"
 
 alias -g G="| rg"
 alias -g L="&& ls"
@@ -85,12 +79,6 @@ mkcd()
 {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
-}
-
-bwcp()
-{
-        local dir=${2:-\.}
-        scp helix.nih.gov:/data/pattersonrb/"$1" "$dir"
 }
 
 colours()

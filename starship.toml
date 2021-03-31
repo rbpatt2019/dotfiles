@@ -47,11 +47,6 @@ format = " on [$symbol$branch]($style)"
 
 [git_status]
 style = "red"
-ahead = "^"
-behind = "&"
-diverged = "~"
-renamed = ">"
-deleted = "X"
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [package]

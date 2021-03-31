@@ -4,12 +4,12 @@
 [core]
 	editor = vim
 	compression = 0
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-[hub]
-	protocol = https
-[http]
-	postBuffer = 500M
-	maxRequestBuffer = 100M
 [commit]
-	template = /home/rbpatt2019/Projects/dotfiles/git_config/gitmessage
+	template = /Users/rbpatt2019/Projects/dotfiles/git_config/gitmessage
+# Enforce SSH
+[url "ssh://git@github.com/"]
+	  insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+	  insteadOf = https://gitlab.com/
+[url "ssh://git@bitbucket.org/"]
+	  insteadOf = https://bitbucket.org/

@@ -12,4 +12,4 @@
 	postBuffer = 500M
 	maxRequestBuffer = 100M
 [commit]
-	template = /home/rbpatt2019/Projects/dotfiles/gitmessage
+	template = /home/rbpatt2019/Projects/dotfiles/git_config/gitmessage

@@ -303,7 +303,7 @@ background_opacity: 1.0
 #winpty_backend: false
 
 # Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+alt_send_esc: false
 
 #mouse:
   # Click settings

@@ -1,4 +1,3 @@
-alias fix="source $HOME/Projects/dotfiles/zsh/tty.sh"
 alias s="source ~/.zshrc"
 alias v="vim"
 alias m='make'

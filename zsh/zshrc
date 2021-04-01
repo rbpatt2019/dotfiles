@@ -26,7 +26,7 @@ export BAT_THEME="Solarized (dark)"
 path+=("/home/rbpatt2019/.local/bin")
 autoload -U bashcompinit
 bashcompinit
-eval "$(register-python-argcomplete pipx)"
+eval "$(/Users/rbpatt2019/.pyenv/versions/3.8.8/bin/register-python-argcomplete pipx)"
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -55,14 +55,20 @@ if command -v renv 1>/dev/null 2>&1; then
 fi
 
 # starship bits
-eval "$(starship init zsh)"
+eval "$(/opt/local/bin/starship init zsh)"
 export MODE_INDICATOR=""
 
 # w3m setting
 export WWW_HOME="google.com"
 
+# Created by `userpath` on 2021-04-01 09:24:18
+export PATH="$PATH:/Users/rbpatt2019/.local/bin"
+
 # Rust
 path+=("$HOME/.cargo/bin")
+
+path+=("/opt/local/bin")
+path+=("/opt/local/sbin")
 
 # because you should be in a tmux session, and I'm lazy
 source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh

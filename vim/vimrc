@@ -1,4 +1,4 @@
-set rtp+=/home/rbpatt2019/.fzf
+set rtp+=~/.fzf
 
 let mapleader = ' '
 let maplocalleader = ','

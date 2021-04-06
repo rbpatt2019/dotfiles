@@ -1,5 +1,5 @@
 alias s="source ~/.zshrc"
-alias v="vim"
+alias v="/opt/local/bin/vim"
 alias m='make'
 alias fd='fdfind'
 alias rmrf="rm -rf"

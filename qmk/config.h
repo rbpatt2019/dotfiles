@@ -28,16 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* OSM set up */
 #define ONESHOT_TAP_TOGGLE 2
-#define ONESHOT_TIMEOUT 2000
-
-/* Mouse key set up */
-#define MK_3_SPEED
-#define MK_C_OFFSET_0 10
-#define MK_C_INTERVAL_0 16
-#define MK_C_OFFSET_1 15
-#define MK_C_INTERVAL_1 16
-#define MK_C_OFFSET_2 20
-#define MK_C_INTERVAL_2 16
+#define ONESHOT_TIMEOUT 1000
 
 #undef RGBLED_NUM
 #define RGBLED_NUM 14

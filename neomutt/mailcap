@@ -1,10 +1,3 @@
 # HTML
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 text/plain; vim %s
-
-#PDFs
-application/pdf; /usr/bin/zathura %s pdf
-
-#Images
-image/png; /usr/bin/feh %s
-image/jpeg; /usr/bin/feh %s

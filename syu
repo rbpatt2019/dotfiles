@@ -10,7 +10,12 @@ REMOTE_V=$(curl --silent "https://api.github.com/repos/neoclide/coc.nvim/release
 jq '.tag_name' |
 tr -d '"v')
 
-sudo port selfupdate && sudo port upgrade outdated && sudo port uninstall leaves && sudo port clean
+sudo port selfupdate &&
+        sudo port upgrade outdated &&
+        sudo port uninstall leaves &&
+        sudo port clean requested &&
+        sudo port reclaim
+
 
 git submodule update --remote --merge 
 git add .

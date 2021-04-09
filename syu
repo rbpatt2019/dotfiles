@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-cd /home/rbpatt2019/Projects/dotfiles
+cd $HOME/Projects/dotfiles
 
 LOCAL_V=$(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json |
 jq '.version' |

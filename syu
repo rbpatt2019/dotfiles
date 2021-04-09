@@ -40,8 +40,3 @@ rustup update
 cargo install-update -a
 
 cd -
-
-cd ~/.renv
-git pull --ff
-
-cd -

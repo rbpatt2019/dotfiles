@@ -61,7 +61,7 @@ format = " at [$time]($style)"
 
 [python]
 symbol = ""
-pyenv_version_name = false
+pyenv_version_name = true
 pyenv_prefix = ""
 style = "green"
 

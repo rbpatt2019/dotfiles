@@ -1,7 +1,6 @@
 alias s="source ~/.zshrc"
 alias v="/opt/local/bin/vim"
 alias m='make'
-alias fd='fdfind'
 alias rmrf="rm -rf"
 alias w3m="w3m -no-mouse -graph"
 
@@ -40,8 +39,10 @@ alias gu="git submodule update --remote --merge && git commit -m 'Update submodu
 
 alias -g G="| rg"
 alias -g L="&& ls"
-alias -g X="| xargs"
-
+alias -g T="| ts '%Y%m%d-%.T'"
+alias -g S="| sponge"
+alias -g P="| pee"
+alias -g NI="| ifne"
 
 git_current_release()
 {

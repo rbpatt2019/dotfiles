@@ -72,3 +72,4 @@ path+=("/opt/local/sbin")
 
 # because you should be in a tmux session, and I'm lazy
 source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh
+

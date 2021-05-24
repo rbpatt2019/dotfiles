@@ -4,6 +4,7 @@ let mapleader = ' '
 let maplocalleader = ','
 filetype on
 filetype plugin on
+filetype plugin indent on
 set splitright
 set splitbelow
 set encoding=utf8

@@ -30,7 +30,7 @@
     "python.linting.mypyEnabled": false,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true, 
-    "python.linting.flake8Path": "flake8",
+    "python.linting.flake8Path": "pflake8",
     "python.pythonPath": "python",
     "python.venvPath": "",
     "markdownlint.onOpen": true,

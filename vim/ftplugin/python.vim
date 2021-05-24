@@ -12,8 +12,7 @@ nnoremap <buffer> <localleader><localleader> :w<CR>:let @+="\%run " . @%<CR>:!tm
 " Object browsing
 nnoremap <buffer> <localleader>O :!tmux send -t 1 '\%whos' Enter<CR><C-L>
 nnoremap <buffer> <localleader>P "ayiw:exe "!tmux send -t -1 'print(" . @a . ")' Enter"<CR><C-L>
-nnoremap <buffer> <localleader>D :!tmux send -t 1 '\%debug' Enter<CR><C-L>
-nnoremap <buffer> <localleader>R :!tmux send -t 1 '\%rerun' Enter<CR><C-L>
+nnoremap <buffer> <localleader>D :CocCommand pydocstring.runFile<CR>
 nnoremap <buffer> <localleader>T I%timeit <ESC>"+yy:!tmux send -t 1 '\%paste' Enter<CR><C-L>u
 
 " coc.nvim - language server integration

@@ -33,6 +33,8 @@
     "python.linting.flake8Path": "pflake8",
     "python.pythonPath": "python",
     "python.venvPath": "",
+    "pydocstring.enable": true,
+    "pydocstring.formatter": "numpy",
     "markdownlint.onOpen": true,
     "markdownlint.onChange": true,
     "markdownlint.onSave": true,

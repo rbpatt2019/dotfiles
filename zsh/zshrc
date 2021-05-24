@@ -33,12 +33,7 @@ eval "$(/Users/rbpatt2019/.pyenv/versions/3.8.8/bin/register-python-argcomplete 
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='bat --plain -r 1:20 -P --color always {}'"
 export FZF_DEFAULT_COMMAND='fdfind --type f --type d'
 
-# Pyenv bits 
-export PYENV_ROOT="$HOME/.pyenv"
-path+=("$PYENV_ROOT/bin")
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then 
 eval "$(pyenv virtualenv-init -)"
 fi
@@ -73,3 +68,5 @@ path+=("/opt/local/sbin")
 # because you should be in a tmux session, and I'm lazy
 source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh
 
+
+export PATH="$HOME/.poetry/bin:$PATH"

@@ -4,3 +4,4 @@ vim/autoload/
 vim/plugged/
 w3m/cookie
 w3m/history
+w3m/*.gz

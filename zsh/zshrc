@@ -26,7 +26,7 @@ export BAT_THEME="Solarized (dark)"
 path+=("/home/rbpatt2019/.local/bin")
 autoload -U bashcompinit
 bashcompinit
-eval "$(/Users/rbpatt2019/.pyenv/versions/3.8.8/bin/register-python-argcomplete pipx)"
+eval "$(/Users/rbpatt2019/.pyenv/versions/3.9.2/bin/register-python-argcomplete pipx)"
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

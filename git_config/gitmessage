@@ -1,24 +1,22 @@
-# Title: Summary, imperative, start upper case, don't end with a period
+# Header: type(scope): subject
+# Allowed scope: feat, fix, docs, style, refactor, test, chore
+# revert: Header of revereted commit
+# Don't capitalise, no period
 # No more than 50 chars. #### 50 chars is here: #
 
 # Blank line...
 
-# Body: Explain *what* and *why* (not *how*).
+# Body: Use imperative, present tense.
+# Include motivation, contrast with previous behaviour
 # Wrap at 72 chars. ################################## which is here: #
 
 # Blank line...
 
+# Footer:
+# If breaking, begin "BREAKING CHANGE: " and describe justification
+# and migration notes
 # References to issue numbers, like so...
 # Resolves: #154
 # See Also: #168, #67
 
-# How to Write a Git Commit Message:
-# https://chris.beams.io/posts/git-commit/
-#
-# 1.Separate subject from body with a blank line
-# 2. Limit the subject line to 50 characters
-# 3. Capitalize the subject line
-# 4. Do not end the subject line with a period
-# 5. Use the imperative mood in the subject line
-# 6. Wrap the body at 72 characters
-# 7. Use the body to explain what and why vs. how
+# End of Message

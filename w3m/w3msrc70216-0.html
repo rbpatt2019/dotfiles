@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Depend on another workflow - GitHub Actions - GitHub Support Community</title>
+    <meta name="description" content="Is it possible for a workflow to depend on another workflow?   We currently have two workflows. `test` and `deploy`.   Currently, the `test` workflow is responsible for testing the code base. The `deploy` workflow is res&amp;hellip;">
+    <meta name="generator" content="Discourse 2.7.0.beta9 - https://github.com/discourse/discourse version 4a2912233c2871e7607648fdf03dd4ae68c3dc67">
+<link rel="icon" type="image/png" href="https://aws1.discourse-cdn.com/github/optimized/2X/2/25b1992f021c82f730efb5822ae795665d2e20d7_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://aws1.discourse-cdn.com/github/optimized/2X/d/d41676c9bf9fbaa8edbe76ef34744f38089d0474_2_180x180.svg">
+<meta name="theme-color" content="#24292e">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link rel="canonical" href="https://github.community/t/depend-on-another-workflow/16311" />
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","url":"https://github.community","potentialAction":{"@type":"SearchAction","target":"https://github.community/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="search" type="application/opensearchdescription+xml" href="https://github.community/opensearch.xml" title="GitHub Support Community Search">
+
+      <link href="https://sjc1.discourse-cdn.com/github/stylesheets/desktop_4_41ef6a0268fde870a2647eca292f1c1ad6d10c9f.css?__ws=github.community" media="all" rel="stylesheet" data-target="desktop" data-theme-id="5"/>
+      <link href="https://sjc1.discourse-cdn.com/github/stylesheets/desktop_theme_5_67b7e492363a429b3699a604287a4f791270b44d.css?__ws=github.community" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="5"/>
+<link href="https://sjc1.discourse-cdn.com/github/stylesheets/desktop_theme_8_aff1e03dda9cdee859b820b235dd80c7c9f469ed.css?__ws=github.community" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="8"/>
+<link href="https://sjc1.discourse-cdn.com/github/stylesheets/desktop_theme_15_1fb6d8f78c2a54e85df67d3ebda0e141e06d7c29.css?__ws=github.community" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="15"/>
+    <script src="https://sjc1.discourse-cdn.com/github/theme-javascripts/ddd9b6d873f809ca7f71b1b4bc14c130d81e7d23.js?__ws=github.community"></script>
+<meta name="google-site-verification" content="fFTNrVrn__A_rjfdhfxSfDu_XHJQpC9AY7Xix11dbqs">
+<script src="https://sjc1.discourse-cdn.com/github/theme-javascripts/c542f1016fae28ddb54e2b60deed0dd23e1ab688.js?__ws=github.community"></script>
+
+<script src="https://sjc1.discourse-cdn.com/github/theme-javascripts/aeac50436ef65c40b470e38382c0ab544b1fa17b.js?__ws=github.community"></script>
+
+<script src="https://sjc1.discourse-cdn.com/github/theme-javascripts/963cf380df91e2cf762bbb4d12a3aa120e8342c6.js?__ws=github.community"></script>
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of &#39;Depend on another workflow&#39;" href="https://github.community/t/depend-on-another-workflow/16311.rss" />
+    <meta property="og:site_name" content="GitHub Support Community" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://aws1.discourse-cdn.com/github/original/2X/d/d41676c9bf9fbaa8edbe76ef34744f38089d0474.svg" />
+<meta property="og:image" content="https://aws1.discourse-cdn.com/github/original/2X/d/d41676c9bf9fbaa8edbe76ef34744f38089d0474.svg" />
+<meta property="og:url" content="https://github.community/t/depend-on-another-workflow/16311" />
+<meta name="twitter:url" content="https://github.community/t/depend-on-another-workflow/16311" />
+<meta property="og:title" content="Depend on another workflow" />
+<meta name="twitter:title" content="Depend on another workflow" />
+<meta property="og:description" content="Is it possible for a workflow to depend on another workflow?  We currently have two workflows. test and deploy.  Currently, the test workflow is responsible for testing the code base. The deploy workflow is responsible for testing, building and deploying the code base.  The test workflow runs on any push to all branches.  The deploy workflow only runs from a push on the master branch.  The current setup has two negative side effects. 1) we have to duplicate the test steps in both the test and de..." />
+<meta name="twitter:description" content="Is it possible for a workflow to depend on another workflow?  We currently have two workflows. test and deploy.  Currently, the test workflow is responsible for testing the code base. The deploy workflow is responsible for testing, building and deploying the code base.  The test workflow runs on any push to all branches.  The deploy workflow only runs from a push on the master branch.  The current setup has two negative side effects. 1) we have to duplicate the test steps in both the test and de..." />
+<meta name="twitter:label1" value="Reading time" />
+<meta name="twitter:data1" value="3 mins 🕑" />
+<meta name="twitter:label2" value="Likes" />
+<meta name="twitter:data2" value="81 ❤" />
+<meta property="article:published_time" content="2019-09-20T17:16:12+00:00" />
+<meta property="og:ignore_canonical" content="true" />
+
+
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"Depend on another workflow","mainEntity":{"@type":"Question","name":"Depend on another workflow","text":"Is it possible for a workflow to depend on another workflow?\n\nWe currently have two workflows. test and deploy.\n\nCurrently, the test workflow is responsible for testing the code base. The deploy workflow is responsible for testing, building and deploying the code base.\n\nThe test workflow runs on any&hellip;","upvoteCount":32,"answerCount":0,"dateCreated":"2019-09-20T17:16:12.154Z","author":{"@type":"Person","name":"Anthony Smith"}}}</script>
+  </head>
+  <body class="crawler">
+    
+    <header>
+      <a href="/">
+          <img src="https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg" alt="GitHub Support Community" id="site-logo" style="max-width: 150px;">
+      </a>
+    </header>
+    <div id="main-outlet" class="wrap">
+        <div id="topic-title">
+    <h1>
+      <a href="/t/depend-on-another-workflow/16311">Depend on another workflow</a>
+    </h1>
+
+      <div class="topic-category" itemscope itemtype="http://schema.org/BreadcrumbList">
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="https://github.community/c/code-to-cloud/52" class="badge-wrapper bullet" itemprop="item">
+              <span class='badge-category-bg' style='background-color: #6a737d'></span>
+              <span class='badge-category clear-badge'>
+                <span class='category-name' itemprop='name'>Code to Cloud</span>
+              </span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </span>
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="https://github.community/c/code-to-cloud/github-actions/41" class="badge-wrapper bullet" itemprop="item">
+              <span class='badge-category-bg' style='background-color: #2188ff'></span>
+              <span class='badge-category clear-badge'>
+                <span class='category-name' itemprop='name'>GitHub Actions</span>
+              </span>
+            </a>
+            <meta itemprop="position" content="2" />
+          </span>
+      </div>
+
+  </div>
+
+  
+
+
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/anthonator'><span itemprop='name'>anthonator</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-09-20T17:16:12Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T05:38:03Z' class='post-time'>
+                May 23, 2020,  5:38am
+              </time>
+          <span itemprop='position'>#1</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Is it possible for a workflow to depend on another workflow?</p>
+<p>We currently have two workflows. <code>test</code> and <code>deploy</code>.</p>
+<p>Currently, the <code>test</code> workflow is responsible for testing the code base. The <code>deploy</code> workflow is responsible for testing, building and deploying the code base.</p>
+<p>The <code>test</code> workflow runs on any push to all branches.</p>
+<p>The <code>deploy</code> workflow only runs from a push on the <code>master</code> branch.</p>
+<p>The current setup has two negative side effects. 1) we have to duplicate the test steps in both the <code>test</code> and <code>deploy</code> workflow. 2) when pushing to <code>master</code> the <code>test</code> steps get run twice. Once in the <code>test</code> workflow and once in the <code>deploy</code> workflow.</p>
+<p>If would be great if there was a way to only run the <code>deploy</code> workflow if the <code>test</code> workflow was successful. Eliminating the requirement of duplicating steps between workflows and testing the code base twice.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+          <meta itemprop='keywords' content=''>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="32" />
+           <span class='post-likes'>32 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/seanmiddleditch'><span itemprop='name'>seanmiddleditch</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-09-21T19:32:22Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#2</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I believe the intent in GH Actions is to use _jobs_ for this purpose rather than workflows.</p>
+<p>e.g., one ci.yml workflow that contains jobs for building, testing, deploying, etc.</p>
+<p>To that end, it would be great if jobs could be factored out into stand-alone files as parameterized templates.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="5" />
+           <span class='post-likes'>5 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/oldskool'><span itemprop='name'>oldskool</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-09-23T12:59:46Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#3</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Yes, this is possible. Assuming that you have enabled protection settings on your master branch to only allow merging pull requests whenever your CI workflow has run successful, you can create a secondary workflow that only triggers when the pull request is merged (because by then you already know the tests succeeded).</p>
+<p>So you could have a CI workflow like:</p>
+<pre><code>---
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - &lt;YOUR TEST STEPS HERE&gt;
+...
+</code></pre>
+<p>Then, create a secondary workflow (let’s call it deploy) that only runs when the PR was merged. By default, <a href="https://help.github.com/en/articles/events-that-trigger-workflows#pull-request-event-pull_request" rel="nofollow noopener">actions are not run when a PR is closed</a>, unless you specifically request this with the <code>types</code> condition in your <code>on</code> clause, so the CI workflow will not trigger, but this one will:</p>
+<pre><code>---
+name: Deploy
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+if: github.event.pull_request.merged
+
+    steps:
+      - name: checkout
+        if: github.event.pull_request.merged
+        uses: actions/checkout@v1
+with:
+ref: master
+
+- &lt;YOUR DEPLOY LOGIC HERE&gt;
+</code></pre>
+<p>The:</p>
+<pre><code>if: github.event.pull_request.merged
+</code></pre>
+<p>condition on the job makes sure that it is only run when the PR was actually merged (rather then being closed without merging).</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="17" />
+           <span class='post-likes'>17 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="2" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/fabioluporini'><span itemprop='name'>fabioluporini</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-02-03T10:55:45Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#4</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Is the latter <code>if</code> (the one under <code>steps</code>) actually necessary?</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/mindsers'><span itemprop='name'>mindsers</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-02-12T16:32:02Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#5</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Yes, because you can close a PR without merging it I guess</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/ianaz'><span itemprop='name'>ianaz</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-04-30T14:21:34Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#6</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>This would require the second workflow to re-run build + all tests. I’d need the artifacts generated by the previous workflow and only deploy there, not having to run the whole thing again</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="3" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/milesrichardson'><span itemprop='name'>milesrichardson</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-05-01T00:59:18Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#7</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I am also looking for this. Would be nice if we could use <code>on</code> in a specific *job* (as opposed to the whole workflow), so e.g. the deploy job could run after the build job, but only when it was a merge to master.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/milesrichardson'><span itemprop='name'>milesrichardson</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-05-01T01:02:18Z'>
+              <time itemprop='dateModified' datetime='2020-05-23T06:10:05Z' class='post-time'>
+                May 23, 2020,  6:10am
+              </time>
+          <span itemprop='position'>#8</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p><a class="mention" href="/u/ianaz">@ianaz</a> I found this which seems to help: <a href="https://stackoverflow.com/questions/58139406/only-run-job-on-specific-branch-with-github-actions" rel="nofollow noopener">https://stackoverflow.com/questions/58139406/only-run-job-on-specific-branch-with-github-actions</a></p>
+<p>tl;dr use <code>if</code> condition in job</p>
+<pre><code>if: github.ref == 'refs/heads/master'
+</code></pre>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/gokaygurcan'><span itemprop='name'>gokaygurcan</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-07-29T09:06:04Z'>
+              <time itemprop='dateModified' datetime='2020-07-29T09:13:39Z' class='post-time'>
+                July 29, 2020,  9:13am
+              </time>
+          <span itemprop='position'>#9</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Hi <img src="https://sjc1.discourse-cdn.com/github/images/emoji/google/wave.png?v=9" title=":wave:" class="emoji" alt=":wave:"></p>
+<p>We’re in a similar situation now. I was here to ask the same question, then found this thread.</p>
+<p>We have 4 workflows:</p>
+<ul>
+<li>
+<code>commit-stage</code> (sanity-check, lint, unit-tests, coverage): runs on every commit</li>
+<li>
+<code>build-stage</code> (startup, build, preview-deployment, integration-tests, functional-tests, teardown): runs on new pull requests to master</li>
+<li>
+<code>deploy</code> (build, deploy, smoke-test): runs on every new commit to master (basically after pr’s merged)</li>
+<li>
+<code>release</code> (build, deploy): runs when there’s a new release/tag</li>
+</ul>
+<p>As you can see, every step highly depends on the previous steps to be done completely, to move forward. But since we cant use <code>needs</code> to point to another workflow, we need to duplicate most of the jobs and steps in every file, we need to add unnecessary <code>if</code>s here and there, and in the end, it’ll take a lot more effort to keep them maintained and sync.</p>
+<p>We can put them all in one workflow, that listens to commit, pull_request, release events, and use <code>needs</code> to at least make them depend on each other, but again, we need to somehow limit their scopes with <code>if</code>s and with maybe other checks.</p>
+<p>What I was thinking was, in <code>build-stage.build</code> for example, it’d be great to use something like <code>needs: [ 'commit-stage.unit-tests' ]</code> so that it goes up to the workflows folder, finds <code>commit-stage.yml</code> (part comes before <code>.</code>) then goes in there and finds <code>unit-tests</code>. Not sure if logistically this is possible (considering action workspace and all) but that’d definitely make dependencies more powerful and help with a nicer/leaner workflows.</p>
+<p>I hope this makes sense, thanks in advance!</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="23" />
+           <span class='post-likes'>23 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/OpsPita'><span itemprop='name'>OpsPita</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2020-10-11T11:55:24Z' class='post-time'>
+                October 11, 2020, 11:55am
+              </time>
+              <meta itemprop='dateModified' content='2020-10-11T11:55:24Z'>
+          <span itemprop='position'>#10</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p><a class="mention" href="/u/gokaygurcan">@gokaygurcan</a> ++ to your comment<br>
+This feature is needed when companies migrating from other CI - CD systems<br>
+Right now this is how i maintain the workflows</p>
+<p>example:</p>
+<pre><code class="lang-auto">every app repository:
+       .github/workflow/dispatch_event.yaml
+       each app repo custom payload ex:{ github.sha, github.ref ,  }
+       POST the payload to the centralized_repo
+centralized_repo_structure:
+       .github/workflow/seed.yaml
+                    - clone repository that dispatched the event
+                    - some payload checks 
+                    - start jobs-setup.sh 
+       scripts/jobs-setup.sh (Setting some flags like {"rebuild": true , "environment": [dev,stg,prod], "deploy": [true,false] })
+      and some more scripts like versionBump , build_docker, build_helm, deploy and some more.
+      those scripts all are depends on every step inside the seed.yaml
+                  
+</code></pre>
+<p>So , everything is maintained in the same file .<br>
+Some day it will be chaos to maintain it .</p>
+<p>is there any feature in future that will enable it?</p>
+<p>Thanks in advance .</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/rasmusrim'><span itemprop='name'>rasmusrim</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2020-10-20T08:37:26Z' class='post-time'>
+                October 20, 2020,  8:37am
+              </time>
+              <meta itemprop='dateModified' content='2020-10-20T08:37:26Z'>
+          <span itemprop='position'>#11</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Is it maybe possible to use some kind of sunrise hook that runs before other workflows are parsed to create the workflows? In this way the workflow files can be built on the fly right before they are parsed and run. Something like this:</p>
+<p>run: |<br>
+cat test-header &gt;&gt; test.yml<br>
+cat test-steps &gt;&gt; test.yml<br>
+cat test-footer &gt;&gt; test.yml</p>
+<p>run: |<br>
+cat deploy-header &gt;&gt; deploy.yml<br>
+cat test-steps &gt;&gt; deploy.yml<br>
+cat deploy-steps &gt;&gt; deploy.yml<br>
+cat deploy-footer &gt;&gt; deploy.yml</p>
+<p>Any thoughts?</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/rasmusrim'><span itemprop='name'>rasmusrim</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2020-10-20T08:39:48Z' class='post-time'>
+                October 20, 2020,  8:39am
+              </time>
+              <meta itemprop='dateModified' content='2020-10-20T08:39:48Z'>
+          <span itemprop='position'>#12</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>It would be possible to use for example the git tool husky to create these workflow files before pushing.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/jontreynes'><span itemprop='name'>jontreynes</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-10-27T20:30:17Z'>
+              <time itemprop='dateModified' datetime='2020-10-27T20:41:35Z' class='post-time'>
+                October 27, 2020,  8:41pm
+              </time>
+          <span itemprop='position'>#14</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p><a class="mention" href="/u/milesrichardson">@milesrichardson</a> and <a class="mention" href="/u/ianaz">@ianaz</a>,</p>
+<p>You can upload an artifact in the CI workflow and then download workflow artifact in the Deploy pipeline using these actions</p>
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/marketplace/actions/upload-a-build-artifact" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://aws1.discourse-cdn.com/github/original/2X/1/1d513fc9253d48ce13f5e38a25b51918450eaedd.png" class="thumbnail onebox-avatar" width="400" height="400">
+
+<h3><a href="https://github.com/marketplace/actions/upload-a-build-artifact" target="_blank" rel="noopener nofollow ugc">Upload a Build Artifact - GitHub Marketplace</a></h3>
+
+<p>Upload a build artifact that can be used by subsequent workflow steps</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+<br>
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/marketplace/actions/download-workflow-artifact" target="_blank" rel="noopener nofollow ugc">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://aws1.discourse-cdn.com/github/original/2X/b/bbe15e37f44f3d0e91057f08232f54cf48bfce32.png" class="thumbnail onebox-avatar" width="400" height="400">
+
+<h3><a href="https://github.com/marketplace/actions/download-workflow-artifact" target="_blank" rel="noopener nofollow ugc">Download workflow artifact - GitHub Marketplace</a></h3>
+
+<p>Download and extract an artifact associated with given workflow and commit</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>Only thing I don’t like about using this with what oldskool is proposing is that the ci artifact downloaded in the deploy on pull request merge is coming from a development branch, not master</p>
+<p>yea… looks like doing CI builds again in the deploy workflow is the way to go.</p>
+<p>or just putting CI and deploy in the same workflow using what <a class="mention" href="/u/milesrichardson">@milesrichardson</a> is proposing</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/jontreynes'><span itemprop='name'>jontreynes</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2020-10-28T18:45:17Z'>
+              <time itemprop='dateModified' datetime='2020-10-28T18:50:23Z' class='post-time'>
+                October 28, 2020,  6:50pm
+              </time>
+          <span itemprop='position'>#15</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>here’s one way I’ve done it with Terraform. Please bear with me as I’m still developing it and converting from nodejs to powershell. Nonetheless, the CI/CD workflow is working well.</p>
+<aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/jontreynes/powershell-azfunc-app/blob/20bb025855155c327b7f3650735ec3271b1cf653/.github/workflows/cd.yml" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/jontreynes/powershell-azfunc-app/blob/20bb025855155c327b7f3650735ec3271b1cf653/.github/workflows/cd.yml" target="_blank" rel="noopener nofollow ugc">jontreynes/powershell-azfunc-app/blob/20bb025855155c327b7f3650735ec3271b1cf653/.github/workflows/cd.yml</a></h4>
+<pre><code class="lang-yml">name: 'continuous_deployment'
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    # types: [closed]
+    # branches:
+    #   - master
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    env:
+      TF_ACTION_WORKING_DIR: ./terraform
+      ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+      ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+</code></pre>
+
+  This file has been truncated. <a href="https://github.com/jontreynes/powershell-azfunc-app/blob/20bb025855155c327b7f3650735ec3271b1cf653/.github/workflows/cd.yml" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>I use a wait for continuous integration to succeed check in the deploy pipeline.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/asbjornu'><span itemprop='name'>asbjornu</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2021-03-17T14:55:57Z' class='post-time'>
+                March 17, 2021,  2:55pm
+              </time>
+              <meta itemprop='dateModified' content='2021-03-17T14:55:57Z'>
+          <span itemprop='position'>#16</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>The issue with <code>jobs</code> is that they are all subject to the top-level <code>on</code> event. For complex workflows, you may want to always execute a <code>build.yml</code> workflow that performs <code>matrix</code> compilation, tests, etc. for the following events:</p>
+<pre><code class="lang-yaml">on: [push, pull_request]
+</code></pre>
+<p>And then follow up with a simpler <code>publish.yml</code> workflow that only executes on the <code>release</code> event:</p>
+<pre><code class="lang-yaml">on:
+  release:
+    types: [published]
+</code></pre>
+<p>As the <code>publish.yml</code> workflow depends on artifacts from the <code>build.yml</code> workflow, it would be very useful to be able to have a top-level <code>needs</code> property to declare this dependency in the <code>publish.yml</code> file:</p>
+<pre><code class="lang-yaml">needs: build
+</code></pre>
+<p>The <code>build.yml</code> file could then expose its <code>outputs</code>, which alongside any published artifacts would become available to any dependent workflows. This would make workflows much more modular, would cause less duplication and would require much less use of <code>if</code> statements to avoid execution of jobs for certain events.</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='GitHub, Inc.'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://aws1.discourse-cdn.com/github/original/2X/d/db7d73dd05b5dd06407d526473ad1f7b11e3966f.svg'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://github.community/u/antonlisovenko'><span itemprop='name'>antonlisovenko</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://github.community/t/depend-on-another-workflow/16311">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2021-04-06T11:07:39Z' class='post-time'>
+                April 6, 2021, 11:07am
+              </time>
+              <meta itemprop='dateModified' content='2021-04-06T11:07:39Z'>
+          <span itemprop='position'>#17</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I agree, this would be great to get and would make the CI flexible and powerful</p>
+        </div>
+
+        <meta itemprop='headline' content='Depend on another workflow'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+
+
+
+
+
+
+    </div>
+    <footer class="container wrap">
+      <nav class='crawler-nav'>
+        <ul>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/' itemprop="url">Home </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/categories' itemprop="url">Categories </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/guidelines' itemprop="url">FAQ/Guidelines </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/tos' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/privacy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+        </ul>
+      </nav>
+      <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+    </footer>
+    <div id="footer-wrapper">
+	<div class="col col-left">
+		<ul class="text-left">
+			<li class="copyright">© 2021 GitHub, Inc.</li>
+			<li><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service">Terms</a></li>
+			<li><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement">Privacy</a></li>
+			<li><a href="https://github.com/security">Security</a></li>
+			<li><a href="https://www.githubstatus.com/">Status</a></li>
+			<li><a href="https://docs.github.com/">Docs</a></li>
+		</ul>
+	</div>
+	<div class="col col-center">
+		<a href="https://github.com"><svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" class="footer-icon" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+	</div>
+	<div class="col col-right">
+		<ul class="text-right">
+			<li><a href="https://github.com/about">About</a></li>
+			<li><a href="https://github.blog">Blog</a></li>
+			<li class="ml-3"><a href="https://github.myshopify.com/">Shop</a></li>
+            		<li><a href="https://services.github.com/">Training</a></li>
+			<li><a href="https://developer.github.com/">API</a></li>
+			<li><a href="https://support.github.com">Contact GitHub</a></li>
+		</ul>
+	</div>
+</div>
+
+    
+
+
+    
+    <script src="https://sjc1.discourse-cdn.com/github/theme-javascripts/9b5b605a17bcd8ecb97abef2ea8cbe87b9ebde75.js?__ws=github.community"></script>
+  </body>
+  
+</html>

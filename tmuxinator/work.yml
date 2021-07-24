@@ -26,4 +26,4 @@ windows:
       synchronize: after
   - files:
       panes:
-        - ranger
+        - cfiles

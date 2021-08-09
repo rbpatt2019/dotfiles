@@ -26,7 +26,7 @@ export BAT_THEME="Solarized (dark)"
 path+=("/home/rbpatt2019/.local/bin")
 autoload -U bashcompinit
 bashcompinit
-eval "$(/Users/rbpatt2019/.pyenv/versions/3.9.2/bin/register-python-argcomplete pipx)"
+eval "$(/Users/rbpatt2019/.pyenv/versions/3.9.6/bin/register-python-argcomplete pipx)"
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -68,8 +68,6 @@ path+=("/opt/local/sbin")
 # because you should be in a tmux session, and I'm lazy
 source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh
 
-
-export PATH="$HOME/.poetry/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

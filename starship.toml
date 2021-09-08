@@ -77,7 +77,7 @@ style = "13"
 format = '[\($duration\)]($style)'
 
 [jobs]
-threshold = 0
+number_threshold = 1
 symbol = ""
 style = "13"
 format = '([\($number\)]($style))'

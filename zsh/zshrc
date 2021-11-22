@@ -62,6 +62,9 @@ export PATH="$PATH:/Users/rbpatt2019/.local/bin"
 # Rust
 path+=("$HOME/.cargo/bin")
 
+# Go
+path+=("$HOME/go/bin")
+
 path+=("/opt/local/bin")
 path+=("/opt/local/sbin")
 

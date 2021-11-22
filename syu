@@ -32,7 +32,6 @@ fi
 vim -c "CocUpdateSync|q"
 
 pyenv update
-poetry self update
 
 pipx upgrade-all
 

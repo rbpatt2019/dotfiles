@@ -42,5 +42,9 @@
       "line-length": false,
       "no-emphasis-as-heading": false
     },
-    "r.lsp.diagnostics": true
+    "r.lsp.diagnostics": true,
+    "go.goplsOptions": {
+      "gofumpt": true,
+      "completeUnimported": true
+    }  
 }

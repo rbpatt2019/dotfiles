@@ -37,5 +37,6 @@ pipx upgrade-all
 
 rustup update
 cargo install-update -a
+tldr --update
 
 cd -

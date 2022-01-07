@@ -39,11 +39,12 @@ alias gst="git stash"
 alias gu="git submodule update --remote --merge && git commit -m 'Update submodules'"
 
 alias -g G="| rg"
-alias -g L="&& ls"
+alias -g L="&& le"
 alias -g T="| ts '%Y%m%d-%.T'"
 alias -g S="| sponge"
 alias -g P="| pee"
 alias -g NI="| ifne"
+alias -g B="| bat -"
 
 git_current_release()
 {

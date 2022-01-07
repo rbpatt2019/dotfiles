@@ -50,7 +50,7 @@ if command -v renv 1>/dev/null 2>&1; then
 fi
 
 # starship bits
-eval "$(/opt/local/bin/starship init zsh)"
+eval "$($HOME/.cargo/bin/starship init zsh)"
 export MODE_INDICATOR=""
 
 # w3m setting

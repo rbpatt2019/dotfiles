@@ -1,0 +1,58 @@
+complete_from_path = true
+ctrlc_exit = false
+nonzero_exit_errors = true
+pivot_mode = "auto"
+prompt = "starship_prompt"
+rm_always_trash = true
+startup = [
+        "mkdir ~/.cache/starship",
+        "starship init nu | save ~/.cache/starship/init.nu",
+        "source ~/.cache/starship/init.nu",
+        "source ~/.nu_aliases",
+]
+
+[color_config]
+primitive_boolean = "yellow"
+primitive_string = "cyan"
+primitive_decimal = "purple"
+primitive_int = "purple"
+primitive_range = "purple"
+primitive_filesize = "purple"
+primitive_path = "blue"
+primitive_duration = "yellow_dimmed"
+primitive_date = "yellow_dimmed"
+separator_color = "white_dimmed"
+header_align = "c"
+header_color = "white"
+header_bold = false
+index_color = "blue_dimmed"
+leading_trailing_space_bg = "white"
+
+[line_editor]
+auto_add_history = true
+bell_style = "visible"
+color_mode = "enabled"
+completion_prompt_limit = 100
+completion_type = "circular"
+edit_mode = "vi"
+history_duplicates = "ignoreconsecutive"
+history_ignore_space = false
+keyseq_timeout_ms = 500
+max_history_size = 100000
+tab_stop = 4
+
+[textview]
+colored_output = true
+grid = false
+header = true
+line_numbers = true
+pager = "less"
+paging_mode = "QuitIfOneScreen"
+snip = true
+tab_width = 4
+term_width = "default"
+theme = "Solarized (dark)"
+true_color = true
+use_italics = true
+vcs_modification_markers = true
+wrapping_mode = "NoWrapping"

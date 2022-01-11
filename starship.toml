@@ -9,6 +9,7 @@ format = """\
         $git_status\
         $package\
         $time\
+        $custom\
         $line_break\
         $python\
         $conda\
@@ -16,6 +17,13 @@ format = """\
         $cmd_duration\
         $jobs\
         $character """
+
+[custom.nushell]
+command = "echo Nushell"
+format = " with [($output)]($style)"
+style = "12"
+when = '[ "$STARSHIP_SHELL" == "nu" ]'
+shell = ["bash", "--noprofile", "--norc"]
 
 [username]
 show_always = true

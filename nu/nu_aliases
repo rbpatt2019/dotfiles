@@ -1,0 +1,10 @@
+# A helper function for viewing data
+# This preserves types for coloured formatting
+def view [] {
+        pivot |
+        rename key value
+}
+
+alias df = dataframe
+
+alias ll = ls -l

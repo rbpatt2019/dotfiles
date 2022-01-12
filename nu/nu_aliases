@@ -5,6 +5,105 @@ def view [] {
         rename key value
 }
 
-alias df = dataframe
+# Git things
+alias ga = git add
+alias gc = git commit
+alias gd = git diff
+alias gf = git pull
+alias gg = git merge --ff -e
+alias gm = git mv
+alias gb = git branch
+alias gp = git push
+alias gr = git restore
+alias gt = git tag
+alias gv = git checkout
+alias gx = git rm
+alias gst = git stash
+alias gu = git submodule update --remote --merge && git commit -m 'Update submodules'
 
+# Pretty print your recent git commits
+def gl [
+        n: int # number of commits
+] {
+        git log --pretty=%h::%aN::%s::%aD |
+        lines |
+        split column "::" sha who what when |
+        update when { get when | str to-datetime } |
+        first $n
+}
+
+# Tabularise your git status
+def gs [] {
+        git status --porcelain |
+        lines |
+        str trim -f |
+        split column " " status file |
+        insert diff {
+                get file |
+                each { git diff $it | lines }
+        }
+}
+
+# Tabularise your git branch information
+def "gb list" [] {
+        let branches = (
+                git branch -l |
+                lines |
+                str trim -l -c "*" |
+                str trim -b
+        )
+        let ref = (
+                $branches |
+                first
+        )
+
+        [["branch"]; [($branches)]] |
+        flatten |
+        skip 1 |
+        insert log {
+                get branch |
+                each {
+                        git log --pretty=%h::%aN::%s::%aD (echo $"($ref)..($it)") |
+                        lines |
+                        split column "::" sha who what when |
+                        update when { get when | str to-datetime }
+                }
+        }
+}
+
+# Tabularise your git stash information
+def "gst ls" [] {
+        git stash list |
+        lines |
+        split column ":" number branch message |
+        str trim -b |
+        update branch {
+                get branch |
+                each { split row " " | last 1 }
+        } |
+        insert diff {
+                get number |
+                git stash show -u |
+                lines |
+                str trim -b
+        }
+}
+
+# Further aliases
+alias df = dataframe
 alias ll = ls -l
+alias s = source ~/.zshrc
+alias v = /opt/local/bin/vim
+alias m = make
+alias rmrf = rm -rf
+alias w3m = w3m -no-mouse -graph
+alias dot = cd $HOME/Projects/dotfiles
+
+alias i = ipython
+alias pv = pyenv
+alias pt = poetry
+alias r = radian
+
+alias t = tmux
+alias work = tmuxinator work
+alias camb = tmuxinator camb

@@ -26,7 +26,7 @@ header_align = "c"
 header_color = "white"
 header_bold = false
 index_color = "blue_dimmed"
-leading_trailing_space_bg = "white"
+leading_trailing_space_bg = "white_dimmed"
 
 [line_editor]
 auto_add_history = true

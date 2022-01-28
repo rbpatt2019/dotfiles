@@ -74,8 +74,8 @@ pyenv_prefix = ""
 style = "green"
 
 [character]
-success_symbol = "[>>](white)"
-vicmd_symbol = "[<<](white)"
+success_symbol = "[>>](12)"
+vicmd_symbol = "[<<](12)"
 error_symbol = "[>>](red)"
 format = "$symbol"
 

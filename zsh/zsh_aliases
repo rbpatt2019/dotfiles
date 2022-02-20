@@ -85,10 +85,15 @@ mkcd()
 
 colours()
 {
-        for i in {0..255} ; do
-            printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-            if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-                printf "\n";
-            fi
+        printf "Colors 0 to 15 for the standard 16 foreground colors\n"
+        for ((c = 0; c < 16; c++)); do
+            printf "|%s%3d%s" "$(tput setaf "$c")" "$c" "$(tput sgr0)"
         done
+        printf "|\n\n"
+
+        printf "Colors 0 to 15 for the standard 16 background colors\n"
+        for ((c = 0; c < 16; c++)); do
+            printf "|%s%3d%s" "$(tput setab "$c")" "$c" "$(tput sgr0)"
+        done
+        printf "|\n\n"
 }

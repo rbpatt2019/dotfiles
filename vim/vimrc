@@ -32,7 +32,14 @@ set shortmess+=F
 set cmdheight=1
 syntax on
 
-colorscheme flattened_dark
+" Colorschemes
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_sign_column = 'bg0'
+autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested set background=dark
+set termguicolors
 
 " Easy motion
 let g:EasyMotion_do_mapping = 0
@@ -92,30 +99,35 @@ nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap <leader>gm :GMove
 nnoremap <leader>gx :GDelete<CR>
 nnoremap <leader>gb :Git_blame<CR>
-nnoremap <leader>gv :Gread<CR>
+noremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes
-highlight! link SignColumn LineNr
+" I think colours are getting stompted by gruvbox...
 let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_map_keys = 0
-hi GitGutterAdd ctermfg=2 ctermbg=0
-hi GitGutterChange ctermfg=3 ctermbg=0
-hi GitGutterDelete ctermfg=1 ctermbg=0
-hi GitGutterChangeDelete ctermfg=5 ctermbg=0
+highlight GitGutterAdd    guifg=#b8bb26 ctermfg=0
+highlight GitGutterChange guifg=#fabd2f ctermfg=11
+highlight GitGutterDelete guifg=#fb4934 ctermfg=9
+highlight GitGutterChangeDelete guifg=#d3869b ctermfg=13
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = ':'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_removed_above_and_below = '{'
+let g:gitgutter_sign_modified_removed = ':-'
 
 " Airline
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#poetv#enabled = 0
-let g:airline_theme = 'solarized'
-let g:airline_solarized_bg='dark'
+let g:airline_theme = 'base16_gruvbox_dark_medium'
 let g:airline_statusline_ontop = 0
 let g:airline_section_x = ''
 let g:airline_section_z = "%l:%c"
 if !empty($PYENV_VIRTUAL_ENV)
   let g:airline_section_y = "%{split($PYENV_VIRTUAL_ENV, '/')[-1]}"
 el
-  let g:airline_section_y = "" 
+  let g:airline_section_y = ""
 endif
 
 " Navigate splits

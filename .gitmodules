@@ -52,3 +52,6 @@
 [submodule "tmux/tmux-online-status"]
 	path = tmux/tmux-online-status
 	url = https://github.com/tmux-plugins/tmux-online-status
+[submodule "vim/pack/rbpatt2019/start/gruvbox"]
+	path = vim/pack/rbpatt2019/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

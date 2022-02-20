@@ -20,7 +20,6 @@ alias i="ipython"
 alias pv="pyenv"
 alias pt="poetry"
 alias r="radian"
-alias rv="renv"
 alias t="tmux"
 
 alias ga="git add"
@@ -61,11 +60,6 @@ gw()
         local files=${1:-\.}
         git add "$files" &&
         git commit "$files"
-}
-
-l.()
-{
-	ls -Ga $1 | grep '^\.';
 }
 
 pa()

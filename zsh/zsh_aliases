@@ -1,13 +1,15 @@
 alias s="source ~/.zshrc"
 alias v="/opt/local/bin/vim"
 alias m='make'
+alias j='just'
 alias rmrf="rm -rf"
 alias w3m="w3m -no-mouse -graph"
 
 alias la="exa -ahlF"
-alias lt="exa -ahlFr --sort time"
+alias lt="exa -ahlF --sort time"
 alias lg="exa -ahlF --git --git-ignore"
 alias ll="exa -hlF"
+alias l.="exa -ld .*"
 alias le="exa"
 
 alias dot="cd $HOME/Projects/dotfiles"

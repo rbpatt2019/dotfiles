@@ -55,3 +55,7 @@
 [submodule "vim/pack/rbpatt2019/start/gruvbox"]
 	path = vim/pack/rbpatt2019/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/pack/rbpatt2019/start/coc.nvim"]
+	path = vim/pack/rbpatt2019/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+	branch = release

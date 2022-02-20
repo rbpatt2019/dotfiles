@@ -21,28 +21,28 @@ format = """\
 [custom.nushell]
 command = "echo Nushell"
 format = " with [($output)]($style)"
-style = "12"
+style = "7"
 when = '[ "$STARSHIP_SHELL" == "nu" ]'
 shell = ["bash", "--noprofile", "--norc"]
 
 [username]
 show_always = true
-style_user = "blue"
-style_root = "red"
+style_user = "4"
+style_root = "9"
 format = "[$user]($style)"
 
 [hostname]
 ssh_only = true
 trim_at = "."
-style = "blue"
+style = "4"
 format = " @ [$hostname]($style)"
 
 [directory]
 truncation_length = 3
 truncate_to_repo = true
-style = "cyan"
+style = "6"
 read_only = "[RO]"
-read_only_style = "cyan"
+read_only_style = "6"
 format = " in [$path]($style)[$read_only]($read_only_style)"
 fish_style_pwd_dir_length = 0
 
@@ -50,11 +50,11 @@ fish_style_pwd_dir_length = 0
 truncation_length = 7
 truncation_symbol = "…"
 symbol = ""
-style = "yellow"
+style = "3"
 format = " on [$symbol$branch]($style)"
 
 [git_status]
-style = "red"
+style = "1"
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [package]
@@ -64,19 +64,19 @@ format = " [$version]($style)"
 
 [time]
 disabled = false
-style = "purple"
+style = "5"
 format = " at [$time]($style)"
 
 [python]
 symbol = ""
 pyenv_version_name = true
 pyenv_prefix = ""
-style = "green"
+style = "2"
 
 [character]
-success_symbol = "[>>](12)"
-vicmd_symbol = "[<<](12)"
-error_symbol = "[>>](red)"
+success_symbol = "[>>](7)"
+vicmd_symbol = "[<<](7)"
+error_symbol = "[>>](1)"
 format = "$symbol"
 
 [cmd_duration]
@@ -87,7 +87,7 @@ format = '[\($duration\)]($style)'
 [jobs]
 number_threshold = 1
 symbol = ""
-style = "13"
+style = "12"
 format = '([\($number\)]($style))'
 
 [custom.spacer]

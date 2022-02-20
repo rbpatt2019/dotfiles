@@ -1,40 +1,34 @@
 #!/bin/zsh
 
+update_submodules () {
+        echo "\nSUBMODULES UPDATE"
+        git submodule update --remote --merge
+        git add .
+        git commit -m 'Update Submodules'
+        vim -c "CocUpdateSync|q"
+}
+
 cd $HOME/Projects/dotfiles
-
-LOCAL_V=$(cat vim/pack/rbpatt2019/start/coc.nvim-release/package.json |
-jq '.version' |
-tr -d '"v')
-
-REMOTE_V=$(curl --silent "https://api.github.com/repos/neoclide/coc.nvim/releases/latest" |
-jq '.tag_name' |
-tr -d '"v')
-
+echo "\nSYSTEM UPDATE"
 sudo port selfupdate
 sudo port upgrade outdated
 sudo port uninstall leaves
 sudo port clean requested
 sudo port reclaim
 
-
-git submodule update --remote --merge 
-git add .
-git commit -m 'Update Submodules'
-
-if [[ ${REMOTE_V} != ${LOCAL_V} ]]
+if [ $(git diff-files --ignore-submodules | wc -l) != "0" ]
 then
-        rm -rf vim/pack/rbpatt2019/start/coc.nvim-release
-        curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz |
-        tar xzfv - -C vim/pack/rbpatt2019/start/
+        echo "\nUNSTAGED CHANGES STASHED AND POPPED"
+        git stash && update_submodules && git stash pop
 else
-        echo "coc.nvim is up-to-date"
+        update_submodules
 fi
-vim -c "CocUpdateSync|q"
 
+echo "\nPYTHON UPDATES"
 pyenv update
+poetry self update
 
-pipx upgrade-all
-
+echo "\nRUST UPDATES"
 rustup update
 cargo install-update -a
 tldr --update

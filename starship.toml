@@ -68,6 +68,8 @@ style = "5"
 format = " at [$time]($style)"
 
 [python]
+format = "via [${version}]($style) "
+version_format = "${raw}"
 symbol = ""
 pyenv_version_name = true
 pyenv_prefix = ""

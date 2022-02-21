@@ -12,7 +12,6 @@ format = """\
         $custom\
         $line_break\
         $python\
-        $conda\
         $character\
         $cmd_duration\
         $jobs\
@@ -74,6 +73,9 @@ symbol = ""
 pyenv_version_name = true
 pyenv_prefix = ""
 style = "2"
+
+[conda]
+disabled = true
 
 [character]
 success_symbol = "[>>](7)"

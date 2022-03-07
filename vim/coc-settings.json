@@ -21,16 +21,14 @@
     "list.maxPreviewHeight": 20,
     "highlight.document.enable": true,
     "highlight.colors.enable": true,
-    "coc.preferences.hoverTarget": "preview",
     "coc.preferences.jumpCommand": "split",
-    "coc.preferences.colorSupport": true,
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "black",
     "python.linting.enabled": true,
-    "python.linting.mypyEnabled": false,
+    "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true, 
-    "python.linting.flake8Path": "pflake8",
+    "python.linting.flake8Path": "flake8p",
     "python.pythonPath": "python",
     "python.venvPath": "",
     "pydocstring.enable": true,
@@ -42,7 +40,6 @@
       "line-length": false,
       "no-emphasis-as-heading": false
     },
-    "r.lsp.diagnostics": true,
     "go.goplsOptions": {
       "gofumpt": true,
       "completeUnimported": true

@@ -44,8 +44,10 @@ path+=("$HOME/.cargo/bin")
 
 # Go
 path+=("$HOME/go/bin")
-path+=("/opt/local/bin")
-path+=("/opt/local/sbin")
+
+# Go and porsts
+path=("/opt/local/bin" $path)
+path=("/opt/local/sbin" $path)
 
 # because you should be in a tmux session, and I'm lazy
 source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh

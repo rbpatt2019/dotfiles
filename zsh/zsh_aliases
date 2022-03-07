@@ -79,6 +79,13 @@ mkcd()
 	cd -P -- "$1"
 }
 
+mkfile()
+{
+        local file=${1:-"tmpfile.txt"}
+        mkdir -p -- "$(dirname "$file")" &&
+        touch "$file"
+}
+
 colours()
 {
         printf "Colors 0 to 15 for the standard 16 foreground colors\n"

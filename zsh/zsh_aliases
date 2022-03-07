@@ -79,7 +79,7 @@ mkcd()
 	cd -P -- "$1"
 }
 
-mkfile()
+touch2()
 {
         local file=${1:-"tmpfile.txt"}
         mkdir -p -- "$(dirname "$file")" &&

@@ -29,6 +29,7 @@ export PATH
 # Pyenv
 # eval "$(pyenv init --path)" manually inserted into paths
 # Remaining evals handled as a lazy load function
+
 # Starship
 eval "$($HOME/.cargo/bin/starship init zsh)"
 

@@ -47,20 +47,20 @@ alias -g P="| pee"
 alias -g NI="| ifne"
 alias -g B="| bat -"
 
+pyenv() {
+        echo "Lazy loading pyenv...\n"
+        unset -f pyenv
+        eval "$(command pyenv init -)"
+        eval "$(command pyenv virtualenv-init -)"
+        pyenv $@
+}
+
 gw()
 {
         local files=${1:-\.}
         git add "$files" &&
         git commit "$files"
 }
-
-pyenv() {
-        echo "Lazy-loading pyenv..."
-        eval "$(command pyenv init -)"
-        eval "$(command pyenv virtualenv-init -)"
-        pyenv "$@"
-}
-
 
 mkcd()
 {

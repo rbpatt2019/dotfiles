@@ -4,7 +4,7 @@ DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(vi-mode direnv git)
+plugins=(vi-mode git)
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR
@@ -39,6 +39,9 @@ pyenv global 3.10.2
 
 # Starship
 eval "$($HOME/.cargo/bin/starship init zsh)"
+
+# Direnv
+eval "$(direnv hook zsh)"
 
 # because you should be in a tmux session, and I'm lazy
 source $DOT/zsh/launch_tmux.zsh

@@ -2,6 +2,7 @@
 autoload -Uz compinit
 zmodload zsh/zprof
 bindkey ' ' magic-space
+setopt auto_cd no_case_glob share_history append_history hist_ignore_dups hist_reduce_blanks inc_append_history hist_verify correct_all
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR

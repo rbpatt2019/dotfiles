@@ -13,6 +13,8 @@ alias l.="exa -ld .*"
 alias le="exa"
 
 alias dot="cd $HOME/Projects/dotfiles"
+alias -- -="cd -"
+
 alias work="tmuxinator work"
 alias camb="tmuxinator camb"
 

@@ -4,7 +4,7 @@ DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(vi-mode git)
+plugins=(vi-mode)
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR

@@ -1,4 +1,5 @@
 # general settings
+autoload -Uz compinit
 zmodload zsh/zprof
 bindkey ' ' magic-space
 

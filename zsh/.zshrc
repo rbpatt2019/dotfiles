@@ -4,7 +4,7 @@ DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(colored-man-pages vi-mode fzf direnv git)
+plugins=(vi-mode direnv git)
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR
@@ -12,7 +12,7 @@ plugins=(colored-man-pages vi-mode fzf direnv git)
 . $ZSH/oh-my-zsh.sh
 . $DOT/zsh/zsh_aliases
 . $HOME/.cargo/env
-#
+
 # Configure path
 typeset -U PATH path
 path=(
@@ -27,9 +27,9 @@ path=(
 )
 export PATH
 
-
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey "ç" fzf-cd-widget
 
 # Pyenv
 eval "$(pyenv init --path)"
@@ -41,4 +41,4 @@ pyenv global 3.10.2
 eval "$($HOME/.cargo/bin/starship init zsh)"
 
 # because you should be in a tmux session, and I'm lazy
-source $HOME/Projects/dotfiles/zsh/launch_tmux.zsh
+source $DOT/zsh/launch_tmux.zsh

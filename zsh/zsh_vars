@@ -8,8 +8,19 @@ export EDITOR="vim"
 export BAT_THEME="gruvbox-dark"
 
 # FZF
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='bat --plain -r 1:20 -P --color always {}'"
-export FZF_DEFAULT_COMMAND='fdfind --type f --type d'
+# Default Options
+export FZF_DEFAULT_COMMAND="fd --type f --type d --hidden"
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --select-1 --exit-0 --bind '?:toggle-preview'"
+# We will always be in a tmux split
+export FZF_TMUX=1
+export FZF_TMUX_OPTS="-w 50% -h 50%"
+# Binding specific, mostly for different previews
+# Dues to a quirk, the keybindings need their specific commands to run right
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap"
+export FZF_CTRL_T_COMMAND="fd --type f --type d --hidden --follow --exclude '.git'"
+export FZF_CTRL_T_OPTS="-m --preview='bat --plain -r 1:15 -P --color always {}' --preview-window down:15:hidden:wrap"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '.git'"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -15' --preview-window down:15:hidden:wrap"
 
 # Poetry
 export POETRY_VIRTUALENVS_PATH="$HOME/.pyenv/versions/"

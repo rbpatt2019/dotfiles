@@ -1,0 +1,2 @@
+export DOT="$HOME/Projects/dotfiles"
+export ZDOTDIR="$DOT/zsh"

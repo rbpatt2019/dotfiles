@@ -1,0 +1,24 @@
+# General settings
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export ZSH="$HOME/.oh-my-zsh"
+export MANPATH="/usr/local/man:$MANPATH"
+export EDITOR="vim"
+
+# Bat
+export BAT_THEME="gruvbox-dark"
+
+# FZF
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --preview='bat --plain -r 1:20 -P --color always {}'"
+export FZF_DEFAULT_COMMAND='fdfind --type f --type d'
+
+# Poetry
+export POETRY_VIRTUALENVS_PATH="$HOME/.pyenv/versions/"
+
+# Actually can't remember
+export MODE_INDICATOR=""
+
+# W3M
+export WWW_HOME="google.com"
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"

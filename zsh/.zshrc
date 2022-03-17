@@ -49,4 +49,4 @@ bindkey -M viins "^r" fzf-history-widget
 bindkey -M viins "^t" fzf-file-widget
 
 # because you should be in a tmux session, and I'm lazy
-# source $DOT/zsh/launch_tmux.zsh
+source $DOT/zsh/launch_tmux.zsh

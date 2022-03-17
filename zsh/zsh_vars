@@ -33,3 +33,6 @@ export WWW_HOME="google.com"
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
+
+# Vim mode
+export KEYTIMEOUT=1

@@ -1,4 +1,4 @@
-alias s="source ~/.zshrc"
+alias s=". $DOT/zsh/.zshrc"
 alias v="/opt/local/bin/vim"
 alias m='make'
 alias j='just'

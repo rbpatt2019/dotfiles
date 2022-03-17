@@ -1,9 +1,6 @@
 # general settings
+zmodload zsh/zprof
 bindkey ' ' magic-space
-DISABLE_UPDATE_PROMPT="true"
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="dd.mm.yyyy"
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR
@@ -14,14 +11,15 @@ HIST_STAMPS="dd.mm.yyyy"
 # Configure path
 typeset -U PATH path
 path=(
+        "$PYENV_ROOT/shims"
         "$PYENV_ROOT/bin" 
         "/opt/local/bin"
         "/opt/local/bin"
         "$HOME/.poetry/bin"
         "$HOME/.cargo/bin"
         "$HOME/go/bin"
-        $path
         "$HOME/.local/bin"
+        $path
 )
 export PATH
 
@@ -29,11 +27,8 @@ export PATH
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Pyenv
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-pyenv global 3.10.2
-
+# eval "$(pyenv init --path)" manually inserted into paths
+# Remaining evals handled as a lazy load function
 # Starship
 eval "$($HOME/.cargo/bin/starship init zsh)"
 
@@ -49,4 +44,4 @@ bindkey -M viins "^r" fzf-history-widget
 bindkey -M viins "^t" fzf-file-widget
 
 # because you should be in a tmux session, and I'm lazy
-source $DOT/zsh/launch_tmux.zsh
+# source $DOT/zsh/launch_tmux.zsh

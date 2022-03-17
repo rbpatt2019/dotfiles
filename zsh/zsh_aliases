@@ -47,14 +47,6 @@ alias -g P="| pee"
 alias -g NI="| ifne"
 alias -g B="| bat -"
 
-git_current_release()
-{
-        # Gets the most current release of a remote repository
-        curl --silent "https://api.github.com/repos/$1/releases/latest" | \
-        jq '.tag_name' | \
-        tr -d '"'
-}
-
 gw()
 {
         local files=${1:-\.}
@@ -62,17 +54,13 @@ gw()
         git commit "$files"
 }
 
-pa()
-{
-        local files=${1}
-        local pmid=${2}
-        local title=${3:-"Title"}
-        papis add \
-        "$files" \
-        --git \
-        --folder-name "$title" \
-        --from pmid "$pmid"
+pyenv() {
+        echo "Lazy-loading pyenv..."
+        eval "$(command pyenv init -)"
+        eval "$(command pyenv virtualenv-init -)"
+        pyenv "$@"
 }
+
 
 mkcd()
 {

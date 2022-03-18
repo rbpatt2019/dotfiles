@@ -4,7 +4,8 @@ zmodload zsh/zprof
 bindkey ' ' magic-space
 setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
         no_case_glob correct_all\
-        share_history append_history hist_ignore_dups hist_reduce_blanks inc_append_history hist_verify
+        share_history append_history hist_ignore_dups hist_reduce_blanks \
+        inc_append_history hist_verify hist_ignore_space
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR

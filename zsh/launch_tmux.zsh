@@ -1,13 +1,13 @@
 #!/usr/bin/zsh
 
 # Check necessary commands are installed...
-if ! command -v tmux
+if ! command -v tmux &> /dev/null
 then
         echo >&2 "Tmux not installed"
         exit 1
 fi
 
-if ! command -v tmuxinator
+if ! command -v tmuxinator &> /dev/null
 then
         echo >&2 "Tmuxinator not installed"
         exit 1

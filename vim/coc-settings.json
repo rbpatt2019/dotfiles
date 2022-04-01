@@ -28,7 +28,7 @@
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true, 
-    "python.linting.flake8Path": "flake8p",
+    "python.linting.flake8Path": "flake8",
     "python.pythonPath": "python",
     "python.venvPath": "",
     "pydocstring.enable": true,
@@ -40,8 +40,10 @@
       "line-length": false,
       "no-emphasis-as-heading": false
     },
+    "go.checkForUpdates": "install",
     "go.goplsOptions": {
       "gofumpt": true,
-      "completeUnimported": true
+      "completeUnimported": true,
+      "staticcheck": true
     }  
 }

@@ -59,3 +59,6 @@
 	path = vim/pack/rbpatt2019/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
+[submodule "tmux/tmux-jump"]
+	path = tmux/tmux-jump
+	url = https://github.com/schasse/tmux-jump

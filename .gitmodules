@@ -62,3 +62,6 @@
 [submodule "tmux/tmux-jump"]
 	path = tmux/tmux-jump
 	url = https://github.com/schasse/tmux-jump
+[submodule "tmux/tmux-menus"]
+	path = tmux/tmux-menus
+	url = https://github.com/jaclu/tmux-menus

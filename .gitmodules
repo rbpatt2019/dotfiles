@@ -68,3 +68,6 @@
 [submodule "tmux/tmux-prefix-highlight"]
 	path = tmux/tmux-prefix-highlight
 	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+[submodule "tmux/tmux-cpu"]
+	path = tmux/tmux-cpu
+	url = https://github.com/tmux-plugins/tmux-cpu

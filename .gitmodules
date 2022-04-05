@@ -65,3 +65,6 @@
 [submodule "tmux/tmux-menus"]
 	path = tmux/tmux-menus
 	url = https://github.com/jaclu/tmux-menus
+[submodule "tmux/tmux-prefix-highlight"]
+	path = tmux/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git

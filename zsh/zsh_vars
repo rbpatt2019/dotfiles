@@ -19,7 +19,7 @@ export FZF_TMUX_OPTS="-w 50% -h 50%"
 # Binding specific, mostly for different previews
 # Dues to a quirk, the keybindings need their specific commands to run right
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap"
-export FZF_CTRL_T_COMMAND="fd --type f --type d --hidden --follow --exclude '.git'"
+export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude '.git'"
 export FZF_CTRL_T_OPTS="-m --preview='bat --plain -r 1:15 -P --color always {}' --preview-window down:15:hidden:wrap"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '.git'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -15' --preview-window down:15:hidden:wrap"

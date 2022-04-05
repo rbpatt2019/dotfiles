@@ -84,6 +84,7 @@ nnoremap <leader>fh :w<CR>:CocList helptags<CR>
 nnoremap <leader>fl :w<CR>:CocCommand fzf-preview.BufferLines<CR>
 nnoremap <leader>ft :w<CR>:CocCommand fzf-preview.BufferTags<CR>
 nnoremap <leader>fg  :w<CR>:CocCommand fzf-preview.Ctags<CR>
+let g:fzf_preview_command = 'COLORTERM=truecolor bat --plain -r 1:50 -P --color always {-1}'
 
 " coc-yank
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>

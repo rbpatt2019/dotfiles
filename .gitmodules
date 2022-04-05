@@ -71,3 +71,6 @@
 [submodule "tmux/tmux-cpu"]
 	path = tmux/tmux-cpu
 	url = https://github.com/tmux-plugins/tmux-cpu
+[submodule "vim/pack/rbpatt2019/start/vim-obsession"]
+	path = vim/pack/rbpatt2019/start/vim-obsession
+	url = https://github.com/tpope/vim-obsession

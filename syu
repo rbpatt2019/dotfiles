@@ -25,12 +25,12 @@ else
 fi
 
 echo "\nPYTHON UPDATES"
-pyenv update
-poetry self update
+sudo pyenv update
+sudo poetry self update
 
 echo "\nRUST UPDATES"
-rustup update
-cargo install-update -a
-tldr --update
+sudo rustup update
+sudo cargo install-update -a
+sudo tldr --update
 
 cd -

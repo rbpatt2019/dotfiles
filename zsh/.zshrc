@@ -7,12 +7,6 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
         share_history append_history hist_ignore_dups hist_reduce_blanks \
         inc_append_history hist_verify hist_ignore_space
 
-# Sources
-# DOT is set in .zshenv to allow setting ZDOTDIR
-. $DOT/zsh/zsh_vars
-. $DOT/zsh/zsh_aliases
-. $HOME/.cargo/env
-
 # Configure path
 typeset -U PATH path
 path=(
@@ -27,6 +21,12 @@ path=(
         $path
 )
 export PATH
+
+# Sources
+# DOT is set in .zshenv to allow setting ZDOTDIR
+. $DOT/zsh/zsh_vars
+. $DOT/zsh/zsh_aliases
+. $HOME/.cargo/env
 
 # fzf bits
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

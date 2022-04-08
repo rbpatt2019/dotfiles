@@ -1,28 +1,28 @@
 [user]
-	name = rbpatt2019
-	email = rb.patterson.cross@gmail.com
+        name = rbpatt2019
+        email = rb.patterson.cross@gmail.com
 [core]
-	editor = vim
-	compression = 0
-	pager = delta
+        editor = vim
+        compression = 0
+        pager = delta
 [commit]
-	template = /Users/rbpatt2019/Projects/dotfiles/git_config/gitmessage
+        template = ~/Projects/dotfiles/git_config/gitmessage
+[init]
+        defaultBranch = main
+[pull]
+        rebase = true
+[interactive]
+        diffFilter = delta --color-only
+[delta]
+        navigate = true  # use n and N to move between diff sections
+[merge]
+        conflictstyle = diff3
+[diff]
+        colorMoved = default
 # Enforce SSH
 [url "ssh://git@github.com/"]
-	  insteadOf = https://github.com/
+        insteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
-	  insteadOf = https://gitlab.com/
+        insteadOf = https://gitlab.com/
 [url "ssh://git@bitbucket.org/"]
-	  insteadOf = https://bitbucket.org/
-[init]
-	defaultBranch = main
-[pull]
-	rebase = true
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    navigate = true  # use n and N to move between diff sections
-[merge]
-    conflictstyle = diff3
-[diff]
-    colorMoved = default
+        insteadOf = https://bitbucket.org/

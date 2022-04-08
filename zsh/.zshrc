@@ -8,6 +8,7 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
         inc_append_history hist_verify hist_ignore_space
 
 # Configure path
+. $DOT/zsh/zsh_vars
 typeset -U PATH path
 path=(
         "$PYENV_ROOT/shims"
@@ -24,7 +25,6 @@ export PATH
 
 # Sources
 # DOT is set in .zshenv to allow setting ZDOTDIR
-. $DOT/zsh/zsh_vars
 . $DOT/zsh/zsh_aliases
 . $HOME/.cargo/env
 

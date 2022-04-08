@@ -6,6 +6,7 @@ vim/plugged/
 w3m/cookie
 w3m/history
 w3m/*.gz
+w3m/bookmark.html
 w3m/w3mcache*
 zsh/.zcompdump*
 zsh/.zsh_history

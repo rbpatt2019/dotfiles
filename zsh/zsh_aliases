@@ -30,6 +30,9 @@ alias pt="poetry"
 alias r="radian"
 alias t="tmux"
 
+# This seems to be required...
+eval $(thefuck --alias wtf)
+
 alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"

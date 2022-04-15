@@ -60,11 +60,10 @@ vmap j <Plug>(easymotion-j)
 vmap k <Plug>(easymotion-k)
 
 " Vim-cutlass: deleting no longer goes to register
-" Use m (think move) to keep contents of register
-nnoremap m d
-xnoremap m d
-nnoremap mm dd
-nnoremap M D
+nnoremap q d
+xnoremap q d
+nnoremap qq dd
+nnoremap Q D
 
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

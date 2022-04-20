@@ -1,5 +1,4 @@
 alias s=". $DOT/zsh/.zshrc"
-alias v="/opt/local/bin/vim"
 alias m='make'
 alias j='just'
 alias rmrf="rm -rf"
@@ -99,4 +98,27 @@ colours()
             printf "|%s%3d%s" "$(tput setab "$c")" "$c" "$(tput sgr0)"
         done
         printf "|\n\n"
+}
+
+# Assume passed files trump existing session
+v()
+{
+        if [ "$#" -ne 0 ]; then
+                /opt/local/bin/vim "$@"
+        elif [ -f "$(pwd)/Session.vim" ]; then
+                /opt/local/bin/vim -S Session.vim
+        else
+                local  FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude '.git'"
+                files=$(fzf \
+                        -m \
+                        --layout=reverse \
+                        --inline-info \
+                        -select-1 \
+                        --exit-0 \
+                        --bind '?:toggle-preview' \
+                        --preview-window down:15:hidden:wrap \
+                        --preview="bat --plain -r 1:15 -P --color always {}"
+                )
+                /opt/local/bin/vim $files
+        fi
 }

@@ -1,4 +1,4 @@
-set rtp+=~/.fzf
+set rtp+=/opt/local/bin/fzf
 
 let mapleader = ' '
 let maplocalleader = ','

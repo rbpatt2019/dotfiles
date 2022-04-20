@@ -14,7 +14,6 @@ path=(
         "$PYENV_ROOT/shims"
         "$PYENV_ROOT/bin" 
         "/opt/local/bin"
-        "/opt/local/bin"
         "$HOME/.poetry/bin"
         "$HOME/.cargo/bin"
         "$HOME/go/bin"
@@ -36,7 +35,7 @@ export PATH
 # Remaining evals handled as a lazy load function
 
 # Starship
-eval "$($HOME/.cargo/bin/starship init zsh)"
+eval "$(/opt/local/bin/starship init zsh)"
 
 # Direnv
 eval "$(direnv hook zsh)"

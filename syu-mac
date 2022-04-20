@@ -16,6 +16,9 @@ sudo port uninstall leaves
 sudo port clean requested
 sudo port reclaim
 
+echo "\nPACKAGE UPDATES"
+sudo tldr --update
+
 if [ $(git diff-files --ignore-submodules | wc -l) != "0" ]
 then
         echo "\nUNSTAGED CHANGES STASHED AND POPPED"
@@ -31,6 +34,5 @@ sudo poetry self update
 echo "\nRUST UPDATES"
 sudo rustup update
 sudo cargo install-update -a
-sudo tldr --update
 
 cd -

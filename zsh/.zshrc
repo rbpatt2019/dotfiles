@@ -1,4 +1,8 @@
 # general settings
+fpath=(
+        $fpath
+        "/opt/local/share/zsh/site-functions"
+)
 autoload -Uz compinit; compinit
 _comp_options+=(globdots)
 bindkey ' ' magic-space
@@ -28,7 +32,8 @@ export PATH
 . $HOME/.cargo/env
 
 # fzf bits
-[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
+[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] &&
+        source /opt/local/share/fzf/shell/key-bindings.zsh
 
 # Pyenv
 # eval "$(pyenv init --path)" manually inserted into paths

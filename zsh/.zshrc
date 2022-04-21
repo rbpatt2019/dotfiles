@@ -1,6 +1,6 @@
 # general settings
-autoload -Uz compinit
-zmodload zsh/zprof
+autoload -Uz compinit; compinit
+_comp_options+=(globdots)
 bindkey ' ' magic-space
 setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
         no_case_glob correct_all\

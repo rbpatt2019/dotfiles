@@ -43,6 +43,11 @@ eval "$(direnv hook zsh)"
 # Vim mode
 bindkey -v
 
+# Add visual line editing
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Re-define necessary key bindings
 bindkey -M viins "ç" fzf-cd-widget
 bindkey -M viins "^r" fzf-history-widget

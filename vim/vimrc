@@ -1,4 +1,5 @@
 set rtp+=/opt/local/bin/fzf
+source /opt/local/share/fzf/vim/plugin/fzf.vim 
 
 let mapleader = ' '
 let maplocalleader = ','

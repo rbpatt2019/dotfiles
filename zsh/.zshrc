@@ -28,7 +28,7 @@ export PATH
 . $HOME/.cargo/env
 
 # fzf bits
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
 
 # Pyenv
 # eval "$(pyenv init --path)" manually inserted into paths

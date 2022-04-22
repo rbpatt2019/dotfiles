@@ -67,3 +67,11 @@ bindkey -M vicmd v edit-command-line
 bindkey -M viins "ç" fzf-cd-widget
 bindkey -M viins "^r" fzf-history-widget
 bindkey -M viins "^t" fzf-file-widget
+
+# Search through history based on already typed
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey -M viins "^[[A" up-line-or-beginning-search
+bindkey -M viins "^[[B" down-line-or-beginning-search

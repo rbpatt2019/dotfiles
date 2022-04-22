@@ -1,9 +1,17 @@
-# general settings
+# Load completion paths
 fpath=(
         $fpath
         "/opt/local/share/zsh/site-functions"
 )
-autoload -Uz compinit; compinit
+
+# Load and run compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+# Set options
 _comp_options+=(globdots)
 bindkey ' ' magic-space
 setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
@@ -12,6 +20,9 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
         inc_append_history hist_verify hist_ignore_space
 
 # Configure path
+# Load vars first for reference
+# DOT is set in .zshenv to allow setting ZDOTDIR
+# The typeset call prevents duplicates
 . $DOT/zsh/zsh_vars
 typeset -U PATH path
 path=(
@@ -26,8 +37,7 @@ path=(
 )
 export PATH
 
-# Sources
-# DOT is set in .zshenv to allow setting ZDOTDIR
+# Source aliases
 . $DOT/zsh/zsh_aliases
 . $HOME/.cargo/env
 

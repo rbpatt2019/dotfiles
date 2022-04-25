@@ -74,3 +74,6 @@
 [submodule "vim/pack/rbpatt2019/start/vim-obsession"]
 	path = vim/pack/rbpatt2019/start/vim-obsession
 	url = https://github.com/tpope/vim-obsession
+[submodule "tmux/tmux-power-zoom"]
+	path = tmux/tmux-power-zoom
+	url = https://github.com/jaclu/tmux-power-zoom

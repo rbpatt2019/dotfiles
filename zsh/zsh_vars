@@ -2,9 +2,9 @@
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR="vim"
-export HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-export SAVEHIST=10000
-export HISTSIZE=1000
+export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST="$HISTSIZE"
 
 # Bat
 export BAT_THEME="gruvbox-dark"

@@ -6,7 +6,7 @@ fpath=(
 
 # Load and run compinit
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
+for dump in $ZDOTDIR/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
@@ -15,7 +15,7 @@ compinit -C
 _comp_options+=(globdots)
 bindkey ' ' magic-space
 setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
-        no_case_glob correct_all\
+        no_case_glob correct \
         share_history append_history hist_ignore_dups hist_reduce_blanks \
         inc_append_history hist_verify hist_ignore_space
 
@@ -24,7 +24,7 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
 # DOT is set in .zshenv to allow setting ZDOTDIR
 # The typeset call prevents duplicates
 . $DOT/zsh/zsh_vars
-typeset -U PATH path
+typeset -aU path
 path=(
         "$PYENV_ROOT/shims"
         "$PYENV_ROOT/bin" 
@@ -35,7 +35,6 @@ path=(
         "$HOME/.local/bin"
         $path
 )
-export PATH
 
 # Source aliases
 . $DOT/zsh/zsh_aliases
@@ -44,13 +43,15 @@ export PATH
 # fzf bits
 [ -f /opt/local/share/fzf/shell/key-bindings.zsh ] &&
         source /opt/local/share/fzf/shell/key-bindings.zsh
+[ -f /opt/local/share/fzf/shell/completion.zsh ] &&
+        source /opt/local/share/fzf/shell/completion.zsh
 
 # Pyenv
 # eval "$(pyenv init --path)" manually inserted into paths
 # Remaining evals handled as a lazy load function
 
 # Starship
-eval "$(/opt/local/bin/starship init zsh)"
+eval "$(starship init zsh)"
 
 # Direnv
 eval "$(direnv hook zsh)"
@@ -69,8 +70,8 @@ bindkey -M viins "^r" fzf-history-widget
 bindkey -M viins "^t" fzf-file-widget
 
 # Search through history based on already typed
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M viins "^[[A" up-line-or-beginning-search

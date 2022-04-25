@@ -8,7 +8,7 @@ update_submodules () {
         vim -c "CocUpdateSync|q"
 }
 
-cd $HOME/Projects/dotfiles
+pushd $HOME/Projects/dotfiles
 echo "\nSYSTEM UPDATE"
 sudo port selfupdate
 sudo port upgrade outdated
@@ -35,4 +35,4 @@ echo "\nRUST UPDATES"
 sudo rustup update
 sudo cargo install-update -a
 
-cd -
+popd

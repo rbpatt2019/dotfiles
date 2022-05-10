@@ -1,5 +1,5 @@
 # Header: type(scope): subject
-# Allowed scope: feat, fix, docs, style, refactor, test, chore
+# Allowed scope: fix, feat, docs style, refactor, perf, test, build, ci
 # revert: Header of revereted commit
 # Don't capitalise, no period
 # No more than 50 chars. #### 50 chars is here: #

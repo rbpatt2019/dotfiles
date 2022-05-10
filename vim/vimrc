@@ -43,6 +43,10 @@ autocmd vimenter * ++nested colorscheme gruvbox
 autocmd vimenter * ++nested set background=dark
 set termguicolors
 
+" Slightly improved folds
+" If zO opens all children, then zC should close all children (not parents!)
+nnoremap zC zxzc
+
 " Easy motion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1

@@ -22,6 +22,7 @@ alias pv="pyenv"
 alias pt="poetry"
 alias r="radian"
 alias t="tmux"
+alias ta="tmux attach -t"
 
 # This seems to be required...
 eval $(thefuck --alias wtf)

@@ -12,14 +12,12 @@ pushd $HOME/Projects/dotfiles
 echo "\nSYSTEM UPDATE"
 sudo port selfupdate
 sudo port upgrade outdated
-sudo port uninstall leaves
+sudo port uninstall rleaves
 sudo port clean requested
 sudo port reclaim
 
-echo "\nPACKAGE UPDATES"
-sudo tldr --update
-
-if [ $(git diff-files --ignore-submodules | wc -l) != "0" ]
+DIFF=$(git diff-files --ignore-submodules | wc -l)
+if [ "$DIFF" != "0" ]
 then
         echo "\nUNSTAGED CHANGES STASHED AND POPPED"
         git stash && update_submodules && git stash pop
@@ -30,9 +28,20 @@ fi
 echo "\nPYTHON UPDATES"
 sudo pyenv update
 sudo poetry self update
+sudo pipx upgrade-all
 
 echo "\nRUST UPDATES"
 sudo rustup update
+#
+# Manual re-install check for cargo-update - to pass vendored ssl flag
+UP=$(sudo cargo install-update -l | grep cargo-update | cut -f4 -w)
+if [ "$UP" = 'Yes' ]
+then
+        sudo cargo install cargo-update --features vendored-openssl
+fi
 sudo cargo install-update -a
+
+echo "\nTLDR UPDATES"
+sudo tldr --update
 
 popd

@@ -1,0 +1,10 @@
+bandwhich
+bat
+cargo-update
+exa
+fd-find
+git-delta
+hyperfine
+ripgrep
+starship
+tealdeer

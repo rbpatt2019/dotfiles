@@ -12,8 +12,8 @@ pushd $HOME/Projects/dotfiles
 echo "\nSYSTEM UPDATE"
 sudo port selfupdate
 sudo port upgrade outdated
-sudo port uninstall rleaves
 sudo port clean requested
+sudo port uninstall rleaves
 sudo port reclaim
 
 DIFF=$(git diff-files --ignore-submodules | wc -l)

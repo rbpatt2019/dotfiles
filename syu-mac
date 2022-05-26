@@ -1,4 +1,6 @@
 #!/bin/zsh
+# Update script
+# run with wudo - commands that do not need to be elevated opt out with `sudo -u rbpatt2019`
 
 update_submodules () {
         echo "\nSUBMODULES UPDATE"
@@ -10,38 +12,40 @@ update_submodules () {
 
 pushd $HOME/Projects/dotfiles
 echo "\nSYSTEM UPDATE"
-sudo port selfupdate
-sudo port upgrade outdated
-sudo port clean requested
-sudo port uninstall rleaves
-sudo port reclaim
+port selfupdate
+port upgrade outdated
+sudo -u rbpatt2019 port clean requested
+port uninstall rleaves
+port reclaim
 
 DIFF=$(git diff-files --ignore-submodules | wc -l)
 if [ "$DIFF" != "0" ]
 then
         echo "\nUNSTAGED CHANGES STASHED AND POPPED"
-        git stash && update_submodules && git stash pop
+        sudo -u rbpatt2019 git stash &&
+        sudo -u rbpatt2019 update_submodules &&
+        sudo -u rbpatt2019 git stash pop
 else
-        update_submodules
+        sudo -u rbpatt2019 update_submodules
 fi
 
 echo "\nPYTHON UPDATES"
-sudo pyenv update
-sudo poetry self update
-sudo pipx upgrade-all
+sudo -u rbpatt2019 pyenv update
+poetry self update
+sudo -u rbpatt2019 pipx upgrade-all
 
 echo "\nRUST UPDATES"
-sudo rustup update
-#
+sudo -u rbpatt2019 rustup update
+
 # Manual re-install check for cargo-update - to pass vendored ssl flag
-UP=$(sudo cargo install-update -l | grep cargo-update | cut -f4 -w)
+UP=$(cargo install-update -l | grep cargo-update | cut -f4 -w)
 if [ "$UP" = 'Yes' ]
 then
-        sudo cargo install cargo-update --features vendored-openssl
+        cargo install cargo-update --features vendored-openssl
 fi
-sudo cargo install-update -a
+cargo install-update -a
 
 echo "\nTLDR UPDATES"
-sudo tldr --update
+tldr --update
 
 popd

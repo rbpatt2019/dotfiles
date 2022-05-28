@@ -40,12 +40,6 @@ path=(
 . $DOT/zsh/zsh_aliases
 . $HOME/.cargo/env
 
-# fzf bits
-[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] &&
-        source /opt/local/share/fzf/shell/key-bindings.zsh
-[ -f /opt/local/share/fzf/shell/completion.zsh ] &&
-        source /opt/local/share/fzf/shell/completion.zsh
-
 # Pyenv
 # eval "$(pyenv init --path)" manually inserted into paths
 # Remaining evals handled as a lazy load function
@@ -64,11 +58,6 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-# Re-define necessary key bindings
-bindkey -M viins "ç" fzf-cd-widget
-bindkey -M viins "^r" fzf-history-widget
-bindkey -M viins "^t" fzf-file-widget
-
 # Search through history based on already typed
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
@@ -76,3 +65,19 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M viins "^[[A" up-line-or-beginning-search
 bindkey -M viins "^[[B" down-line-or-beginning-search
+
+# fzf bits
+if command -v apt > /dev/null
+then
+        source /usr/share/doc/fzf/examples/key-bindings.zsh
+        source /usr/share/doc/fzf/examples/completion.zsh
+        bindkey -M viins "^[c" fzf-cd-widget
+        bindkey -M viins "^r" fzf-history-widget
+        bindkey -M viins "^t" fzf-file-widget
+elif [[ `uname` == "Darwin" ]]
+then
+        # I don't have these in front of me
+else
+        echo "OS not identified - fzf not loaded"
+fi
+

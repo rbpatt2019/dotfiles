@@ -1,5 +1,11 @@
-set rtp+=/opt/local/bin/fzf
-source /opt/local/share/fzf/vim/plugin/fzf.vim 
+let $FZF_PATH=system('command -v fzf')
+set rtp+=$FZF_PATH
+
+if $FZF_PATH =~ 'usr'
+  source /usr/share/doc/fzf/examples/fzf.vim
+else
+  source /opt/local/share/fzf/vim/plugin/fzf.vim 
+endif
 
 let mapleader = ' '
 let maplocalleader = ','

@@ -72,7 +72,7 @@
 #          the default matplotlib backend.
 #  Choices: any of ['auto', 'agg', 'gtk', 'gtk3', 'gtk4', 'inline', 'ipympl', 'nbagg', 'notebook', 'osx', 'pdf', 'ps', 'qt', 'qt4', 'qt5', 'qt6', 'svg', 'tk', 'widget', 'wx'] (case-insensitive) or None
 #  Default: None
-c.InteractiveShellApp.matplotlib = 'auto'
+# c.InteractiveShellApp.matplotlib = None
 
 ## Run the module as a script.
 #  Default: ''
@@ -113,6 +113,53 @@ c.InteractiveShellApp.matplotlib = 'auto'
 #  Choices: any of [0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']
 #  Default: 30
 # c.Application.log_level = 30
+
+## Configure additional log handlers.
+#  
+#  The default stderr logs handler is configured by the log_level, log_datefmt
+#  and log_format settings.
+#  
+#  This configuration can be used to configure additional handlers (e.g. to
+#  output the log to a file) or for finer control over the default handlers.
+#  
+#  If provided this should be a logging configuration dictionary, for more
+#  information see:
+#  https://docs.python.org/3/library/logging.config.html#logging-config-
+#  dictschema
+#  
+#  This dictionary is merged with the base logging configuration which defines
+#  the following:
+#  
+#  * A logging formatter intended for interactive use called
+#    ``console``.
+#  * A logging handler that writes to stderr called
+#    ``console`` which uses the formatter ``console``.
+#  * A logger with the name of this application set to ``DEBUG``
+#    level.
+#  
+#  This example adds a new handler that writes to a file:
+#  
+#  .. code-block:: python
+#  
+#     c.Application.logging_configuration = {
+#         'handlers': {
+#             'file': {
+#                 'class': 'logging.FileHandler',
+#                 'level': 'DEBUG',
+#                 'filename': '<path/to/file>',
+#             }
+#         },
+#         'loggers': {
+#             '<application-name>': {
+#                 'level': 'DEBUG',
+#                 # NOTE: if you don't list the default "console"
+#                 # handler here then it will be disabled
+#                 'handlers': ['console', 'file'],
+#             },
+#         }
+#     }
+#  Default: {}
+# c.Application.logging_config = {}
 
 ## Instead of starting the Application, dump configuration to stdout
 #  Default: False
@@ -166,6 +213,10 @@ c.InteractiveShellApp.matplotlib = 'auto'
 ## Set the log level by value or name.
 #  See also: Application.log_level
 # c.BaseIPythonApplication.log_level = 30
+
+## 
+#  See also: Application.logging_config
+# c.BaseIPythonApplication.logging_config = {}
 
 ## Whether to overwrite existing config files when copying
 #  Default: False
@@ -276,6 +327,10 @@ c.InteractiveShellApp.matplotlib = 'auto'
 #  See also: Application.log_level
 # c.TerminalIPythonApp.log_level = 30
 
+## 
+#  See also: Application.logging_config
+# c.TerminalIPythonApp.logging_config = {}
+
 ## Configure matplotlib for interactive use with
 #  See also: InteractiveShellApp.matplotlib
 # c.TerminalIPythonApp.matplotlib = None
@@ -359,8 +414,8 @@ c.InteractiveShellApp.matplotlib = 'auto'
 # c.InteractiveShell.automagic = True
 
 ## The part of the banner to be printed before the profile
-#  Default: "Python 3.10.1 (main, Dec 23 2021, 08:21:06) [Clang 13.0.0 (clang-1300.0.27.3)]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.1.0 -- An enhanced Interactive Python. Type '?' for help.\n"
-# c.InteractiveShell.banner1 = "Python 3.10.1 (main, Dec 23 2021, 08:21:06) [Clang 13.0.0 (clang-1300.0.27.3)]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.1.0 -- An enhanced Interactive Python. Type '?' for help.\n"
+#  Default: "Python 3.10.4 (main, May 27 2022, 20:21:48) [GCC 11.2.0]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.3.0 -- An enhanced Interactive Python. Type '?' for help.\n"
+# c.InteractiveShell.banner1 = "Python 3.10.4 (main, May 27 2022, 20:21:48) [GCC 11.2.0]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.3.0 -- An enhanced Interactive Python. Type '?' for help.\n"
 
 ## The part of the banner to be printed after the profile
 #  Default: ''
@@ -514,7 +569,7 @@ c.InteractiveShell.colors = 'Linux'
 
 ## The part of the banner to be printed before the profile
 #  See also: InteractiveShell.banner1
-# c.TerminalInteractiveShell.banner1 = "Python 3.10.1 (main, Dec 23 2021, 08:21:06) [Clang 13.0.0 (clang-1300.0.27.3)]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.1.0 -- An enhanced Interactive Python. Type '?' for help.\n"
+# c.TerminalInteractiveShell.banner1 = "Python 3.10.4 (main, May 27 2022, 20:21:48) [GCC 11.2.0]\nType 'copyright', 'credits' or 'license' for more information\nIPython 8.3.0 -- An enhanced Interactive Python. Type '?' for help.\n"
 
 ## The part of the banner to be printed after the profile
 #  See also: InteractiveShell.banner2
@@ -562,7 +617,7 @@ c.InteractiveShell.colors = 'Linux'
 
 ## Shortcut style to use at the prompt. 'vi' or 'emacs'.
 #  Default: 'emacs'
-c.TerminalInteractiveShell.editing_mode = 'vim'
+c.TerminalInteractiveShell.editing_mode = 'vi'
 
 ## Set the editor used by IPython (default to $EDITOR/vi/notepad).
 #  Default: 'vim'
@@ -583,7 +638,7 @@ c.TerminalInteractiveShell.editor = 'vim'
 ## Enable vi (v) or Emacs (C-X C-E) shortcuts to open an external editor. This is
 #  in addition to the F2 binding, which is always enabled.
 #  Default: False
-c.TerminalInteractiveShell.extra_open_editor_shortcuts = False
+c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
 
 ## Provide an alternative handler to be called when the user presses Return. This
 #  is an advanced option intended for debugging, which may be changed or removed
@@ -814,7 +869,7 @@ c.TerminalInteractiveShell.highlighting_style = "gruvbox-dark"
 #  
 #  For example::
 #  
-#      c.MagicsManger.lazy_magics = {
+#      c.MagicsManager.lazy_magics = {
 #        "my_magic": "slow.to.import",
 #        "my_other_magic": "also.slow",
 #      }

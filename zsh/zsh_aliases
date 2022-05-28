@@ -9,7 +9,7 @@ alias lt="exa -ahlF --sort time"
 alias lg="exa -ahlF --git --git-ignore"
 alias ll="exa -hlF"
 alias l.="exa -ld .*"
-alias le="exa"
+alias le="exa -G"
 
 alias dot="cd $HOME/Projects/dotfiles"
 alias d="dirs -v"
@@ -99,9 +99,9 @@ colours()
 v()
 {
         if [ "$#" -ne 0 ]; then
-                /opt/local/bin/vim "$@"
+                vim "$@"
         elif [ -f "$(pwd)/Session.vim" ]; then
-                /opt/local/bin/vim -S Session.vim
+                vim -S Session.vim
         else
                 local  FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude '.git'"
                 files=$(fzf \
@@ -114,6 +114,6 @@ v()
                         --preview-window down:15:hidden:wrap \
                         --preview="bat --plain -r 1:15 -P --color always {}"
                 )
-                /opt/local/bin/vim $files
+                vim $files
         fi
 }

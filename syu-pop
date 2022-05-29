@@ -1,0 +1,50 @@
+#!/bin/zsh
+# Update script
+# run with wudo - commands that do not need to be elevated opt out with `sudo -u rbpatt2019`
+
+update_submodules () {
+        echo "\nSUBMODULES UPDATE"
+        git submodule update --remote --merge
+        git add .
+        git commit -m 'build(*): update submodules'
+        vim -c "CocUpdateSync|q"
+}
+
+pushd $HOME/Projects/dotfiles
+echo "\nSYSTEM UPDATE"
+sudo apt update
+sudo apt upgrade -y
+sudo apt autoremove
+sudo apt-get autoclean
+
+DIFF=$(git diff-files --ignore-submodules | wc -l)
+if [ "$DIFF" != "0" ]
+then
+        echo "\nUNSTAGED CHANGES STASHED AND POPPED"
+        git stash &&
+        update_submodules &&
+        git stash pop
+else
+        update_submodules
+fi
+
+echo "\nPYTHON UPDATES"
+pyenv update
+poetry self update
+pipx upgrade-all
+
+echo "\nRUST UPDATES"
+rustup update
+
+# Manual re-install check for cargo-update - to pass vendored ssl flag
+UP=$(cargo install-update -l | grep cargo-update | cut -f4 -w)
+if [ "$UP" = 'Yes' ]
+then
+        cargo install cargo-update --features vendored-openssl
+fi
+cargo install-update -a
+
+echo "\nTLDR UPDATES"
+tldr --update
+
+popd

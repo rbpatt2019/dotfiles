@@ -37,7 +37,7 @@ echo "\nRUST UPDATES"
 rustup update
 
 # Manual re-install check for cargo-update - to pass vendored ssl flag
-UP=$(cargo install-update -l | grep cargo-update | tr -s ' ' | cut -f4 -w)
+UP=$(cargo install-update -l | grep cargo-update | tr -s ' ' | cut -f4 -d' ')
 if [ "$UP" = 'Yes' ]
 then
         cargo install cargo-update --features vendored-openssl

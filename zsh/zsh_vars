@@ -36,8 +36,5 @@ export WWW_HOME="google.com"
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
-# Ranger
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
 # Vim mode
 export KEYTIMEOUT=1

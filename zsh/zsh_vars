@@ -31,7 +31,7 @@ export POETRY_VIRTUALENVS_PATH="$HOME/.pyenv/versions/"
 export MODE_INDICATOR=""
 
 # W3M
-export WWW_HOME="google.com"
+export WWW_HOME="duckduckgo.com"
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"

@@ -26,7 +26,6 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
 . $DOT/zsh/zsh_vars
 typeset -aU path
 path=(
-        "$PYENV_ROOT/shims"
         "$PYENV_ROOT/bin" 
         "/opt/local/bin"
         "$HOME/.poetry/bin"

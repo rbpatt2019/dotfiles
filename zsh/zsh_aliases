@@ -55,8 +55,8 @@ alias -g B="| bat -"
 pyenv() {
         echo "Lazy loading pyenv...\n"
         unset -f pyenv
-        eval "$(command pyenv init -)"
-        eval "$(command pyenv virtualenv-init -)"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
         pyenv $@
 }
 

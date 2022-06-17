@@ -4,6 +4,7 @@ cargo-update
 exa
 fd-find
 git-delta
+gitui
 hyperfine
 ripgrep
 starship

@@ -40,13 +40,33 @@ set cmdheight=1
 set foldmethod=indent
 syntax on
 
+" Highlighting
+" Put all custom colours in single function
+function! MyHighlights() abort
+  highlight GitGutterAdd    guifg=#b8bb26 ctermfg=0
+  highlight CocHighlightText guibg=#928374 guifg=#282828 ctermbg=8 ctermfg=0
+  highlight GitGutterChange guifg=#fabd2f ctermfg=11
+  highlight GitGutterDelete guifg=#fb4934 ctermfg=9
+  highlight GitGutterChangeDelete guifg=#d3869b ctermfg=13
+  highlight HighlightedyankRegion guibg=#928374 guifg=#282828 ctermbg=8 ctermfg=0
+endfunction
+
+" Call that function anytime the colourscheme is loaded
+augroup CustomHi
+  autocmd!
+  autocmd ColorScheme * ++nested call MyHighlights()
+augroup end
+
 " Colorschemes
 let g:gruvbox_bold = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_sign_column = 'bg0'
-autocmd vimenter * ++nested colorscheme gruvbox
-autocmd vimenter * ++nested set background=dark
+augroup gruvbox
+  autocmd!
+  autocmd vimenter * ++nested colorscheme gruvbox
+  autocmd vimenter * ++nested set background=dark
+augroup end
 set termguicolors
 
 " Slightly improved folds
@@ -83,11 +103,14 @@ nnoremap Q D
 " Which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :WhichKey ','<CR>
-autocmd FileType which_key highlight WhichKey ctermbg=0 ctermfg=13
-autocmd FileType which_key highlight WhichKeySeperator ctermbg=0 ctermfg=13
-autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=0 ctermfg=13
-autocmd FileType which_key highlight WhichKeyDesc ctermbg=0 ctermfg=13
-autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
+augroup WhichKey
+  autocmd!
+  autocmd FileType which_key highlight WhichKey ctermbg=0 ctermfg=13
+  autocmd FileType which_key highlight WhichKeySeperator ctermbg=0 ctermfg=13
+  autocmd FileType which_key highlight WhichKeyGroup cterm=bold ctermbg=0 ctermfg=13
+  autocmd FileType which_key highlight WhichKeyDesc ctermbg=0 ctermfg=13
+  autocmd FileType which_key highlight WhichKeyFloating ctermbg=0 ctermfg=13
+augroup end
 
 " Finding things
 " relevant mapping is <leader>f*
@@ -102,7 +125,6 @@ let g:fzf_preview_command = 'COLORTERM=truecolor bat --plain --number -r 1:50 -P
 
 " coc-yank
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
-hi HighlightedyankRegion term=bold ctermbg=0 guibg=#13354A
 
 " vim-fugitive
 " relative mappings are <leader>g*
@@ -120,10 +142,6 @@ noremap <leader>gv :Gread<CR>
 " I think colours are getting stompted by gruvbox...
 let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_map_keys = 0
-highlight GitGutterAdd    guifg=#b8bb26 ctermfg=0
-highlight GitGutterChange guifg=#fabd2f ctermfg=11
-highlight GitGutterDelete guifg=#fb4934 ctermfg=9
-highlight GitGutterChangeDelete guifg=#d3869b ctermfg=13
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = ':'
 let g:gitgutter_sign_removed = '-'
@@ -172,9 +190,9 @@ nnoremap <leader>n :n
 nnoremap <leader>v :vs 
 
 " Edit settings
-nnoremap <leader>sv :vs /Users/pattersonrb/projects/dotfiles/vim/vimrc<CR>
-nnoremap <leader>sr :vs /Users/pattersonrb/.vim/ftplugin/R.vim<CR>
-nnoremap <leader>sp :vs /Users/pattersonrb/.vim/ftplugin/python.vim<CR>
+nnoremap <leader>sv :vs $DOT/vim/vimrc<CR>
+nnoremap <leader>sr :vs $DOT/vim/ftplugin/R.vim<CR>
+nnoremap <leader>sp :vs $DOT/vim/ftplugin/python.vim<CR>
 nnoremap <leader>ss :so $MYVIMRC<CR>
 
 " Buffer interactions
@@ -191,6 +209,10 @@ nmap <leader>l :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 nmap <leader>j <Plug>(coc-diagnostic-next)
 nmap <leader>k <Plug>(coc-diagnostic-prev)
 nmap <leader>a <Plug>(coc-codeaction)
+
+" highlight at cursor
+let g:coc_current_word_filetypes = ['*'] 
+nmap <leader>h :CocCurrentWordToggle<CR>
 
 " completion
 inoremap <silent><expr> <TAB>

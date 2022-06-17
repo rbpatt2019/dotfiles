@@ -77,3 +77,6 @@
 [submodule "tmux/tmux-power-zoom"]
 	path = tmux/tmux-power-zoom
 	url = https://github.com/jaclu/tmux-power-zoom
+[submodule "vim/pack/rbpatt2019/start/coc_current_word"]
+	path = vim/pack/rbpatt2019/start/coc_current_word
+	url = https://github.com/IngoMeyer441/coc_current_word

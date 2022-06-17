@@ -66,16 +66,21 @@ bindkey -M viins "^[[A" up-line-or-beginning-search
 bindkey -M viins "^[[B" down-line-or-beginning-search
 
 # fzf bits
-if command -v apt > /dev/null
+OS=$(uname)
+if [[ "$OS" == "Linux" ]] # This will almost certainly need to get changed...
 then
         source /usr/share/doc/fzf/examples/key-bindings.zsh
         source /usr/share/doc/fzf/examples/completion.zsh
         bindkey -M viins "^[c" fzf-cd-widget
         bindkey -M viins "^r" fzf-history-widget
         bindkey -M viins "^t" fzf-file-widget
-elif [[ `uname` == "Darwin" ]]
+elif [[ "$OS" == "Darwin" ]]
 then
-        # I don't have these in front of me
+        source /opt/local/share/fzf/shell/completion.zsh
+        source /opt/local/share/fzf/shell/key-bindings.zsh
+        bindkey -M viins "ç" fzf-cd-widget
+        bindkey -M viins "^r" fzf-history-widget
+        bindkey -M viins "^t" fzf-file-widget
 else
         echo "OS not identified - fzf not loaded"
 fi

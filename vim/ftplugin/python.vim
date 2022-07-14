@@ -30,7 +30,7 @@ let b:coc_pairs = [["'''", "'''"], ["\"\"\"", "\"\"\""]]
 nmap <buffer> <localleader>d <Plug>(coc-definition)
 " <Plug>(coc-format-selected) is not supported by Black
 nmap <buffer> <localleader>f <Plug>(coc-format)
-nmap <buffer> <localleader>s :CocCommand pyright.organizeimports<CR>
+nmap <buffer> <localleader>s :! /Users/ryanpatterson-cross/.local/pipx/venvs/python-lsp-server/bin/isort --settings-file ~/.config/isort.cfg @%<CR>
 " rename variables
 nmap <buffer> <localleader>r <Plug>(coc-rename)
 " get information

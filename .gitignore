@@ -10,3 +10,4 @@ w3m/*.html
 w3m/w3mcache*
 zsh/.zcompdump*
 zsh/.zsh_history
+zsh/.zsh_sessions

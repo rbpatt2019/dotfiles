@@ -130,12 +130,14 @@ nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
 " relative mappings are <leader>g*
 nnoremap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
 nnoremap <leader>gc :G commit %<CR>
-nnoremap <leader>gl :Gclog<CR>
+nnoremap <leader>gl :Git log --oneline<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
+nnoremap <leader>gdh :diffget 2<CR>
+nnoremap <leader>gdl :diffget 3<CR>
 nnoremap <leader>gm :GMove
 nnoremap <leader>gx :GDelete<CR>
-nnoremap <leader>gb :Git_blame<CR>
+nnoremap <leader>gb :Git blame<CR>
 noremap <leader>gv :Gread<CR>
 
 " git-gutter - sign indication for git changes

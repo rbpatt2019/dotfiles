@@ -38,3 +38,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # Vim mode
 export KEYTIMEOUT=1
+
+# Work
+export GELLOGS_VARIABLES="$HOME/Projects/config_files/gellogs_variables.txt"

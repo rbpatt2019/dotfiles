@@ -26,8 +26,8 @@ setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent \
 . $DOT/zsh/zsh_vars
 typeset -aU path
 path=(
-        "$PYENV_ROOT/bin" 
         "/opt/local/bin"
+        "$PYENV_ROOT/bin" 
         "$HOME/.poetry/bin"
         "$HOME/.cargo/bin"
         "$HOME/go/bin"

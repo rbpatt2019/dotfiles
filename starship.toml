@@ -7,9 +7,9 @@ format = """\
         $hostname\
         $directory\
         $git_branch\
+        $git_state\
         $git_status\
         $package\
-        $time\
         $custom\
         $line_break\
         $python\
@@ -18,12 +18,12 @@ format = """\
         $jobs\
         $character """
 
-[custom.nushell]
-command = "echo Nushell"
-format = " with [($output)]($style)"
+[custom.arch]
+command = "uname -m"
+format = " using [($output)]($style)"
 style = "7"
-when = '[ "$STARSHIP_SHELL" == "nu" ]'
-shell = ["bash", "--noprofile", "--norc"]
+when = true
+os = "macos"
 
 [username]
 show_always = true
@@ -53,6 +53,11 @@ symbol = ""
 style = "3"
 format = " on [$symbol$branch]($style)"
 
+[git_state]
+disabled = false
+style = "3"
+format = ' [- $state]($style)'
+
 [git_status]
 style = "1"
 format = '([\[$all_status$ahead_behind\]]($style))'
@@ -63,9 +68,7 @@ style = "9"
 format = " [$version]($style)"
 
 [time]
-disabled = false
-style = "5"
-format = " at [$time]($style)"
+disabled = true
 
 [python]
 format = "via [${version}]($style) "

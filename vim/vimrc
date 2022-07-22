@@ -79,8 +79,6 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_skipfoldedline = 0
 let g:EasyMotion_startofline = 0
 nmap s <Plug>(easymotion-s)
-nmap n <Plug>(easymotion-vim-n)
-nmap N <Plug>(easymotion-vim-N)
 nmap t <Plug>(easymotion-bd-tl)
 nmap f <Plug>(easymotion-bd-fl)
 nmap e <Plug>(easymotion-bd-el)
@@ -133,8 +131,10 @@ nnoremap <leader>gc :G commit %<CR>
 nnoremap <leader>gl :Git log --oneline<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gd :Gvdiffsplit!<CR>
-nnoremap <leader>gdh :diffget 2<CR>
-nnoremap <leader>gdl :diffget 3<CR>
+nnoremap <leader><leader>h :diffget //2<CR>
+nnoremap <leader><leader>l :diffget //3<CR>
+nnoremap <leader><leader>o <C-w>o:wq<CR>
+nnoremap <leader><leader>w :Gwrite!<CR>
 nnoremap <leader>gm :GMove
 nnoremap <leader>gx :GDelete<CR>
 nnoremap <leader>gb :Git blame<CR>
